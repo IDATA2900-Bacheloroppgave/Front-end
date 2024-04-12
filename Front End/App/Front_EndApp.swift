@@ -11,7 +11,7 @@ import SwiftUI
 struct Front_EndApp: App {
     var body: some Scene {
         WindowGroup {
-            LogInView()
+            TestView()
         }
     }
 }

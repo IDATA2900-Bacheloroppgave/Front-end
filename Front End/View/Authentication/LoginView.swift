@@ -32,7 +32,8 @@ struct LogInView: View {
                             InputView(text: $password, placeholder: "Password", isSecureField: true)
                         }
                         Button("Log in") {
-                        
+                            TestViewModel().fetchProductData()
+                            //LoginViewModel().login(email: "siris@gmail.com", password: "Testpassword11hehe")
                         }
                         .foregroundColor(Color.black)
                         .frame(width: 150, height: 50)
@@ -45,7 +46,7 @@ struct LogInView: View {
                     }
                     Spacer()
                     NavigationLink{
-                        NewUserView()
+                        RegisterView()
                     }label: {
                         HStack (spacing: 3) {
                             Text("Don't have an account?")
