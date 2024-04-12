@@ -17,6 +17,8 @@
 		ECEBD1392BC89F10007F9D8A /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1382BC89F10007F9D8A /* LogInView.swift */; };
 		ECEBD13B2BC8A90B007F9D8A /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */; };
 		ECEBD13D2BC8BC86007F9D8A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */; };
+		ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1442BC8CC89007F9D8A /* InputView.swift */; };
+		ECEBD1472BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1462BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		ECEBD1382BC89F10007F9D8A /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
 		ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		ECEBD1442BC8CC89007F9D8A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		ECEBD1462BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryOfDayListElementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +104,9 @@
 		ECEBD0622BC88497007F9D8A /* Front End */ = {
 			isa = PBXGroup;
 			children = (
+				ECEBD1422BC8CB90007F9D8A /* App */,
+				ECEBD1412BC8CB7D007F9D8A /* Components */,
 				ECEBD13F2BC8BF87007F9D8A /* Model */,
-				ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */,
 				ECEBD1402BC8BF96007F9D8A /* View */,
 				ECEBD0672BC88499007F9D8A /* Assets.xcassets */,
 				ECEBD0692BC88499007F9D8A /* Preview Content */,
@@ -144,12 +149,37 @@
 		ECEBD1402BC8BF96007F9D8A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ECEBD0652BC88497007F9D8A /* NewUserView.swift */,
-				ECEBD1382BC89F10007F9D8A /* LogInView.swift */,
-				ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */,
+				ECEBD1432BC8CC4C007F9D8A /* Authentication */,
 				ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		ECEBD1412BC8CB7D007F9D8A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ECEBD1442BC8CC89007F9D8A /* InputView.swift */,
+				ECEBD1462BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		ECEBD1422BC8CB90007F9D8A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		ECEBD1432BC8CC4C007F9D8A /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				ECEBD0652BC88497007F9D8A /* NewUserView.swift */,
+				ECEBD1382BC89F10007F9D8A /* LogInView.swift */,
+				ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +315,8 @@
 				ECEBD1392BC89F10007F9D8A /* LogInView.swift in Sources */,
 				ECEBD13B2BC8A90B007F9D8A /* LandingPageView.swift in Sources */,
 				ECEBD13D2BC8BC86007F9D8A /* ResetPasswordView.swift in Sources */,
+				ECEBD1472BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift in Sources */,
+				ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */,
 				ECEBD0662BC88497007F9D8A /* NewUserView.swift in Sources */,
 				ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */,
 			);

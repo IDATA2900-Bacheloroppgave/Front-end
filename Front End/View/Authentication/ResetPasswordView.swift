@@ -24,16 +24,7 @@ struct ResetPasswordView: View {
                             .font(.system(size: 45))
 
                         VStack(spacing: 20) {
-                            TextField("Username", text: $username)
-                                .padding()
-                                .frame(width: 300, height: 50)
-                                .background(Color.white)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.black, lineWidth: 2)
-                                )
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                            
+                            InputView(text: $username, placeholder: "Username")
                             Text("Please enter email above \n to reset your password").multilineTextAlignment(.center)
                         }
                        

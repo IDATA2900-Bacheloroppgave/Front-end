@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct InputView: View {
+    @Binding var text: String
+    let placeholder: String
+    var isSecureField = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if isSecureField{
+            SecureField(placeholder, text: $text)
+                .padding()
+                .frame(width: 300, height: 50)
+                .background(Color.white)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+        }else{
+            TextField(placeholder, text: $text)
+                .padding()
+                .frame(width: 300, height: 50)
+                .background(Color.white)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.black, lineWidth: 2)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
     }
 }
 
 #Preview {
-    InputView()
+    InputView(text: .constant(""), placeholder: "name@example.com")
 }

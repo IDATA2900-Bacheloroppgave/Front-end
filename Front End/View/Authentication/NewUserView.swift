@@ -21,33 +21,9 @@ struct NewUserView: View {
                 VStack(spacing: 40){
                     Text("TraceGo").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).font(.system(size: 45))
                     VStack(spacing: 20){
-                        TextField("Firstname", text: $username)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.white)
-                            .overlay(
-                                 RoundedRectangle(cornerRadius: 10)  // Set the corner radius here
-                                     .stroke(Color.black, lineWidth: 2)  // This adds the border
-                             )
-                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                        SecureField("Password", text: $password)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.white)
-                            .overlay(
-                                 RoundedRectangle(cornerRadius: 10)  // Set the corner radius here
-                                     .stroke(Color.black, lineWidth: 2)  // This adds the border
-                             )
-                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                        SecureField("Repeat password", text: $password)
-                            .padding()
-                            .frame(width: 300, height: 50)
-                            .background(Color.white)
-                            .overlay(
-                                 RoundedRectangle(cornerRadius: 10)  // Set the corner radius here
-                                     .stroke(Color.black, lineWidth: 2)  // This adds the border
-                             )
-                             .clipShape(RoundedRectangle(cornerRadius: 10))
+                        InputView(text: $username, placeholder: "Username")
+                        InputView(text: $password, placeholder: "Password", isSecureField: true)
+                        InputView(text: $password, placeholder: "Repeat password", isSecureField: true)
                     }
                     Button("Create User"){
                         

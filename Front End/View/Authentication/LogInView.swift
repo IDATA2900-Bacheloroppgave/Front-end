@@ -27,25 +27,8 @@ struct LogInView: View {
                             .font(.system(size: 45))
 
                         VStack(spacing: 20) {
-                            TextField("Username", text: $username)
-                                .padding()
-                                .frame(width: 300, height: 50)
-                                .background(Color.white)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.black, lineWidth: 2)
-                                )
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                            
-                            SecureField("Password", text: $password)
-                                .padding()
-                                .frame(width: 300, height: 50)
-                                .background(Color.white)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.black, lineWidth: 2)
-                                )
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            InputView(text: $username, placeholder: "Username")
+                            InputView(text: $password, placeholder: "Password", isSecureField: true)
                         }
                         Button("Log in") {
                         

@@ -21,14 +21,14 @@ struct LandingPageView: View {
             ZStack{
                 Color(red: 0.96, green: 0.96, blue: 0.96)
                 VStack{
-                    Text("Deliveries of the day").frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading).padding(.horizontal)
+                    Text("Deliveries of the day").frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal)
                     ScrollView{
                         VStack(spacing: 8) {
-                                        ForEach(deliveryItems) { item in
-                                            DeliveryItemView(deliveryItem: item)
-                                        }
-                                    }
-                                    .padding()
+                            ForEach(deliveryItems) { item in
+                                DeliveryOfDayListElementView(deliveryItem: item)
+                            }
+                        }
+                        .padding()
                     }
                     ScanToOrderBtn()
                 }
@@ -51,35 +51,6 @@ struct DeliveryItem: Identifiable {
     let company: String
     let productsCount: Int
 }
-
-struct DeliveryItemView: View {
-    let deliveryItem: DeliveryItem
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                Text(deliveryItem.title)
-                    .font(.headline)
-                Text("#\(deliveryItem.id)")
-                    .font(.caption)
-            }
-            
-            Spacer()
-            
-            VStack(alignment: .trailing, spacing: 4) {
-                Text(deliveryItem.company)
-                    .font(.headline)
-                Text("Products: \(deliveryItem.productsCount)")
-                    .font(.caption)
-            }
-        }
-        .padding()
-        .background(RoundedRectangle(cornerRadius: 10).fill(Color.white))
-        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(red: 0.06, green: 0.44, blue: 0.53), lineWidth: 1))
-      
-    }
-}
-
 
 
 
