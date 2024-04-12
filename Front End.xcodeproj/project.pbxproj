@@ -100,11 +100,9 @@
 		ECEBD0622BC88497007F9D8A /* Front End */ = {
 			isa = PBXGroup;
 			children = (
+				ECEBD13F2BC8BF87007F9D8A /* Model */,
 				ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */,
-				ECEBD0652BC88497007F9D8A /* NewUserView.swift */,
-				ECEBD1382BC89F10007F9D8A /* LogInView.swift */,
-				ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */,
-				ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */,
+				ECEBD1402BC8BF96007F9D8A /* View */,
 				ECEBD0672BC88499007F9D8A /* Assets.xcassets */,
 				ECEBD0692BC88499007F9D8A /* Preview Content */,
 			);
@@ -134,6 +132,24 @@
 				ECEBD0802BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift */,
 			);
 			path = "Front EndUITests";
+			sourceTree = "<group>";
+		};
+		ECEBD13F2BC8BF87007F9D8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ECEBD1402BC8BF96007F9D8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECEBD0652BC88497007F9D8A /* NewUserView.swift */,
+				ECEBD1382BC89F10007F9D8A /* LogInView.swift */,
+				ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */,
+				ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
