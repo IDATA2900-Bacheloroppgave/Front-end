@@ -9,11 +9,12 @@ import SwiftUI
 
 
 struct LogInView: View {
+    @StateObject var loginViewModel = LoginViewModel()
+    
     @State private var username = ""
     @State private var password = ""
     @State private var wrongUsername = 0
     @State private var wrongPassword = 0
-    @State private var loginSuccessful = false
     
     
     var body: some View {
@@ -32,8 +33,8 @@ struct LogInView: View {
                             InputView(text: $password, placeholder: "Password", isSecureField: true)
                         }
                         Button("Log in") {
-                            ProductsViewModel().fetchProductData()
-                            //LoginViewModel().login(email: "siris@gmail.com", password: "Testpassword11hehe")
+                            loginViewModel.login(email: "siris@gmail.com", password: "Testpassword11hehe")
+                            print(loginViewModel.loggedIn)
                         }
                         .foregroundColor(Color.black)
                         .frame(width: 150, height: 50)
@@ -43,6 +44,9 @@ struct LogInView: View {
                             RoundedRectangle(cornerRadius: 25)
                                 .stroke(Color.black, lineWidth: 1)
                         )
+                        if loginViewModel.loggedIn{
+                            Text("Loggefd in")
+                        }
                     }
                     Spacer()
                     NavigationLink{

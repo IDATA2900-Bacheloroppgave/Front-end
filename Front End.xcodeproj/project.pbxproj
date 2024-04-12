@@ -26,6 +26,7 @@
 		ECEBD1622BC9D2DA007F9D8A /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1612BC9D2DA007F9D8A /* ProductsView.swift */; };
 		ECEBD1652BC9DDA4007F9D8A /* ProductsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1642BC9DDA4007F9D8A /* ProductsDataService.swift */; };
 		ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1682BC9EDE0007F9D8A /* Product.swift */; };
+		ECEBD16B2BC9F1FB007F9D8A /* LoginDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16A2BC9F1FB007F9D8A /* LoginDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		ECEBD1612BC9D2DA007F9D8A /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
 		ECEBD1642BC9DDA4007F9D8A /* ProductsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDataService.swift; sourceTree = "<group>"; };
 		ECEBD1682BC9EDE0007F9D8A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		ECEBD16A2BC9F1FB007F9D8A /* LoginDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				ECEBD1642BC9DDA4007F9D8A /* ProductsDataService.swift */,
+				ECEBD16A2BC9F1FB007F9D8A /* LoginDataService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				ECEBD1592BC969D6007F9D8A /* LoginView.swift in Sources */,
 				ECEBD15D2BC96A0E007F9D8A /* ResetPasswordView.swift in Sources */,
 				ECEBD15B2BC969EF007F9D8A /* RegisterView.swift in Sources */,
+				ECEBD16B2BC9F1FB007F9D8A /* LoginDataService.swift in Sources */,
 				ECEBD14F2BC93AD7007F9D8A /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

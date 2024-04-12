@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductsView: View {
     @StateObject var testViewModel = ProductsViewModel()
     var body: some View {
-    
+        Text("Products")
         if let errorMessage = testViewModel.errorMessage{
             Text(errorMessage)
         }else{
