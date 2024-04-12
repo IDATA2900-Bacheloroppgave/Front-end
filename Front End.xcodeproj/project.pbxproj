@@ -8,17 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */; };
-		ECEBD0662BC88497007F9D8A /* NewUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0652BC88497007F9D8A /* NewUserView.swift */; };
 		ECEBD0682BC88499007F9D8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD0672BC88499007F9D8A /* Assets.xcassets */; };
 		ECEBD06B2BC88499007F9D8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */; };
 		ECEBD0752BC88499007F9D8A /* Front_EndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0742BC88499007F9D8A /* Front_EndTests.swift */; };
 		ECEBD07F2BC88499007F9D8A /* Front_EndUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD07E2BC88499007F9D8A /* Front_EndUITests.swift */; };
 		ECEBD0812BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0802BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift */; };
-		ECEBD1392BC89F10007F9D8A /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1382BC89F10007F9D8A /* LogInView.swift */; };
-		ECEBD13B2BC8A90B007F9D8A /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */; };
-		ECEBD13D2BC8BC86007F9D8A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */; };
 		ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1442BC8CC89007F9D8A /* InputView.swift */; };
 		ECEBD1472BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1462BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift */; };
+		ECEBD14B2BC93076007F9D8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD14A2BC93076007F9D8A /* User.swift */; };
+		ECEBD14F2BC93AD7007F9D8A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD14E2BC93AD7007F9D8A /* LoginViewModel.swift */; };
+		ECEBD1522BC947EE007F9D8A /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1512BC947EE007F9D8A /* TestViewModel.swift */; };
+		ECEBD1552BC9692E007F9D8A /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1542BC9692E007F9D8A /* LandingPageView.swift */; };
+		ECEBD1592BC969D6007F9D8A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1582BC969D6007F9D8A /* LoginView.swift */; };
+		ECEBD15B2BC969EF007F9D8A /* NewUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD15A2BC969EF007F9D8A /* NewUserView.swift */; };
+		ECEBD15D2BC96A0E007F9D8A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD15C2BC96A0E007F9D8A /* ResetPasswordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +44,6 @@
 /* Begin PBXFileReference section */
 		ECEBD0602BC88497007F9D8A /* Front End.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Front End.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndApp.swift; sourceTree = "<group>"; };
-		ECEBD0652BC88497007F9D8A /* NewUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserView.swift; sourceTree = "<group>"; };
 		ECEBD0672BC88499007F9D8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECEBD0702BC88499007F9D8A /* Front EndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Front EndTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,11 +51,16 @@
 		ECEBD07A2BC88499007F9D8A /* Front EndUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Front EndUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECEBD07E2BC88499007F9D8A /* Front_EndUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndUITests.swift; sourceTree = "<group>"; };
 		ECEBD0802BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		ECEBD1382BC89F10007F9D8A /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
-		ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
-		ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		ECEBD1442BC8CC89007F9D8A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		ECEBD1462BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryOfDayListElementView.swift; sourceTree = "<group>"; };
+		ECEBD14A2BC93076007F9D8A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ECEBD14E2BC93AD7007F9D8A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		ECEBD1512BC947EE007F9D8A /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
+		ECEBD1532BC9552F007F9D8A /* Front-End-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Front-End-Info.plist"; sourceTree = SOURCE_ROOT; };
+		ECEBD1542BC9692E007F9D8A /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
+		ECEBD1582BC969D6007F9D8A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		ECEBD15A2BC969EF007F9D8A /* NewUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserView.swift; sourceTree = "<group>"; };
+		ECEBD15C2BC96A0E007F9D8A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,10 +111,12 @@
 		ECEBD0622BC88497007F9D8A /* Front End */ = {
 			isa = PBXGroup;
 			children = (
+				ECEBD1532BC9552F007F9D8A /* Front-End-Info.plist */,
 				ECEBD1422BC8CB90007F9D8A /* App */,
 				ECEBD1412BC8CB7D007F9D8A /* Components */,
 				ECEBD13F2BC8BF87007F9D8A /* Model */,
-				ECEBD1402BC8BF96007F9D8A /* View */,
+				ECEBD14D2BC93AB2007F9D8A /* View */,
+				ECEBD14C2BC93A8B007F9D8A /* ViewModel */,
 				ECEBD0672BC88499007F9D8A /* Assets.xcassets */,
 				ECEBD0692BC88499007F9D8A /* Preview Content */,
 			);
@@ -142,17 +151,9 @@
 		ECEBD13F2BC8BF87007F9D8A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ECEBD1502BC94384007F9D8A /* Authentication */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		ECEBD1402BC8BF96007F9D8A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				ECEBD1432BC8CC4C007F9D8A /* Authentication */,
-				ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		ECEBD1412BC8CB7D007F9D8A /* Components */ = {
@@ -172,12 +173,46 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		ECEBD1432BC8CC4C007F9D8A /* Authentication */ = {
+		ECEBD14C2BC93A8B007F9D8A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				ECEBD0652BC88497007F9D8A /* NewUserView.swift */,
-				ECEBD1382BC89F10007F9D8A /* LogInView.swift */,
-				ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */,
+				ECEBD15E2BC96A27007F9D8A /* Authentication */,
+				ECEBD1512BC947EE007F9D8A /* TestViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ECEBD14D2BC93AB2007F9D8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECEBD1572BC969C8007F9D8A /* Authentication */,
+				ECEBD1542BC9692E007F9D8A /* LandingPageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECEBD1502BC94384007F9D8A /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				ECEBD14A2BC93076007F9D8A /* User.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		ECEBD1572BC969C8007F9D8A /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				ECEBD1582BC969D6007F9D8A /* LoginView.swift */,
+				ECEBD15A2BC969EF007F9D8A /* NewUserView.swift */,
+				ECEBD15C2BC96A0E007F9D8A /* ResetPasswordView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		ECEBD15E2BC96A27007F9D8A /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				ECEBD14E2BC93AD7007F9D8A /* LoginViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -312,13 +347,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECEBD1392BC89F10007F9D8A /* LogInView.swift in Sources */,
-				ECEBD13B2BC8A90B007F9D8A /* LandingPageView.swift in Sources */,
-				ECEBD13D2BC8BC86007F9D8A /* ResetPasswordView.swift in Sources */,
+				ECEBD1522BC947EE007F9D8A /* TestViewModel.swift in Sources */,
 				ECEBD1472BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift in Sources */,
+				ECEBD14B2BC93076007F9D8A /* User.swift in Sources */,
 				ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */,
-				ECEBD0662BC88497007F9D8A /* NewUserView.swift in Sources */,
+				ECEBD1552BC9692E007F9D8A /* LandingPageView.swift in Sources */,
 				ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */,
+				ECEBD1592BC969D6007F9D8A /* LoginView.swift in Sources */,
+				ECEBD15D2BC96A0E007F9D8A /* ResetPasswordView.swift in Sources */,
+				ECEBD15B2BC969EF007F9D8A /* NewUserView.swift in Sources */,
+				ECEBD14F2BC93AD7007F9D8A /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +522,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Front End/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Front-End-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -512,6 +551,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Front End/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Front-End-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
