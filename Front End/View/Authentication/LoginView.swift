@@ -32,7 +32,7 @@ struct LogInView: View {
                             InputView(text: $password, placeholder: "Password", isSecureField: true)
                         }
                         Button("Log in") {
-                            TestViewModel().fetchProductData()
+                            ProductsViewModel().fetchProductData()
                             //LoginViewModel().login(email: "siris@gmail.com", password: "Testpassword11hehe")
                         }
                         .foregroundColor(Color.black)
