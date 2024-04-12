@@ -1,0 +1,10 @@
+//
+//  DeliveryItem.swift
+//  Front End
+//
+//  Created by Siri Sandnes on 12/04/2024.
+//
+
+import Foundation
+
+

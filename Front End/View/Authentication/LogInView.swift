@@ -13,7 +13,8 @@ struct LogInView: View {
     @State private var password = ""
     @State private var wrongUsername = 0
     @State private var wrongPassword = 0
-    @State private var loginSuccessful = false  // Corrected the typo in variable name
+    @State private var loginSuccessful = false
+    
     
     var body: some View {
         NavigationStack {
@@ -43,15 +44,19 @@ struct LogInView: View {
                         )
                     }
                     Spacer()
-                    HStack {
-                        Text("Don't have an account?")
-                            .foregroundColor(Color.black)
-                        Button("Sign up") {
-                         
+                    NavigationLink{
+                        NewUserView()
+                    }label: {
+                        HStack (spacing: 3) {
+                            Text("Don't have an account?")
+                                .foregroundColor(Color.black)
+                            Button("Sign up") {
+                             
+                            }
+                            .foregroundColor(Color.blue)
                         }
-                        .foregroundColor(Color.blue)
+                        .padding(.bottom, 20)
                     }
-                    .padding(.bottom, 20)
                 }
             }
         }
