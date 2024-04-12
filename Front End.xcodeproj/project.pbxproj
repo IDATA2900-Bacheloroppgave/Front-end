@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */; };
-		ECEBD0662BC88497007F9D8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0652BC88497007F9D8A /* ContentView.swift */; };
+		ECEBD0662BC88497007F9D8A /* NewUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0652BC88497007F9D8A /* NewUserView.swift */; };
 		ECEBD0682BC88499007F9D8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD0672BC88499007F9D8A /* Assets.xcassets */; };
 		ECEBD06B2BC88499007F9D8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */; };
 		ECEBD0752BC88499007F9D8A /* Front_EndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0742BC88499007F9D8A /* Front_EndTests.swift */; };
 		ECEBD07F2BC88499007F9D8A /* Front_EndUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD07E2BC88499007F9D8A /* Front_EndUITests.swift */; };
 		ECEBD0812BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0802BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift */; };
+		ECEBD1392BC89F10007F9D8A /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1382BC89F10007F9D8A /* LogInView.swift */; };
+		ECEBD13B2BC8A90B007F9D8A /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */; };
+		ECEBD13D2BC8BC86007F9D8A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,7 @@
 /* Begin PBXFileReference section */
 		ECEBD0602BC88497007F9D8A /* Front End.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Front End.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndApp.swift; sourceTree = "<group>"; };
-		ECEBD0652BC88497007F9D8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ECEBD0652BC88497007F9D8A /* NewUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserView.swift; sourceTree = "<group>"; };
 		ECEBD0672BC88499007F9D8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECEBD0702BC88499007F9D8A /* Front EndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Front EndTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +47,9 @@
 		ECEBD07A2BC88499007F9D8A /* Front EndUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Front EndUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECEBD07E2BC88499007F9D8A /* Front_EndUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndUITests.swift; sourceTree = "<group>"; };
 		ECEBD0802BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ECEBD1382BC89F10007F9D8A /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
+		ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */,
-				ECEBD0652BC88497007F9D8A /* ContentView.swift */,
+				ECEBD0652BC88497007F9D8A /* NewUserView.swift */,
+				ECEBD1382BC89F10007F9D8A /* LogInView.swift */,
+				ECEBD13C2BC8BC86007F9D8A /* ResetPasswordView.swift */,
+				ECEBD13A2BC8A90B007F9D8A /* LandingPageView.swift */,
 				ECEBD0672BC88499007F9D8A /* Assets.xcassets */,
 				ECEBD0692BC88499007F9D8A /* Preview Content */,
 			);
@@ -257,7 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECEBD0662BC88497007F9D8A /* ContentView.swift in Sources */,
+				ECEBD1392BC89F10007F9D8A /* LogInView.swift in Sources */,
+				ECEBD13B2BC8A90B007F9D8A /* LandingPageView.swift in Sources */,
+				ECEBD13D2BC8BC86007F9D8A /* ResetPasswordView.swift in Sources */,
+				ECEBD0662BC88497007F9D8A /* NewUserView.swift in Sources */,
 				ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
