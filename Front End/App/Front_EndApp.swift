@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Front_EndApp: App {
+    @StateObject var viewModel = LoginViewModel()
     var body: some Scene {
         WindowGroup {
-            LogInView()
+            ContentView()
+                .environment(viewModel)
         }
     }
 }

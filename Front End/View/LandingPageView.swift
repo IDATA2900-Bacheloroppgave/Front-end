@@ -12,8 +12,8 @@ struct LandingPageView: View {
     
     let deliveryItems: [DeliveryItem] = [
             DeliveryItem(id: "1589284", title: "Ferskvarer", company: "Gjørts AS", productsCount: 30),
-            DeliveryItem(id: "1589284", title: "Ferskvarer", company: "Gjørts AS", productsCount: 30),
-            DeliveryItem(id: "1589284", title: "Ferskvarer", company: "Gjørts AS", productsCount: 30)
+            DeliveryItem(id: "1579284", title: "Ferskvarer", company: "Gjørts AS", productsCount: 30),
+            DeliveryItem(id: "1579294", title: "Ferskvarer", company: "Gjørts AS", productsCount: 30)
             // Add more items as needed
         ]
     

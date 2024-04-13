@@ -27,6 +27,7 @@
 		ECEBD1652BC9DDA4007F9D8A /* ProductsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1642BC9DDA4007F9D8A /* ProductsDataService.swift */; };
 		ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1682BC9EDE0007F9D8A /* Product.swift */; };
 		ECEBD16B2BC9F1FB007F9D8A /* LoginDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16A2BC9F1FB007F9D8A /* LoginDataService.swift */; };
+		ECEBD16D2BCA1377007F9D8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16C2BCA1377007F9D8A /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		ECEBD1642BC9DDA4007F9D8A /* ProductsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDataService.swift; sourceTree = "<group>"; };
 		ECEBD1682BC9EDE0007F9D8A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		ECEBD16A2BC9F1FB007F9D8A /* LoginDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataService.swift; sourceTree = "<group>"; };
+		ECEBD16C2BCA1377007F9D8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */,
+				ECEBD16C2BCA1377007F9D8A /* ContentView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 			files = (
 				ECEBD1622BC9D2DA007F9D8A /* ProductsView.swift in Sources */,
 				ECEBD1522BC947EE007F9D8A /* ProductsViewModel.swift in Sources */,
+				ECEBD16D2BCA1377007F9D8A /* ContentView.swift in Sources */,
 				ECEBD1472BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift in Sources */,
 				ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */,
 				ECEBD14B2BC93076007F9D8A /* User.swift in Sources */,
