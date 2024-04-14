@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct LandingPageView: View {
+    @EnvironmentObject var loginViewModel : UserStateViewModel
+    @Environment(\.dismiss) var dismiss
     
     let deliveryItems: [DeliveryItem] = [
             DeliveryItem(id: "1589284", title: "Ferskvarer", company: "Gjørts AS", productsCount: 30),
@@ -32,9 +34,21 @@ struct LandingPageView: View {
                         .padding()
                     }
                     ScanToOrderBtn()
+                    
                 }
             }
-            
+            .toolbar{
+                ToolbarItem(placement: .automatic) {
+                    Button(action: {
+                        if loginViewModel.logout(){
+                            dismiss()
+                        }
+                    }, label: {
+                        Text("Log out")
+                            .foregroundStyle(Color.black)
+                    })
+                }
+            }
         }
     }
 }
@@ -60,17 +74,17 @@ struct ScanToOrderBtn: View {
         }) {
             HStack {
                 Text("Scan to order")
-                    .font(.system(size: 25, weight: .medium)) // Adjust font size and weight as needed
+                    .font(.system(size: 20, weight: .medium)) // Adjust font size and weight as needed
                     .foregroundColor(Color.black)
                 
                 Spacer() // This will push the text and the icon to opposite sides
                 
                 Image(systemName: "barcode.viewfinder")
                     .foregroundColor(.black)
-                    .font(.system(size: 50)) // Adjust icon size as needed
+                    .font(.system(size: 35)) // Adjust icon size as needed
             }
             .padding(.horizontal, 20)
-            .padding(.vertical, 20) // Adjust padding as needed
+            .padding(.vertical, 15) // Adjust padding as needed
             .background(Color.yellow) // Use the color that matches your design
             .cornerRadius(10) // Adjust corner radius to match your design
         }

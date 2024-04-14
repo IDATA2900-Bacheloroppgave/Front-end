@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct LogInView: View {
-    @EnvironmentObject var loginViewModel : LoginViewModel
+    @EnvironmentObject var loginViewModel : UserStateViewModel
     
     @State private var username = ""
     @State private var password = ""
@@ -34,7 +34,6 @@ struct LogInView: View {
                             Task{
                                 loginViewModel.login(email: username, password: password)
                             }
-
                         }
                         .foregroundColor(Color.black)
                         .frame(width: 150, height: 50)

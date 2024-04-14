@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct Front_EndApp: App {
     //Listens to changes in LoginViewModel
-    @StateObject var viewModel = LoginViewModel()
+    @StateObject var viewModel = UserStateViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()

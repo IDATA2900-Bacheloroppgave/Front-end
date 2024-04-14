@@ -1,6 +1,6 @@
 import Foundation
 
-class LoginViewModel: ObservableObject, Observable{
+class UserStateViewModel: ObservableObject, Observable{
     @Published var loggedIn = false
     @Published var token: String = ""
     @Published var error: String?
@@ -43,5 +43,16 @@ class LoginViewModel: ObservableObject, Observable{
                 }
             }
         }.resume()
+    }
+    
+    // Works but should be updated
+    func logout() -> Bool{
+        token = ""
+        if token.isEmpty{
+            loggedIn = false
+            return true
+        }else{
+            return false
+        }
     }
 }
