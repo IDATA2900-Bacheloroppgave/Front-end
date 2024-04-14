@@ -6,7 +6,7 @@ class UserStateViewModel: ObservableObject, Observable{
     @Published var error: String?
 
     // This function will be called to perform the login operation.
-    func login(email: String, password: String) {
+    func login(email: String, password: String){
         let urlString = "http://35.246.81.166:8080/auth/login"
         guard let url = URL(string: urlString) else {
             print("Invalid URL")

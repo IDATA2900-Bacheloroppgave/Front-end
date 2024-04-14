@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct LandingPageView: View {
-    @EnvironmentObject var loginViewModel : UserStateViewModel
+    @EnvironmentObject var userStateViewModel : UserStateViewModel
     @Environment(\.dismiss) var dismiss
     
     let deliveryItems: [DeliveryItem] = [
@@ -40,7 +40,7 @@ struct LandingPageView: View {
             .toolbar{
                 ToolbarItem(placement: .automatic) {
                     Button(action: {
-                        if loginViewModel.logout(){
+                        if userStateViewModel.logout(){
                             dismiss()
                         }
                     }, label: {

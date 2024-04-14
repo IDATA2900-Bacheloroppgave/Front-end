@@ -23,7 +23,7 @@ class NewOrderViewModel: ObservableObject {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("Error fetching data: \(error.localizedDescription)")
                
@@ -54,9 +54,7 @@ class NewOrderViewModel: ObservableObject {
             } catch {
                 print("Failed to decode JSON: \(error)")
             }
-        }
-        
-        task.resume()
+        }.resume()
     }
 }
 

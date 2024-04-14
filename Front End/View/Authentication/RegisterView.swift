@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     @StateObject var registerViewModel = RegisterViewModel()
+    @EnvironmentObject var userStateViewModel : UserStateViewModel
     
     @State private var email = ""
     @State private var firstname = ""
@@ -33,7 +34,15 @@ struct RegisterView: View {
                         InputView(text: $confirmPassword, placeholder: "Repeat password", isSecureField: true)
                     }
                     Button("Create User"){
-                        
+                        Task{
+                            do{
+                                try await registerViewModel.createUser(email: "test1@test.no", firstName: "test", lastName: "test", password: "Testpassword11hehe")
+                                userStateViewModel.login(email: "test@test.no", password: "Testpassword11hehe")
+                                print("user created")
+                            }catch{
+                                print("Could not create user")
+                            }
+                        }
                     }
                     .foregroundStyle(Color(.black))
                     .frame(width: 150, height: 50)
