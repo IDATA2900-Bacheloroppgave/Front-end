@@ -23,6 +23,7 @@ struct InputView: View {
                         .stroke(Color.black, lineWidth: 2)
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .textInputAutocapitalization(.never)
         }else{
             TextField(placeholder, text: $text)
                 .padding()
@@ -33,6 +34,7 @@ struct InputView: View {
                         .stroke(Color.black, lineWidth: 2)
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .textInputAutocapitalization(.never)
         }
     }
 }

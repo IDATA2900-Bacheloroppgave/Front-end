@@ -1,14 +1,14 @@
 //
-//  TestView.swift
+//  NewOrderView.swift
 //  Front End
 //
-//  Created by Siri Sandnes on 12/04/2024.
+//  Created by Siri Sandnes on 14/04/2024.
 //
 
 import SwiftUI
 
-struct ProductsView: View {
-    @StateObject var testViewModel = ProductsViewModel()
+struct NewOrderView: View {
+    @StateObject var testViewModel = NewOrderViewModel()
     var body: some View {
         Text("Products")
         if let errorMessage = testViewModel.errorMessage{
@@ -20,5 +20,5 @@ struct ProductsView: View {
 }
 
 #Preview {
-    ProductsView()
+    NewOrderView()
 }

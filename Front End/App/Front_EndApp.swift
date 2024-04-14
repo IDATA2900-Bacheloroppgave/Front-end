@@ -9,11 +9,12 @@ import SwiftUI
 
 @main
 struct Front_EndApp: App {
+    //Listens to changes in LoginViewModel
     @StateObject var viewModel = LoginViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(viewModel)
+                .environment(viewModel) //Sets the enviromentobject to be the viewModel
         }
     }
 }

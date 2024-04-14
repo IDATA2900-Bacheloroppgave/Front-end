@@ -13,8 +13,6 @@ struct LogInView: View {
     
     @State private var username = ""
     @State private var password = ""
-    @State private var wrongUsername = 0
-    @State private var wrongPassword = 0
     
     
     var body: some View {
@@ -34,7 +32,7 @@ struct LogInView: View {
                         }
                         Button("Log in") {
                             Task{
-                                loginViewModel.login(email: "siris@gmail.com", password: "Testpassword11hehe")
+                                loginViewModel.login(email: username, password: password)
                             }
 
                         }

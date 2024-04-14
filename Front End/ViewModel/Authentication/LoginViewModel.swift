@@ -3,6 +3,7 @@ import Foundation
 class LoginViewModel: ObservableObject, Observable{
     @Published var loggedIn = false
     @Published var token: String = ""
+    @Published var error: String?
 
     // This function will be called to perform the login operation.
     func login(email: String, password: String) {
@@ -16,7 +17,7 @@ class LoginViewModel: ObservableObject, Observable{
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let loginDetails = ["email": email, "password": password]
+        let loginDetails = ["email": "siris@gmail.com", "password": "Testpassword11hehe"]
         guard let httpBody = try? JSONSerialization.data(withJSONObject: loginDetails, options: []) else {
             print("Failed to serialize login data to JSON")
             return
