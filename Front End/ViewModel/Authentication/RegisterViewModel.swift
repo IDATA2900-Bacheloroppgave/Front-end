@@ -7,4 +7,10 @@
 
 import Foundation
 
-
+class RegisterViewModel: ObservableObject{
+    
+    func register(){
+        
+    }
+    
+}

@@ -27,7 +27,7 @@ struct LogInView: View {
                             .font(.system(size: 45))
 
                         VStack(spacing: 20) {
-                            InputView(text: $username, placeholder: "Username")
+                            InputView(text: $username, placeholder: "Email")
                             InputView(text: $password, placeholder: "Password", isSecureField: true)
                         }
                         Button("Log in") {

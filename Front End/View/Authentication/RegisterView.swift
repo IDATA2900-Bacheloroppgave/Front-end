@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @State private var username = ""
+    @StateObject var registerViewModel = RegisterViewModel()
+    
+    @State private var email = ""
+    @State private var firstname = ""
+    @State private var lastname = ""
     @State private var password = ""
     @State private var confirmPassword = ""
-    @State private var wrongUsername = 0
-    @State private var wrongPassword = 0
-    @State private var loginSuccessfull = false
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -24,12 +26,14 @@ struct RegisterView: View {
                     Spacer()
                     Text("TraceGo").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).font(.system(size: 45))
                     VStack(spacing: 20){
-                        InputView(text: $username, placeholder: "Username")
+                        InputView(text: $email, placeholder: "Email")
+                        InputView(text: $firstname, placeholder: "Firstname")
+                        InputView(text: $lastname, placeholder: "Lastname")
                         InputView(text: $password, placeholder: "Password", isSecureField: true)
                         InputView(text: $confirmPassword, placeholder: "Repeat password", isSecureField: true)
                     }
                     Button("Create User"){
-
+                        
                     }
                     .foregroundStyle(Color(.black))
                     .frame(width: 150, height: 50)
