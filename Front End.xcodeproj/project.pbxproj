@@ -28,6 +28,7 @@
 		ECEBD16D2BCA1377007F9D8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16C2BCA1377007F9D8A /* ContentView.swift */; };
 		ECEBD16F2BCC59A3007F9D8A /* NewOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16E2BCC59A3007F9D8A /* NewOrderView.swift */; };
 		ECEBD1712BCC59D1007F9D8A /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1702BCC59D1007F9D8A /* OrderHistoryView.swift */; };
+		ECEBD1792BCD472E007F9D8A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1782BCD472E007F9D8A /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		ECEBD16C2BCA1377007F9D8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ECEBD16E2BCC59A3007F9D8A /* NewOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderView.swift; sourceTree = "<group>"; };
 		ECEBD1702BCC59D1007F9D8A /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
+		ECEBD1782BCD472E007F9D8A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				ECEBD1672BC9EDCF007F9D8A /* Products */,
 				ECEBD1502BC94384007F9D8A /* Authentication */,
+				ECEBD1782BCD472E007F9D8A /* Store.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */,
 				ECEBD1552BC9692E007F9D8A /* LandingPageView.swift in Sources */,
 				ECEBD1652BC9DDA4007F9D8A /* ProductsDataService.swift in Sources */,
+				ECEBD1792BCD472E007F9D8A /* Store.swift in Sources */,
 				ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */,
 				ECEBD1592BC969D6007F9D8A /* LoginView.swift in Sources */,
 				ECEBD15D2BC96A0E007F9D8A /* ResetPasswordView.swift in Sources */,

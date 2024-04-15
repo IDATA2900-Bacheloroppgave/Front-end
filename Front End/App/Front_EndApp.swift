@@ -10,11 +10,11 @@ import SwiftUI
 @main
 struct Front_EndApp: App {
     //Listens to changes in LoginViewModel
-    @StateObject var viewModel = AuthViewModel()
+    @StateObject var authViewModel = AuthViewModel()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(viewModel) //Sets the enviromentobject to be the viewModel
+                .environment(authViewModel) //Sets the enviromentobject to be the viewModel
         }
     }
 }

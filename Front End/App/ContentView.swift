@@ -10,10 +10,10 @@ import SwiftUI
  Shows different view based on if the user is logged in or not.
  */
 struct ContentView: View {
-    @EnvironmentObject var loginViewModel : AuthViewModel
+    @EnvironmentObject var authViewModel : AuthViewModel
     var body: some View {
         Group{
-            if loginViewModel.loggedIn == true{
+            if authViewModel.currentUser != nil{
                 TabView{
                     LandingPageView()
                         .tabItem {

@@ -35,8 +35,7 @@ struct RegisterView: View {
                     Button("Create User"){
                         Task{
                             do{
-                                try await userStateViewModel.createUser(email: email, firstName: firstname, lastName: lastname, password: password)
-                                userStateViewModel.login(email: email, password: password)
+                                try await userStateViewModel.createUser(email: email, firstName: firstname, lastName: lastname, password: password) 
                                 print("user created")
                             }catch{
                                 print("Could not create user")

@@ -11,7 +11,7 @@ import SwiftUI
 struct LogInView: View {
     @EnvironmentObject var userStateViewModel : AuthViewModel
     
-    @State private var username = ""
+    @State private var email = ""
     @State private var password = ""
     
     
@@ -27,12 +27,17 @@ struct LogInView: View {
                             .font(.system(size: 45))
 
                         VStack(spacing: 20) {
-                            InputView(text: $username, placeholder: "Email")
+                            InputView(text: $email, placeholder: "Email")
                             InputView(text: $password, placeholder: "Password", isSecureField: true)
                         }
                         Button("Log in") {
                             Task{
-                                userStateViewModel.login(email: username, password: password)
+                                do{
+                                    try await userStateViewModel.login(email: email, password: password)
+                                    print("user created")
+                                }catch{
+                                    print("Could not log in user")
+                                }
                             }
                         }
                         .foregroundColor(Color.black)
