@@ -12,5 +12,11 @@ struct User: Codable {
     let firstName: String
     let lastName: String
     let store: Store
-    let password: String?
+    var password: String?
+    var token: String?
+    
+    mutating func setToken(token: String){
+        self.token = token
+    }
+    
 }

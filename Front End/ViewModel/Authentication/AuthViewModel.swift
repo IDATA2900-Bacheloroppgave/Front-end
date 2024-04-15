@@ -111,7 +111,7 @@ class AuthViewModel: ObservableObject, Observable{
         }
     }
         
-    func createUser(email: String, firstName: String, lastName: String, password: String) async throws {
+    func createUser(email: String, firstName: String, lastName: String, password: String, store: Store) async throws {
             let urlString = "http://35.246.81.166:8080/auth/register"
             guard let url = URL(string: urlString) else {
                 print("Invalid URL")
@@ -126,7 +126,8 @@ class AuthViewModel: ObservableObject, Observable{
                 "email": email,
                 "firstName": firstName,
                 "lastName": lastName,
-                "password": password
+                "password": password,
+                "storeId": store.storeId
             ]
             
             guard let httpBody = try? JSONSerialization.data(withJSONObject: newUserDetails, options: []) else {
@@ -145,8 +146,9 @@ class AuthViewModel: ObservableObject, Observable{
                 }
                 
                 DispatchQueue.main.async {
-                    self.currentUser = User(email: email, firstName: firstName, lastName: lastName, store: Store(name: "Kiwi Klokkersund", address: "Nedre Klokkersundvegen 2", country: "Norge", city: "Ålesund", postalCode: 6015), password: password)
+                    self.currentUser = User(email: email, firstName: firstName, lastName: lastName, store: Store(name: store.name, address: store.address, country: store.country, city: store.city, postalCode: store.postalCode, storeId: store.storeId))
                 }
+                
                 
                 do{
                     try await login(email: email, password: password)

@@ -26,10 +26,14 @@ struct LogInView: View {
                             .fontWeight(.bold)
                             .font(.system(size: 45))
 
-                        VStack(spacing: 20) {
+                        LazyVStack(spacing:20){
                             InputView(text: $email, placeholder: "Email")
                             InputView(text: $password, placeholder: "Password", isSecureField: true)
-                        }
+                        } 
+                        .background(Color.init(red: 1.00, green: 0.83, blue: 0.00))
+                        .scrollContentBackground(.hidden)
+                        .scrollDisabled(true)
+
                         Button("Log in") {
                             Task{
                                 do{

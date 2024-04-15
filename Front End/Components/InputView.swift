@@ -16,7 +16,6 @@ struct InputView: View {
         if isSecureField{
             SecureField(placeholder, text: $text)
                 .padding()
-                .frame(width: 300, height: 50)
                 .background(Color.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
@@ -24,10 +23,13 @@ struct InputView: View {
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .textInputAutocapitalization(.never)
+                .listRowBackground(Color.init(red: 1.00, green: 0.83, blue: 0.00))
+                .listRowSeparator(.hidden)
+                .frame( width: 300, height: 50)
+                
         }else{
             TextField(placeholder, text: $text)
                 .padding()
-                .frame(width: 300, height: 50)
                 .background(Color.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
@@ -35,6 +37,11 @@ struct InputView: View {
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .textInputAutocapitalization(.never)
+                .listRowBackground(Color.init(red: 1.00, green: 0.83, blue: 0.00))
+                .listRowSeparator(.hidden)
+                .frame( width: 300, height: 50)
+                
+                
         }
     }
 }
