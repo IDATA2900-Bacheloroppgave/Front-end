@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct LandingPageView: View {
-    @EnvironmentObject var userStateViewModel : UserStateViewModel
+    @EnvironmentObject var userStateViewModel : AuthViewModel
     @Environment(\.dismiss) var dismiss
     
     let deliveryItems: [DeliveryItem] = [

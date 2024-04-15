@@ -16,13 +16,12 @@
 		ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1442BC8CC89007F9D8A /* InputView.swift */; };
 		ECEBD1472BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1462BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift */; };
 		ECEBD14B2BC93076007F9D8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD14A2BC93076007F9D8A /* User.swift */; };
-		ECEBD14F2BC93AD7007F9D8A /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD14E2BC93AD7007F9D8A /* UserStateViewModel.swift */; };
+		ECEBD14F2BC93AD7007F9D8A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD14E2BC93AD7007F9D8A /* AuthViewModel.swift */; };
 		ECEBD1522BC947EE007F9D8A /* NewOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1512BC947EE007F9D8A /* NewOrderViewModel.swift */; };
 		ECEBD1552BC9692E007F9D8A /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1542BC9692E007F9D8A /* LandingPageView.swift */; };
 		ECEBD1592BC969D6007F9D8A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1582BC969D6007F9D8A /* LoginView.swift */; };
 		ECEBD15B2BC969EF007F9D8A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD15A2BC969EF007F9D8A /* RegisterView.swift */; };
 		ECEBD15D2BC96A0E007F9D8A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD15C2BC96A0E007F9D8A /* ResetPasswordView.swift */; };
-		ECEBD1602BC9CA39007F9D8A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD15F2BC9CA38007F9D8A /* RegisterViewModel.swift */; };
 		ECEBD1652BC9DDA4007F9D8A /* ProductsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1642BC9DDA4007F9D8A /* ProductsDataService.swift */; };
 		ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1682BC9EDE0007F9D8A /* Product.swift */; };
 		ECEBD16B2BC9F1FB007F9D8A /* LoginDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16A2BC9F1FB007F9D8A /* LoginDataService.swift */; };
@@ -61,14 +60,13 @@
 		ECEBD1442BC8CC89007F9D8A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		ECEBD1462BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryOfDayListElementView.swift; sourceTree = "<group>"; };
 		ECEBD14A2BC93076007F9D8A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		ECEBD14E2BC93AD7007F9D8A /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
+		ECEBD14E2BC93AD7007F9D8A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		ECEBD1512BC947EE007F9D8A /* NewOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderViewModel.swift; sourceTree = "<group>"; };
 		ECEBD1532BC9552F007F9D8A /* Front-End-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Front-End-Info.plist"; sourceTree = SOURCE_ROOT; };
 		ECEBD1542BC9692E007F9D8A /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
 		ECEBD1582BC969D6007F9D8A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		ECEBD15A2BC969EF007F9D8A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		ECEBD15C2BC96A0E007F9D8A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
-		ECEBD15F2BC9CA38007F9D8A /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		ECEBD1642BC9DDA4007F9D8A /* ProductsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDataService.swift; sourceTree = "<group>"; };
 		ECEBD1682BC9EDE0007F9D8A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		ECEBD16A2BC9F1FB007F9D8A /* LoginDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataService.swift; sourceTree = "<group>"; };
@@ -233,8 +231,7 @@
 		ECEBD15E2BC96A27007F9D8A /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				ECEBD14E2BC93AD7007F9D8A /* UserStateViewModel.swift */,
-				ECEBD15F2BC9CA38007F9D8A /* RegisterViewModel.swift */,
+				ECEBD14E2BC93AD7007F9D8A /* AuthViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -440,7 +437,6 @@
 				ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */,
 				ECEBD14B2BC93076007F9D8A /* User.swift in Sources */,
 				ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */,
-				ECEBD1602BC9CA39007F9D8A /* RegisterViewModel.swift in Sources */,
 				ECEBD1552BC9692E007F9D8A /* LandingPageView.swift in Sources */,
 				ECEBD1652BC9DDA4007F9D8A /* ProductsDataService.swift in Sources */,
 				ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */,
@@ -448,7 +444,7 @@
 				ECEBD15D2BC96A0E007F9D8A /* ResetPasswordView.swift in Sources */,
 				ECEBD15B2BC969EF007F9D8A /* RegisterView.swift in Sources */,
 				ECEBD16B2BC9F1FB007F9D8A /* LoginDataService.swift in Sources */,
-				ECEBD14F2BC93AD7007F9D8A /* UserStateViewModel.swift in Sources */,
+				ECEBD14F2BC93AD7007F9D8A /* AuthViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

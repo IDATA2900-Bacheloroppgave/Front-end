@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @StateObject var registerViewModel = RegisterViewModel()
-    @EnvironmentObject var userStateViewModel : UserStateViewModel
+    @EnvironmentObject var userStateViewModel : AuthViewModel
     
     @State private var email = ""
     @State private var firstname = ""
@@ -36,8 +35,8 @@ struct RegisterView: View {
                     Button("Create User"){
                         Task{
                             do{
-                                try await registerViewModel.createUser(email: "test1@test.no", firstName: "test", lastName: "test", password: "Testpassword11hehe")
-                                userStateViewModel.login(email: "test@test.no", password: "Testpassword11hehe")
+                                try await userStateViewModel.createUser(email: email, firstName: firstname, lastName: lastname, password: password)
+                                userStateViewModel.login(email: email, password: password)
                                 print("user created")
                             }catch{
                                 print("Could not create user")
