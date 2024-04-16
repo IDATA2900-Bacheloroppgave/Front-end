@@ -37,10 +37,8 @@ struct OrderHistoryView: View {
                                 .foregroundStyle(Color.black)
                         }.padding(5)
                     }.padding()
-                    Spacer()
-                    ScrollView{
-                        
-                    }
+                    
+                    
                 }
             }
         }
