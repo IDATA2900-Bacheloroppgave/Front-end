@@ -10,6 +10,7 @@
 		003BB0312BCEBE2E0048D751 /* DeliveryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0302BCEBE2E0048D751 /* DeliveryCardView.swift */; };
 		003BB0332BCEBE750048D751 /* UpcomingDeliveryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0322BCEBE750048D751 /* UpcomingDeliveryCardView.swift */; };
 		003BB0352BCEBECE0048D751 /* ProductInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */; };
+		003BB0372BCEC2ED0048D751 /* OrderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0362BCEC2ED0048D751 /* OrderInfoView.swift */; };
 		ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */; };
 		ECEBD0682BC88499007F9D8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD0672BC88499007F9D8A /* Assets.xcassets */; };
 		ECEBD06B2BC88499007F9D8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */; };
@@ -17,7 +18,6 @@
 		ECEBD07F2BC88499007F9D8A /* Front_EndUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD07E2BC88499007F9D8A /* Front_EndUITests.swift */; };
 		ECEBD0812BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0802BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift */; };
 		ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1442BC8CC89007F9D8A /* InputView.swift */; };
-		ECEBD1472BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1462BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift */; };
 		ECEBD14B2BC93076007F9D8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD14A2BC93076007F9D8A /* User.swift */; };
 		ECEBD14F2BC93AD7007F9D8A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD14E2BC93AD7007F9D8A /* AuthViewModel.swift */; };
 		ECEBD1522BC947EE007F9D8A /* NewOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1512BC947EE007F9D8A /* NewOrderViewModel.swift */; };
@@ -57,6 +57,7 @@
 		003BB0302BCEBE2E0048D751 /* DeliveryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCardView.swift; sourceTree = "<group>"; };
 		003BB0322BCEBE750048D751 /* UpcomingDeliveryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingDeliveryCardView.swift; sourceTree = "<group>"; };
 		003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCardView.swift; sourceTree = "<group>"; };
+		003BB0362BCEC2ED0048D751 /* OrderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoView.swift; sourceTree = "<group>"; };
 		ECEBD0602BC88497007F9D8A /* Front End.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Front End.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndApp.swift; sourceTree = "<group>"; };
 		ECEBD0672BC88499007F9D8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		ECEBD07E2BC88499007F9D8A /* Front_EndUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndUITests.swift; sourceTree = "<group>"; };
 		ECEBD0802BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		ECEBD1442BC8CC89007F9D8A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
-		ECEBD1462BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryOfDayListElementView.swift; sourceTree = "<group>"; };
 		ECEBD14A2BC93076007F9D8A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ECEBD14E2BC93AD7007F9D8A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		ECEBD1512BC947EE007F9D8A /* NewOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderViewModel.swift; sourceTree = "<group>"; };
@@ -187,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				ECEBD1442BC8CC89007F9D8A /* InputView.swift */,
-				ECEBD1462BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift */,
 				003BB0302BCEBE2E0048D751 /* DeliveryCardView.swift */,
 				003BB0322BCEBE750048D751 /* UpcomingDeliveryCardView.swift */,
 				003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */,
@@ -275,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				ECEBD1542BC9692E007F9D8A /* LandingPageView.swift */,
+				003BB0362BCEC2ED0048D751 /* OrderInfoView.swift */,
 			);
 			path = LandingPage;
 			sourceTree = "<group>";
@@ -451,7 +451,6 @@
 				ECEBD1522BC947EE007F9D8A /* NewOrderViewModel.swift in Sources */,
 				ECEBD16D2BCA1377007F9D8A /* ContentView.swift in Sources */,
 				ECEBD1712BCC59D1007F9D8A /* OrderHistoryView.swift in Sources */,
-				ECEBD1472BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift in Sources */,
 				ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */,
 				ECEBD14B2BC93076007F9D8A /* User.swift in Sources */,
 				ECEBD1802BCEA430007F9D8A /* ValidataionViewModel.swift in Sources */,
@@ -467,6 +466,7 @@
 				ECEBD15D2BC96A0E007F9D8A /* ResetPasswordView.swift in Sources */,
 				ECEBD15B2BC969EF007F9D8A /* RegisterView.swift in Sources */,
 				ECEBD16B2BC9F1FB007F9D8A /* LoginDataService.swift in Sources */,
+				003BB0372BCEC2ED0048D751 /* OrderInfoView.swift in Sources */,
 				003BB0312BCEBE2E0048D751 /* DeliveryCardView.swift in Sources */,
 				ECEBD14F2BC93AD7007F9D8A /* AuthViewModel.swift in Sources */,
 			);

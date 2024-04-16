@@ -12,28 +12,81 @@ struct LandingPageView: View {
     @EnvironmentObject var userStateViewModel : AuthViewModel
     @Environment(\.dismiss) var dismiss
     
-    let deliveryItems: [DeliveryItem] = [
-            DeliveryItem(id: "1589284", title: "Ferskvarer", company: "Gjørts AS", productsCount: 30),
-            DeliveryItem(id: "1579284", title: "Ferskvarer", company: "Gjørts AS", productsCount: 30),
-            DeliveryItem(id: "1579294", title: "Ferskvarer", company: "Gjørts AS", productsCount: 30)
-            // Add more items as needed
-        ]
+    
     
     var body: some View {
         NavigationStack {
             ZStack{
-                Color(red: 0.96, green: 0.96, blue: 0.96)
-                VStack{
-                    Text("Deliveries of the day").frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal)
-                    ScrollView{
-                        VStack(spacing: 8) {
-                            ForEach(deliveryItems) { item in
-                                DeliveryOfDayListElementView(deliveryItem: item)
+                // Background image
+                Image("background")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    // ScrollView showing delivery of the day, and next upcoming deliveries.
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 20) {
+                            Text("Delivery of the day")
+                                .font(.title2)
+                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                .padding(.leading)
+                            
+                            //The next arriving order
+                            NavigationLink{
+                                OrderInfoView()
+                            }label: {
+                                DeliveryCardView(
+                                    mainTitle: "Frysevarer",
+                                    orderNumber: "#12345",
+                                    progressValue: 0.5,
+                                    currentLocation: "Current location: Skodje",
+                                    arrivalTime: "Estimated delivery: Today 12 - 2 pm",
+                                    supplierName: "Gjørts AS")
+                                .foregroundColor(.primary)
+                            }
+                            Text("Upcoming deliveries")
+                                .font(.headline)
+                                .padding(.leading)
+                            
+                            //The subsequent upcoming deliveries
+                            NavigationLink{
+                                OrderInfoView()
+                            }label: {
+                                UpcomingDeliveryView(
+                                    orderNumber: "#12345",
+                                    supplierName: "Gjørts AS",
+                                    status: "Your order is ready for transport.",
+                                    estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                    progressValue: 0.1)
+                                .foregroundColor(.primary)
+                            }
+                            
+                            NavigationLink{
+                                OrderInfoView()
+                            }label: {
+                                UpcomingDeliveryView(
+                                    orderNumber: "#12345",
+                                    supplierName: "Gjørts AS",
+                                    status: "Your order is registered.",
+                                    estimatedDelivery: "Friday between 10 - 11 am.",
+                                    progressValue: 0.05)
+                                .foregroundColor(.primary)
+                            }
+                            
+                            NavigationLink{
+                                OrderInfoView()
+                            }label: {
+                                UpcomingDeliveryView(
+                                    orderNumber: "#12345",
+                                    supplierName: "Gjørts AS",
+                                    status: "Your order is ready for transport.",
+                                    estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                    progressValue: 0.1)
+                                .foregroundColor(.primary)
                             }
                         }
-                        .padding()
                     }
-                    ScanToOrderBtn()
                     
                 }
             }
@@ -57,14 +110,6 @@ struct LandingPageView: View {
 #Preview {
     LandingPageView()
 }
-
-struct DeliveryItem: Identifiable {
-    let id: String
-    let title: String
-    let company: String
-    let productsCount: Int
-}
-
 
 
 struct ScanToOrderBtn: View {
