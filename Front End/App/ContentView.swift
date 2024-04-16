@@ -18,19 +18,29 @@ struct ContentView: View {
                     LandingPageView()
                         .tabItem {
                             Image(systemName: "house")
-                            Text("Home")
+                        
                         }
                     NewOrderView()
                         .tabItem { 
                             Image(systemName: "plus")
-                            Text("Add")
+                  
                         }
                     OrderHistoryView()
                         .tabItem { 
                             Image(systemName: "doc.plaintext")
-                            Text("History")
+                      
                         }
+                    SettingsView()
+                        .tabItem {
+                            Image(systemName: "gearshape.fill")
+                            
+                        }
+                    
+                }.tint(.bluePicker)
+                .onAppear(){
+                    UITabBar.appearance().backgroundColor = .white
                 }
+        
             }else{
                 LogInView()
             }

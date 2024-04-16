@@ -11,6 +11,7 @@
 		003BB0332BCEBE750048D751 /* UpcomingDeliveryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0322BCEBE750048D751 /* UpcomingDeliveryCardView.swift */; };
 		003BB0352BCEBECE0048D751 /* ProductInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */; };
 		003BB0372BCEC2ED0048D751 /* OrderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0362BCEC2ED0048D751 /* OrderInfoView.swift */; };
+		ECADC82B2BCEFFD2002C51B1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */; };
 		ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */; };
 		ECEBD0682BC88499007F9D8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD0672BC88499007F9D8A /* Assets.xcassets */; };
 		ECEBD06B2BC88499007F9D8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		003BB0322BCEBE750048D751 /* UpcomingDeliveryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingDeliveryCardView.swift; sourceTree = "<group>"; };
 		003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCardView.swift; sourceTree = "<group>"; };
 		003BB0362BCEC2ED0048D751 /* OrderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoView.swift; sourceTree = "<group>"; };
+		ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ECEBD0602BC88497007F9D8A /* Front End.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Front End.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndApp.swift; sourceTree = "<group>"; };
 		ECEBD0672BC88499007F9D8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ECADC8292BCEFFC3002C51B1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		ECEBD0572BC88497007F9D8A = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +228,7 @@
 		ECEBD14D2BC93AB2007F9D8A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ECADC8292BCEFFC3002C51B1 /* Settings */,
 				ECEBD1572BC969C8007F9D8A /* Authentication */,
 				ECEBD1722BCC5B94007F9D8A /* LandingPage */,
 				ECEBD1732BCC5BA3007F9D8A /* OrderHistory */,
@@ -448,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECEBD16F2BCC59A3007F9D8A /* NewOrderView.swift in Sources */,
+				ECADC82B2BCEFFD2002C51B1 /* SettingsView.swift in Sources */,
 				ECEBD1522BC947EE007F9D8A /* NewOrderViewModel.swift in Sources */,
 				ECEBD16D2BCA1377007F9D8A /* ContentView.swift in Sources */,
 				ECEBD1712BCC59D1007F9D8A /* OrderHistoryView.swift in Sources */,

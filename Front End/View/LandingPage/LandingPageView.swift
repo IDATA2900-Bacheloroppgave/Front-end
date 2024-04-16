@@ -86,22 +86,13 @@ struct LandingPageView: View {
                                 .foregroundColor(.primary)
                             }
                         }
+                        ScanToOrderBtn()
                     }
-                    
+                   
+                    Spacer()
                 }
             }
-            .toolbar{
-                ToolbarItem(placement: .automatic) {
-                    Button(action: {
-                        if userStateViewModel.logout(){
-                            dismiss()
-                        }
-                    }, label: {
-                        Text("Log out")
-                            .foregroundStyle(Color.black)
-                    })
-                }
-            }
+
         }
     }
 }

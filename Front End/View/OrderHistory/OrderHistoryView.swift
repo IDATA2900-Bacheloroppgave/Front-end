@@ -15,13 +15,15 @@ struct OrderHistoryView: View {
         NavigationStack {
             ZStack {
                 Color(red: 0.96, green: 0.96, blue: 0.96)
+                    .edgesIgnoringSafeArea(.all) // Ensure the color fills the entire screen
                 VStack(alignment: .leading) {
                     HStack {
                         Text("Orders")
-                            .font(.system(size: 20))
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                            .font(.system(size: 22))
                             .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
-                            .background(Color.yellow)
+                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
+                            .background(.accent)
+                            
                     }
                     
                     HStack {
@@ -31,14 +33,14 @@ struct OrderHistoryView: View {
                         }
                         .colorMultiply(.bluePicker)
                         .pickerStyle(SegmentedPickerStyle())
+                        
                         Button(action: {}) {
                             Image(systemName: "line.horizontal.3")
-                                .font(.system(size: 30))
+                                .font(.system(size: 25))
                                 .foregroundStyle(Color.black)
-                        }.padding(5)
-                    }.padding()
-                    
-                    
+                        }
+                    }.padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
+                    Spacer()
                 }
             }
         }

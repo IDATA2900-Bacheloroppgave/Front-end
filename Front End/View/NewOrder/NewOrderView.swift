@@ -10,11 +10,14 @@ import SwiftUI
 struct NewOrderView: View {
     @StateObject var testViewModel = NewOrderViewModel()
     var body: some View {
-        Text("Products")
-        if let errorMessage = testViewModel.errorMessage{
-            Text(errorMessage)
-        }else{
-        
+        ZStack{
+            Color(red: 0.96, green: 0.96, blue: 0.96)
+            Text("Products")
+            if let errorMessage = testViewModel.errorMessage{
+                Text(errorMessage)
+            }else{
+            
+            }
         }
     }
 }

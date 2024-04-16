@@ -66,33 +66,35 @@ struct RegisterView: View {
                             .scrollDisabled(true)
                            
                             
-                            Text(userFeedback).foregroundStyle(Color.red)
-                            Button("Create User") {
-                                print("inside button")
-                                Task {
-                                    do {
-                                        print(selectedStore)
-                                        if !storesViewModel.stores.isEmpty{
-                                            try await authViewModel.createUser(email: email, firstName: firstname, lastName: lastname, password: password, store: selectedStore)
-                                        }else{
-                                            userFeedback = "A store must be selected"
+                            VStack{
+                                Text(userFeedback).foregroundStyle(Color.red)
+                                Button("Create User") {
+                                    print("inside button")
+                                    Task {
+                                        do {
+                                            print(selectedStore)
+                                            if !storesViewModel.stores.isEmpty{
+                                                try await authViewModel.createUser(email: email, firstName: firstname, lastName: lastname, password: password, store: selectedStore)
+                                            }else{
+                                                userFeedback = "A store must be selected"
+                                            }
+                                           
+                                        } catch {
+                                            print("Could not create user")
+                                            userFeedback =  authViewModel.error!
+                                            
                                         }
-                                       
-                                    } catch {
-                                        print("Could not create user")
-                                        userFeedback =  authViewModel.error!
-                                        
                                     }
                                 }
+                                .foregroundStyle(Color(.black))
+                                .frame(width: 150, height: 50)
+                                .background(Color.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 25)
+                                        .stroke(Color.black, lineWidth: 2)
+                                )
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
                             }
-                            .foregroundStyle(Color(.black))
-                            .frame(width: 150, height: 50)
-                            .background(Color.white)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 25)
-                                    .stroke(Color.black, lineWidth: 2)
-                            )
-                            .clipShape(RoundedRectangle(cornerRadius: 25))
                             Spacer()
                             Button {
                                 dismiss()

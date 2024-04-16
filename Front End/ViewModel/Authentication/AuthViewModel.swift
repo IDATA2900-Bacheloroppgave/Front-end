@@ -18,8 +18,8 @@ class AuthViewModel: ObservableObject, Observable{
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let loginDetails : [String: Any] = [
-            "email" : email,
-            "password" : password
+            "email" : "doee@gdmail.com",
+            "password" : "password123"
         ]
         
         guard let httpBody = try?

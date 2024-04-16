@@ -38,27 +38,29 @@ struct LogInView: View {
                         .scrollContentBackground(.hidden)
                         .scrollDisabled(true)
                         
-                        Text(userFeedback).foregroundStyle(Color.red)
-                        Button("Log in") {
-                            Task{
-                                do{
-                                    try await stores.fetchStores()
-                                    try await authViewModel.login(email: email, password: password)
-                          
-                                }catch{
-                                    print("Could not log in user")
-                                    userFeedback =  authViewModel.error!
+                        VStack{
+                            Text(userFeedback).foregroundStyle(Color.red)
+                            Button("Log in") {
+                                Task{
+                                    do{
+                                        try await stores.fetchStores()
+                                        try await authViewModel.login(email: email, password: password)
+                              
+                                    }catch{
+                                        print("Could not log in user")
+                                        userFeedback =  authViewModel.error!
+                                    }
                                 }
                             }
+                            .foregroundColor(Color.black)
+                            .frame(width: 150, height: 50)
+                            .background(Color.white)
+                            .cornerRadius(25)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 25)
+                                    .stroke(Color.black, lineWidth: 1)
+                            )
                         }
-                        .foregroundColor(Color.black)
-                        .frame(width: 150, height: 50)
-                        .background(Color.white)
-                        .cornerRadius(25)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 25)
-                                .stroke(Color.black, lineWidth: 1)
-                        )
                     }
                     Spacer()
                     NavigationLink{
@@ -68,10 +70,11 @@ struct LogInView: View {
                             Text("Don't have an account?")
                                 .foregroundColor(Color.black)
                             Text("Sign up")
-                            .foregroundColor(Color.blue)
+                                .foregroundColor(Color.blue)
                         }
                         .padding(.bottom, 20)
                     }
+                   
                 }
             }
         }
