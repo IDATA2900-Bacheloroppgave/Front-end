@@ -7,6 +7,8 @@
 
 import Foundation
 
+// FOR NOW THIS JUST FETCHES PRODUCTS
+
 class NewOrderViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var errorMessage: String?
