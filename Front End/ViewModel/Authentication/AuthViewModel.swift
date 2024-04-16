@@ -36,7 +36,11 @@ class AuthViewModel: ObservableObject, Observable{
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
                 print("Error with the response, unexpected status code: \(String(describing: response))")
+                DispatchQueue.main.async{
+                    self.error = "Could not find user"
+                }
                 throw NSError(domain: "Response Error", code: 0, userInfo: nil)
+               
             }
             print("got data")
             if let jsonString = try JSONSerialization.jsonObject(with: data, options: []) as? [String : String] {
@@ -142,6 +146,9 @@ class AuthViewModel: ObservableObject, Observable{
                 guard let httpResponse = response as? HTTPURLResponse,
                       (200...299).contains(httpResponse.statusCode) else {
                     print("Error with the response, unexpected status code: \(String(describing: response))")
+                    DispatchQueue.main.async{
+                        self.error = "Unable to create user"
+                    }
                     throw NSError(domain: "Response Error", code: 0, userInfo: nil)
                 }
                 
@@ -161,5 +168,7 @@ class AuthViewModel: ObservableObject, Observable{
                 throw error
             }
         }
+    
+    
     }
 

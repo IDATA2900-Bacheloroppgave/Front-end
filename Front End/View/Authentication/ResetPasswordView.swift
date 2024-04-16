@@ -11,6 +11,7 @@ struct ResetPasswordView: View {
     @State private var username = ""
  
     @State private var loginSuccessful = false  // Corrected the typo in variable name
+    @State var color = Color.red
     
     var body: some View {
         NavigationStack {

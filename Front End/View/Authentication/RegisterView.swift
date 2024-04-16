@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @EnvironmentObject var userStateViewModel : AuthViewModel
+    @EnvironmentObject var authViewModel : AuthViewModel
+    @StateObject var storesViewModel = StoresViewModel()
     
     @State private var email = ""
     @State private var firstname = ""
     @State private var lastname = ""
     @State private var password = ""
-    @State private var store : Store?
+    @State private var selectedStore = Store(name: "", address: "", country: "", city: "", postalCode: 0, storeId: -1)
     @State private var confirmPassword = ""
+    @State private var userFeedback = ""
+    @State private var color = Color.blue
     
     @Environment(\.dismiss) var dismiss
     
+
     var body: some View {
         NavigationStack {
                     ZStack {
@@ -33,9 +37,14 @@ struct RegisterView: View {
                                 InputView(text: $firstname, placeholder: "Firstname")
                                 InputView(text: $lastname, placeholder: "Lastname")
                                 InputView(text: $password, placeholder: "Password", isSecureField: true)
-                                Picker(selection: $store, label: Text("Select store")) {
-                                    Text("Oslo").tag(1)
-                                    Text("2").tag(2)
+                                Picker("Select store", selection: $selectedStore) {
+                                    if storesViewModel.stores.isEmpty {
+                                        Text("No stores to select")
+                                    } else {
+                                        ForEach(storesViewModel.stores, id: \.storeId) { store in
+                                            Text(store.name).tag(store)
+                                        }
+                                    }
                                 }
                                 .frame(width: 300, height: 50)
                                 .background(Color.white)
@@ -48,18 +57,31 @@ struct RegisterView: View {
                                 .textInputAutocapitalization(.never)
                                 .listRowBackground(Color(red: 1.00, green: 0.83, blue: 0.00))
                                 .listRowSeparator(.hidden)
+                                .accentColor(.black)
+                                
                             }
                             
                             .background(Color(red: 1.00, green: 0.83, blue: 0.00))
                             .scrollContentBackground(.hidden)
                             .scrollDisabled(true)
+                           
+                            
+                            Text(userFeedback).foregroundStyle(Color.red)
                             Button("Create User") {
+                                print("inside button")
                                 Task {
                                     do {
-                                        try await userStateViewModel.createUser(email: email, firstName: firstname, lastName: lastname, password: password, store: store!)
-                                        print("user created")
+                                        print(selectedStore)
+                                        if !storesViewModel.stores.isEmpty{
+                                            try await authViewModel.createUser(email: email, firstName: firstname, lastName: lastname, password: password, store: selectedStore)
+                                        }else{
+                                            userFeedback = "A store must be selected"
+                                        }
+                                       
                                     } catch {
                                         print("Could not create user")
+                                        userFeedback =  authViewModel.error!
+                                        
                                     }
                                 }
                             }
@@ -87,10 +109,38 @@ struct RegisterView: View {
                         }
                     }
                 }
+        .onTapGesture {
+            hideKeyboard()
+        }
         .toolbar(.hidden)
+        .onAppear(){
+        
+            userFeedback = ""
+            
+            Task {
+                do{
+                    try await storesViewModel.fetchStores()
+                    if let firstStore = storesViewModel.stores.first {
+                            selectedStore = firstStore
+                        }
+                
+                }catch{
+                    print("could not fetch stores..")
+                }
+         
+            }
+        }
+        
     }
 }
 
 #Preview {
     RegisterView()
+}
+
+extension RegisterView{
+    func hideKeyboard() {
+            let resign = #selector(UIResponder.resignFirstResponder)
+            UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+        }
 }

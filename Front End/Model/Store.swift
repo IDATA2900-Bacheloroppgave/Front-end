@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct Store: Codable, Hashable {
+struct Store: Codable, Hashable{
+
     let name: String
     let address: String
     let country: String
     let city: String
     let postalCode: Int
-    let storeId: Int
+    let storeId: Int // Existing unique identifier
 }

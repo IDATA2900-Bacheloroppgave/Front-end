@@ -7,12 +7,20 @@
 
 import SwiftUI
 
+
 struct OrderHistoryView: View {
     var body: some View {
-        Text("View to show active and past orders")
+        NavigationStack{
+            ZStack{
+                VStack{
+                    Text("Orders")
+                }
+            }
+        }
     }
 }
 
 #Preview {
     OrderHistoryView()
 }
+

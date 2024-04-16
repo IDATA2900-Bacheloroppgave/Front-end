@@ -29,6 +29,8 @@
 		ECEBD16F2BCC59A3007F9D8A /* NewOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16E2BCC59A3007F9D8A /* NewOrderView.swift */; };
 		ECEBD1712BCC59D1007F9D8A /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1702BCC59D1007F9D8A /* OrderHistoryView.swift */; };
 		ECEBD1792BCD472E007F9D8A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1782BCD472E007F9D8A /* Store.swift */; };
+		ECEBD17C2BCE70A0007F9D8A /* StoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD17B2BCE70A0007F9D8A /* StoresViewModel.swift */; };
+		ECEBD1802BCEA430007F9D8A /* ValidataionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD17F2BCEA430007F9D8A /* ValidataionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		ECEBD16E2BCC59A3007F9D8A /* NewOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderView.swift; sourceTree = "<group>"; };
 		ECEBD1702BCC59D1007F9D8A /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
 		ECEBD1782BCD472E007F9D8A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		ECEBD17B2BCE70A0007F9D8A /* StoresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresViewModel.swift; sourceTree = "<group>"; };
+		ECEBD17F2BCEA430007F9D8A /* ValidataionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidataionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,7 @@
 				ECEBD1752BCC5BCA007F9D8A /* LandingPage */,
 				ECEBD1762BCC5BDE007F9D8A /* OrderHistory */,
 				ECEBD1772BCC5BED007F9D8A /* NewOrder */,
+				ECEBD17B2BCE70A0007F9D8A /* StoresViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				ECEBD14E2BC93AD7007F9D8A /* AuthViewModel.swift */,
+				ECEBD17F2BCEA430007F9D8A /* ValidataionViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -439,7 +445,9 @@
 				ECEBD1472BC8CF75007F9D8A /* DeliveryOfDayListElementView.swift in Sources */,
 				ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */,
 				ECEBD14B2BC93076007F9D8A /* User.swift in Sources */,
+				ECEBD1802BCEA430007F9D8A /* ValidataionViewModel.swift in Sources */,
 				ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */,
+				ECEBD17C2BCE70A0007F9D8A /* StoresViewModel.swift in Sources */,
 				ECEBD1552BC9692E007F9D8A /* LandingPageView.swift in Sources */,
 				ECEBD1652BC9DDA4007F9D8A /* ProductsDataService.swift in Sources */,
 				ECEBD1792BCD472E007F9D8A /* Store.swift in Sources */,

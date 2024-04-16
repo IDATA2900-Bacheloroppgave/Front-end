@@ -9,10 +9,13 @@ import SwiftUI
 
 
 struct LogInView: View {
-    @EnvironmentObject var userStateViewModel : AuthViewModel
+    @EnvironmentObject var authViewModel : AuthViewModel
+    @StateObject var stores = StoresViewModel()
+   
     
     @State private var email = ""
     @State private var password = ""
+    @State private var userFeedback = ""
     
     
     var body: some View {
@@ -28,19 +31,23 @@ struct LogInView: View {
 
                         LazyVStack(spacing:20){
                             InputView(text: $email, placeholder: "Email")
+                            
                             InputView(text: $password, placeholder: "Password", isSecureField: true)
                         } 
                         .background(Color.init(red: 1.00, green: 0.83, blue: 0.00))
                         .scrollContentBackground(.hidden)
                         .scrollDisabled(true)
-
+                        
+                        Text(userFeedback).foregroundStyle(Color.red)
                         Button("Log in") {
                             Task{
                                 do{
-                                    try await userStateViewModel.login(email: email, password: password)
-                                    print("user created")
+                                    try await stores.fetchStores()
+                                    try await authViewModel.login(email: email, password: password)
+                          
                                 }catch{
                                     print("Could not log in user")
+                                    userFeedback =  authViewModel.error!
                                 }
                             }
                         }
@@ -73,11 +80,25 @@ struct LogInView: View {
             ToolbarItem(placement: .navigationBarLeading) {
                 EmptyView()
             }
+        
+        }.onTapGesture {
+            hideKeyboard()
         }
+        .onAppear {
+                    // Reset user feedback
+                    userFeedback = ""
+                }
     }
 }
 
 
 #Preview {
     LogInView()
+}
+
+extension LogInView{
+    func hideKeyboard() {
+            let resign = #selector(UIResponder.resignFirstResponder)
+            UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+        }
 }

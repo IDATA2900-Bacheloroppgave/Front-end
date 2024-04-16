@@ -33,7 +33,7 @@ struct InputView: View {
                 .background(Color.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.black, lineWidth: 2)
+                        .stroke( Color.black, lineWidth: 2)
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .textInputAutocapitalization(.never)
@@ -46,6 +46,3 @@ struct InputView: View {
     }
 }
 
-#Preview {
-    InputView(text: .constant(""), placeholder: "name@example.com")
-}
