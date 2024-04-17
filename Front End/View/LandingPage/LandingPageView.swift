@@ -60,7 +60,7 @@ struct LandingPageView: View {
                         NavigationLink{
                             OrderInfoView()
                         }label: {
-                            UpcomingDeliveryView(
+                            ActiveOrderCardView(
                                 orderNumber: "#12345",
                                 supplierName: "Gjørts AS",
                                 status: "Your order is ready for transport.",
@@ -72,7 +72,7 @@ struct LandingPageView: View {
                         NavigationLink{
                             OrderInfoView()
                         }label: {
-                            UpcomingDeliveryView(
+                            ActiveOrderCardView(
                                 orderNumber: "#12345",
                                 supplierName: "Gjørts AS",
                                 status: "Your order is registered.",
@@ -84,7 +84,7 @@ struct LandingPageView: View {
                         NavigationLink{
                             OrderInfoView()
                         }label: {
-                            UpcomingDeliveryView(
+                            ActiveOrderCardView(
                                 orderNumber: "#12345",
                                 supplierName: "Gjørts AS",
                                 status: "Your order is ready for transport.",

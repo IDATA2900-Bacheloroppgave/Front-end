@@ -62,7 +62,7 @@ struct DeliveryCardView: View {
         .background(Color.white)
         .cornerRadius(5)
         .padding(.horizontal)
-        .shadow(radius: 2)
+        .shadow(radius: 1)
     }
 }
 

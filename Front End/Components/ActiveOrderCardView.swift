@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UpcomingDeliveryView: View {
+struct ActiveOrderCardView: View {
     
     let orderNumber: String
     let supplierName: String
@@ -27,7 +27,7 @@ struct UpcomingDeliveryView: View {
                     .foregroundColor( Color(red: 1.00, green: 0.83, blue: 0.00))
                 
                 Text(orderNumber)
-                    .fontWeight(.semibold)
+                    .fontWeight(.medium)
                     .font(.subheadline)
                 
                 Spacer()
@@ -36,12 +36,11 @@ struct UpcomingDeliveryView: View {
                     .font(.footnote)
                     .foregroundColor(.gray)
                 
-            }
+            }.padding(EdgeInsets(top: 5, leading: 2, bottom: 5, trailing: 0))
             
             ProgressView(value: progressValue)
                 .tint(.yellow)
-                .frame(width: 340, height: 20)
-                .scaleEffect(x: 1, y: 2)
+                .scaleEffect(x: 1, y: 2.5)
             
             HStack{
                 VStack (alignment: .leading){
@@ -56,16 +55,18 @@ struct UpcomingDeliveryView: View {
                 Image(systemName: "chevron.right")
                     .foregroundColor(.gray)
             }
+            .padding(EdgeInsets(top: 8, leading: 2, bottom: 5, trailing: 0))
             
         }
         .padding()
         .background(Color.white)
         .cornerRadius(5)
+        .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
         .padding(.horizontal)
-        .shadow(radius: 2)
+        .shadow(radius: 1)
     }
 }
 
 #Preview {
-    UpcomingDeliveryView(orderNumber: "#12345", supplierName: "Gjørts AS", status: "Skodje", estimatedDelivery: "Tomorrow before noon", progressValue: 0.1)
+    ActiveOrderCardView(orderNumber: "#12345", supplierName: "Gjørts AS", status: "Skodje", estimatedDelivery: "Tomorrow before noon", progressValue: 0.1)
 }

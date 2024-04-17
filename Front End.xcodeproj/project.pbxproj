@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		003BB0312BCEBE2E0048D751 /* DeliveryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0302BCEBE2E0048D751 /* DeliveryCardView.swift */; };
-		003BB0332BCEBE750048D751 /* UpcomingDeliveryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0322BCEBE750048D751 /* UpcomingDeliveryCardView.swift */; };
+		003BB0332BCEBE750048D751 /* ActiveOrderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0322BCEBE750048D751 /* ActiveOrderCardView.swift */; };
 		003BB0352BCEBECE0048D751 /* ProductInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */; };
 		003BB0372BCEC2ED0048D751 /* OrderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0362BCEC2ED0048D751 /* OrderInfoView.swift */; };
 		ECADC82B2BCEFFD2002C51B1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */; };
+		ECADC82D2BCFFD65002C51B1 /* PastOrderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECADC82C2BCFFD65002C51B1 /* PastOrderCardView.swift */; };
 		ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */; };
 		ECEBD0682BC88499007F9D8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD0672BC88499007F9D8A /* Assets.xcassets */; };
 		ECEBD06B2BC88499007F9D8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */; };
@@ -56,10 +57,11 @@
 
 /* Begin PBXFileReference section */
 		003BB0302BCEBE2E0048D751 /* DeliveryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCardView.swift; sourceTree = "<group>"; };
-		003BB0322BCEBE750048D751 /* UpcomingDeliveryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingDeliveryCardView.swift; sourceTree = "<group>"; };
+		003BB0322BCEBE750048D751 /* ActiveOrderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveOrderCardView.swift; sourceTree = "<group>"; };
 		003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCardView.swift; sourceTree = "<group>"; };
 		003BB0362BCEC2ED0048D751 /* OrderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoView.swift; sourceTree = "<group>"; };
 		ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		ECADC82C2BCFFD65002C51B1 /* PastOrderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrderCardView.swift; sourceTree = "<group>"; };
 		ECEBD0602BC88497007F9D8A /* Front End.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Front End.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndApp.swift; sourceTree = "<group>"; };
 		ECEBD0672BC88499007F9D8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -198,8 +200,9 @@
 			children = (
 				ECEBD1442BC8CC89007F9D8A /* InputView.swift */,
 				003BB0302BCEBE2E0048D751 /* DeliveryCardView.swift */,
-				003BB0322BCEBE750048D751 /* UpcomingDeliveryCardView.swift */,
+				003BB0322BCEBE750048D751 /* ActiveOrderCardView.swift */,
 				003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */,
+				ECADC82C2BCFFD65002C51B1 /* PastOrderCardView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -466,9 +469,10 @@
 				ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */,
 				ECEBD14B2BC93076007F9D8A /* User.swift in Sources */,
 				ECEBD1802BCEA430007F9D8A /* ValidataionViewModel.swift in Sources */,
-				003BB0332BCEBE750048D751 /* UpcomingDeliveryCardView.swift in Sources */,
+				003BB0332BCEBE750048D751 /* ActiveOrderCardView.swift in Sources */,
 				ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */,
 				003BB0352BCEBECE0048D751 /* ProductInfoCardView.swift in Sources */,
+				ECADC82D2BCFFD65002C51B1 /* PastOrderCardView.swift in Sources */,
 				ECEBD17C2BCE70A0007F9D8A /* StoresViewModel.swift in Sources */,
 				ECEBD1552BC9692E007F9D8A /* LandingPageView.swift in Sources */,
 				ECEBD1652BC9DDA4007F9D8A /* ProductsDataService.swift in Sources */,

@@ -39,11 +39,113 @@ struct OrderHistoryView: View {
                                 .font(.system(size: 25))
                                 .foregroundStyle(Color.black)
                         }
-                    }.padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
+                    }
+                    .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
+                    .padding(.horizontal)
+                    
                     Spacer()
+                    
+                    VStack{
+                        ScrollView{
+                            if selection == 0{
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    ActiveOrderCardView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is ready for transport.",
+                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                        progressValue: 0.1)
+                                    .foregroundColor(.primary)
+                                }
+                                
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    ActiveOrderCardView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is registered.",
+                                        estimatedDelivery: "Friday between 10 - 11 am.",
+                                        progressValue: 0.05)
+                                    .foregroundColor(.primary)
+                                }
+                                
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    ActiveOrderCardView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is ready for transport.",
+                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                        progressValue: 0.1)
+                                    .foregroundColor(.primary)
+                                }
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    ActiveOrderCardView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is ready for transport.",
+                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                        progressValue: 0.1)
+                                    .foregroundColor(.primary)
+                                }
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    ActiveOrderCardView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is ready for transport.",
+                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                        progressValue: 0.1)
+                                    .foregroundColor(.primary)
+                                }
+                            }else{
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    PastOrderCardView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is ready for transport.",
+                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                        progressValue: 1)
+                                    .foregroundColor(.primary)
+                                }
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    PastOrderCardView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is ready for transport.",
+                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                        progressValue: 1)
+                                    .foregroundColor(.primary)
+                                }
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    PastOrderCardView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is ready for transport.",
+                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                        progressValue: 1)
+                                    .foregroundColor(.primary)
+                                }
+                            }
+
+                        }
+                    }
                 }
             }
-        }
+        }.tint(.black)
     }
 }
 
