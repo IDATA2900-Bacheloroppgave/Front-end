@@ -17,54 +17,45 @@ struct ProductInfoCard: View {
     
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Image(systemName: productIcon)
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.green)
-                    VStack (alignment: .leading) {
-                        Text(productName)
-                            .font(.headline)
-                        .foregroundColor(.black)
-                        
-                        Text(supplierName)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                        
+        HStack{
+            HStack(spacing: 4) {
+                Image(systemName: productIcon)
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.iconVeggie)
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
+                VStack(alignment: .leading, spacing: 2){
+                    Text(productName)
+                        .foregroundStyle(.bluePicker)
+                        .fontWeight(.medium)
+                    Text(supplierName)
+                        .font(.system(size: 14))
+                    VStack(alignment: .leading){
                         Text("Batch: \(batchNumber)")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                        
+                            .foregroundStyle(.greyText)
+                            .font(.system(size: 12))
                         Text("Best before: \(bestBeforeDate)")
-                            .font(.caption)
-                            .foregroundColor(.gray)
+                            .foregroundStyle(.greyText)
+                            .font(.system(size: 12))
                     }
                 }
+                .frame(maxWidth: .infinity , alignment: .leading)
+                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
             }
-            .padding(.all)
-
-            Spacer()
-            
-            VStack {
-                Text(quantityInfo)
-                    .font(.body)
-                    .bold()
-                    .foregroundColor(.black)
-                    .padding() // Adds padding on top and bottom
-            }
-            .background(Color.yellow.opacity(0.5))
-            .cornerRadius(5)
-            .padding()
-            
+            Spacer() // Add Spacer to push "5-Dpak" to the end
+            Text("5-Dpak")
+                .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
+                .frame(maxHeight: .infinity, alignment: .center)
+                .background(.accent .opacity(0.4))
         }
-        .frame(height: 100) // Set the frame height of the entire HStack to enforce the card height.
+        .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
         .background(Color.white)
         .cornerRadius(5)
-        .shadow(radius: 2)
+        .shadow(radius: 1)
+        .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
         .padding(.horizontal)
     }
+    
 }
 
 #Preview {

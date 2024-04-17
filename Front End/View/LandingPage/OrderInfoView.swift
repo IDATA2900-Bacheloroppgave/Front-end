@@ -10,75 +10,74 @@ import SwiftUI
 struct OrderInfoView: View {
     var body: some View {
         ZStack {
-           
-            ScrollView {
+            Color(red: 0.96, green: 0.96, blue: 0.96)
+                .edgesIgnoringSafeArea(.all)
+            VStack{
                 VStack {
-                    HStack (alignment: .center){
-                        
-                        Text("Order")
-                            .font(.title2)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        
-                    }
-                    
-                    //The next arriving order
-                    
+                    Text("Order #122345")
+                        .font(.system(size: 20))
+                        .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                        .background(.accent)
+                }
+                VStack {
                     DeliveryCardView(
                         mainTitle: "Frysevarer",
                         orderNumber: "#12345",
                         progressValue: 0.5,
                         currentLocation: "Current location: Skodje",
                         arrivalTime: "Estimated delivery: Today 12 - 2 pm",
-                        supplierName: "Gjørts AS")
-                    
-                    HStack {
+                        supplierName: "Gjørts AS").padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                    VStack {
                         Text("Products in order")
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.headline)
-                        .padding(.leading)
-                        Spacer()
+                            .padding()
+                        ScrollView{
+                            //The subsequent upcoming deliveries
+                            ProductInfoCard(
+                                productName: "Speltrundstykker",
+                                productIcon: "fork.knife.circle.fill",
+                                supplierName: "Hatting",
+                                batchNumber: 123,
+                                bestBeforeDate: "17.05.24",
+                                quantityInfo: "5 D-pak")
+                            
+                            ProductInfoCard(
+                                productName: "Speltrundstykker",
+                                productIcon: "fork.knife.circle.fill",
+                                supplierName: "Hatting",
+                                batchNumber: 123,
+                                bestBeforeDate: "17.05.24",
+                                quantityInfo: "5 D-pak")
+                            
+                            ProductInfoCard(
+                                productName: "Speltrundstykker",
+                                productIcon: "fork.knife.circle.fill",
+                                supplierName: "Hatting",
+                                batchNumber: 123,
+                                bestBeforeDate: "17.05.24",
+                                quantityInfo: "5 D-pak")
+                            
+                            ProductInfoCard(
+                                productName: "Speltrundstykker",
+                                productIcon: "fork.knife.circle.fill",
+                                supplierName: "Hatting",
+                                batchNumber: 123,
+                                bestBeforeDate: "17.05.24",
+                                quantityInfo: "5 D-pak")
+                            
+                            ProductInfoCard(
+                                productName: "Speltrundstykker",
+                                productIcon: "fork.knife.circle.fill",
+                                supplierName: "Hatting",
+                                batchNumber: 123,
+                                bestBeforeDate: "17.05.24",
+                                quantityInfo: "5 D-pak")
+                        }
                     }
-                    
-                    //The subsequent upcoming deliveries
-                    ProductInfoCard(
-                        productName: "Speltrundstykker",
-                        productIcon: "fork.knife.circle.fill",
-                        supplierName: "Hatting",
-                        batchNumber: 123,
-                        bestBeforeDate: "17.05.24",
-                        quantityInfo: "5 D-pak")
-                    
-                    ProductInfoCard(
-                        productName: "Speltrundstykker",
-                        productIcon: "fork.knife.circle.fill",
-                        supplierName: "Hatting",
-                        batchNumber: 123,
-                        bestBeforeDate: "17.05.24",
-                        quantityInfo: "5 D-pak")
-                    
-                    ProductInfoCard(
-                        productName: "Speltrundstykker",
-                        productIcon: "fork.knife.circle.fill",
-                        supplierName: "Hatting",
-                        batchNumber: 123,
-                        bestBeforeDate: "17.05.24",
-                        quantityInfo: "5 D-pak")
-                    
-                    ProductInfoCard(
-                        productName: "Speltrundstykker",
-                        productIcon: "fork.knife.circle.fill",
-                        supplierName: "Hatting",
-                        batchNumber: 123,
-                        bestBeforeDate: "17.05.24",
-                        quantityInfo: "5 D-pak")
-                    
-                    ProductInfoCard(
-                        productName: "Speltrundstykker",
-                        productIcon: "fork.knife.circle.fill",
-                        supplierName: "Hatting",
-                        batchNumber: 123,
-                        bestBeforeDate: "17.05.24",
-                        quantityInfo: "5 D-pak")
-                    }
+                    .padding(0)
+                }
             }
         }
     }
