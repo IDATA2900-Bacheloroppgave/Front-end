@@ -10,10 +10,7 @@ import SwiftUI
 struct OrderInfoView: View {
     var body: some View {
         ZStack {
-            Image("background")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
+           
             ScrollView {
                 VStack {
                     HStack (alignment: .center){
