@@ -10,6 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var userStateViewModel : AuthViewModel
     @Environment(\.dismiss) var dismiss
+    @State private var selectedStore = "Rema Averøy" // The default selected store
+        let stores = ["Rema Averøy", "Rema Ålesund", "Kiwi Ålesund"] // Your list of stores
     
     var body: some View {
         NavigationStack {
@@ -51,18 +53,14 @@ struct SettingsView: View {
                             .padding(.init(top: 15, leading: 0, bottom: 15, trailing: 0))
                             HStack{
                                 
-                                Text("Store:")
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                
-                                Spacer()
-                                
-                                Text("Rema Averøy")
-                                    .font(.body)
-                                    .foregroundStyle(.gray)
-                                    .padding(.leading, 2)
-                                    .tint(.gray)
-                                
+                                Picker("Store:", selection: $selectedStore) {
+                                    ForEach(stores, id: \.self) { store in
+                                        Text(store).tag(store)
+                                    }
+                                    
+                                }
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
                             }
                             .padding(.init(top: 15, leading: 10, bottom: 15, trailing: 10))
                             NavigationLink{
