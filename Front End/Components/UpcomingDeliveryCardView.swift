@@ -24,7 +24,7 @@ struct UpcomingDeliveryView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30, height: 30)
-                    .foregroundColor(.yellow)
+                    .foregroundColor( Color(red: 1.00, green: 0.83, blue: 0.00))
                 
                 Text(orderNumber)
                     .fontWeight(.semibold)
@@ -49,7 +49,7 @@ struct UpcomingDeliveryView: View {
                         .foregroundColor(.gray)
                         .font(.footnote)
                     Text("Estimated delivery: \(estimatedDelivery)")
-                        .foregroundColor(.blue)
+                        .foregroundColor(.bluePicker)
                         .font(.footnote)
                 }
                 Spacer()

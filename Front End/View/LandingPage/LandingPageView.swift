@@ -17,81 +17,94 @@ struct LandingPageView: View {
     var body: some View {
         NavigationStack {
             ZStack{
-                // Background image
-                Image("background")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .edgesIgnoringSafeArea(.all)
+               
                 
-                VStack {
-                    // ScrollView showing delivery of the day, and next upcoming deliveries.
-                    ScrollView {
+              
                         VStack(alignment: .leading, spacing: 20) {
-                            Text("Delivery of the day")
-                                .font(.title2)
-                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                .padding(.leading)
-                            
-                            //The next arriving order
-                            NavigationLink{
-                                OrderInfoView()
-                            }label: {
-                                DeliveryCardView(
-                                    mainTitle: "Frysevarer",
-                                    orderNumber: "#12345",
-                                    progressValue: 0.5,
-                                    currentLocation: "Current location: Skodje",
-                                    arrivalTime: "Estimated delivery: Today 12 - 2 pm",
-                                    supplierName: "Gjørts AS")
-                                .foregroundColor(.primary)
+                            VStack {
+                                Text("My deliveries")
+                                    .font(.system(size: 22))
+                                    .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
+                                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
+                                    .background(.accent)
+                                    
                             }
+                            
+                            ScrollView{
+                                Text("Next delivery")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .font(.headline)
+                                        .padding(.leading)
+                                        .fontWeight(.medium)
+                                        .padding(EdgeInsets(top: 0, leading: 2, bottom: 10, trailing: 2))
+                                //The next arriving order
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    DeliveryCardView(
+                                        mainTitle: "Frysevarer",
+                                        orderNumber: "#12345",
+                                        progressValue: 0.5,
+                                        currentLocation: "Current location: Skodje",
+                                        arrivalTime: "Estimated delivery: Today 12 - 2 pm",
+                                        supplierName: "Gjørts AS")
+                                    .foregroundColor(.primary)
+                                }
+                            
                             Text("Upcoming deliveries")
-                                .font(.headline)
-                                .padding(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .font(.headline)
+                                    .padding(.leading)
+                                    .fontWeight(.medium)
+                                    .padding(EdgeInsets(top: 10, leading: 2, bottom: 10, trailing: 2))
                             
                             //The subsequent upcoming deliveries
-                            NavigationLink{
-                                OrderInfoView()
-                            }label: {
-                                UpcomingDeliveryView(
-                                    orderNumber: "#12345",
-                                    supplierName: "Gjørts AS",
-                                    status: "Your order is ready for transport.",
-                                    estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                    progressValue: 0.1)
-                                .foregroundColor(.primary)
+                          
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    UpcomingDeliveryView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is ready for transport.",
+                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                        progressValue: 0.1)
+                                    .foregroundColor(.primary)
+                                }
+                                
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    UpcomingDeliveryView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is registered.",
+                                        estimatedDelivery: "Friday between 10 - 11 am.",
+                                        progressValue: 0.05)
+                                    .foregroundColor(.primary)
+                                }
+                                
+                                NavigationLink{
+                                    OrderInfoView()
+                                }label: {
+                                    UpcomingDeliveryView(
+                                        orderNumber: "#12345",
+                                        supplierName: "Gjørts AS",
+                                        status: "Your order is ready for transport.",
+                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
+                                        progressValue: 0.1)
+                                    .foregroundColor(.primary)
+                                }
                             }
-                            
-                            NavigationLink{
-                                OrderInfoView()
-                            }label: {
-                                UpcomingDeliveryView(
-                                    orderNumber: "#12345",
-                                    supplierName: "Gjørts AS",
-                                    status: "Your order is registered.",
-                                    estimatedDelivery: "Friday between 10 - 11 am.",
-                                    progressValue: 0.05)
-                                .foregroundColor(.primary)
-                            }
-                            
-                            NavigationLink{
-                                OrderInfoView()
-                            }label: {
-                                UpcomingDeliveryView(
-                                    orderNumber: "#12345",
-                                    supplierName: "Gjørts AS",
-                                    status: "Your order is ready for transport.",
-                                    estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                    progressValue: 0.1)
-                                .foregroundColor(.primary)
-                            }
+                            ScanToOrderBtn()
                         }
-                        ScanToOrderBtn()
-                    }
+                     
+                
                    
                     Spacer()
                 }
-            }
+            
+            
 
         }
     }

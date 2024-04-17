@@ -22,9 +22,10 @@ struct DeliveryCardView: View {
                 VStack(alignment: .leading) {
                     Text(mainTitle)
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.bluePicker)
                     Text(orderNumber)
                         .foregroundColor(.gray)
+                        .font(.system(size: 14))
                 }
                 Spacer()
                 Text(supplierName) // This can also be made dynamic if needed
@@ -39,20 +40,21 @@ struct DeliveryCardView: View {
                 .padding(.vertical, 4) // Adjust padding as needed
                 .scaleEffect(x: 1, y: 2)
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
                 HStack {
-                    Image(systemName: "mappin.and.ellipse")
+                    Image(systemName: "location.fill")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.blue)
-                    Text(currentLocation)
+                        .frame(width: 14, height: 14)
+                        .foregroundColor(.bluePicker)
+                    Text(currentLocation).font(.system(size: 14))
                 }
                 
                 VStack {
                     Text(arrivalTime)
-                        .font(.body)
-                        .foregroundColor(.gray)
+                        .font(.system(size: 14))
+                        .foregroundColor(.bluePicker)
+                        
                 }
             }
             .padding()
