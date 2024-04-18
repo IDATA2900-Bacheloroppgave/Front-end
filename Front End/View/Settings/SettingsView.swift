@@ -16,13 +16,14 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             ZStack{
-                
+                Color(red: 0.96, green: 0.96, blue: 0.96)
+                    .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading, spacing: 20) {
                     VStack {
                         Text("Settings")
                             .font(.system(size: 22))
                             .frame(maxWidth: .infinity)
-                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
                             .background(.yellow)
                         
                         List{
