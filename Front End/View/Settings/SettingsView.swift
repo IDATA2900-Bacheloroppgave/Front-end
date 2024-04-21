@@ -25,24 +25,70 @@ struct SettingsView: View {
                             .frame(maxWidth: .infinity)
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
                             .background(.accent)
-                        
-                        
+                       
+                    VStack {
                         NavigationLink{
                             EditProfileView()
                         }label: {
-                            EditProfileCardView()
+                            HStack {
+                                Text("IF")
+                                    .font(.headline)
+                                    .foregroundStyle(.white)
+                                    .frame(width: 48, height: 48)
+                                    .background(Color(.accent).opacity(0.5))
+                                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                                    .padding(.horizontal)
+                                
+                                VStack (alignment: .leading, spacing: 5) {
+                                    Text("Ina Folland")
+                                        .font(.headline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.black)
+                                    
+                                    
+                                    Text("ina@gmail.com")
+                                        .font(.body)
+                                        .foregroundStyle(.gray)
+                                        .tint(.gray)
+                                    
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.bottom)
                         }
+                        
+                        Divider()
                         
                         NavigationLink{
                             ChangePasswordView()
                         }label: {
-                            ChangePasswordCardView()
+                        HStack{
+                            VStack {
+                                
+                                Text("Change password")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .tint(.black)
+                                
+                            }
+                            .padding()
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.gray)
                         }
+                        
+                    }
+                        
+                        Divider()
                         
                         HStack{
                             Text("Store:")
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
+                                .padding(.top)
+                                .padding(.leading)
                             
                             Spacer()
                             
@@ -53,15 +99,25 @@ struct SettingsView: View {
                                 .pickerStyle(DefaultPickerStyle())
                             }
                             .tint(.gray)
+                            .padding(.top)
                         }
-                        .padding()
-                        .frame(maxWidth: .infinity, minHeight: 70, maxHeight: 70)
-                        .background(Color.white)
-                        .cornerRadius(5)
-                        .shadow(radius: 2)
-                        .padding(.horizontal)
+                        
+                        
+                        
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 230)
+                    .background(Color.white)
+                    .cornerRadius(5)
+                    .shadow(radius: 2)
+                .padding(.horizontal)
                     
                     Spacer()
+                }
+                
+            }
+                    
+                    
                     
                     Button(action: {
                         if userStateViewModel.logout() {
@@ -72,6 +128,7 @@ struct SettingsView: View {
                         HStack {
                             Text("Log out")
                                 .font(.title2)
+                                
                             Spacer()
                             Image(systemName: "rectangle.portrait.and.arrow.right")
                                 .resizable()
@@ -88,8 +145,8 @@ struct SettingsView: View {
                 }
             }
         }
-    }
-}
+    
+
 
 struct EditProfileView: View {
     var body: some View {
@@ -109,64 +166,5 @@ struct ChangePasswordView: View {
     SettingsView()
 }
 
-struct EditProfileCardView: View {
-    var body: some View {
-        HStack {
-            Text("IF")
-                .font(.headline)
-                .foregroundStyle(.white)
-                .frame(width: 48, height: 48)
-                .background(Color(.accent).opacity(0.5))
-                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                .padding(.horizontal)
-            
-            VStack (alignment: .leading, spacing: 5) {
-                Text("Ina Folland")
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.black)
-                
-                Text("ina@gmail.com")
-                    .font(.body)
-                    .foregroundStyle(.gray)
-                    .tint(.gray)
-                
-            }
-            Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundColor(.gray)
-        }
-        .padding(.trailing)
-        .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-        .background(Color.white)
-        .cornerRadius(5)
-        .shadow(radius: 2)
-        .padding(.horizontal)
-    }
-}
 
-struct ChangePasswordCardView: View {
-    var body: some View {
-        HStack{
-            
-            VStack (alignment: .leading) {
-                
-                Text("Change password")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                
-            }
-            Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundColor(.gray)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, minHeight: 70, maxHeight: 70)
-        .background(Color.white)
-        .foregroundColor(.black)
-        .cornerRadius(5)
-        .shadow(radius: 2)
-        .padding(.horizontal)
-    }
-    
-}
+
