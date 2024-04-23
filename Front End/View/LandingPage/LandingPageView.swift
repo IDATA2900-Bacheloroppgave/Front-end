@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LandingPageView: View {
     @EnvironmentObject var userStateViewModel : AuthViewModel
+    @StateObject var ordersViewModel = OrdersViewModel()
     @Environment(\.dismiss) var dismiss
     
     
@@ -35,15 +36,16 @@ struct LandingPageView: View {
                             .fontWeight(.medium)
                             .padding(EdgeInsets(top: 0, leading: 2, bottom: 10, trailing: 2))
                         //The next arriving order
+                        //Backedn here
                         NavigationLink{
-                            OrderInfoView()
+                            OrderInfoView(order: Order(orderId: 1, orderDate: "", orderStatus: "", wishedDeliveryDate: "", progressInPercent: 0.8, customer: User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 1, storeId: 1)), quantities: [Quantity(productQuantity: 12, product: Product(productId: 1, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 0.2, gtin: 1, batch: 1, packaging: Packaging(packageType: "", quantityPrPackage: 1, weightInGrams: 1, dimensionInCm3: 0.1)))])) //Midlertidig for å ikke få feilmelding
                         }label: {
                             DeliveryCardView(
                                 mainTitle: "Frysevarer",
                                 orderNumber: "#12345",
                                 progressValue: 0.5,
                                 currentLocation: "Current location: Skodje",
-                                arrivalTime: "Estimated delivery: Today 12 - 2 pm",
+                                arrivalTime: "Requested delivery: Today 12 - 2 pm",
                                 supplierName: "Gjørts AS")
                             .foregroundColor(.primary)
                         }
@@ -57,77 +59,43 @@ struct LandingPageView: View {
                         
                         //The subsequent upcoming deliveries
                         
-                        NavigationLink{
-                            OrderInfoView()
-                        }label: {
-                            ActiveOrderCardView(
-                                orderNumber: "#12345",
-                                supplierName: "Gjørts AS",
-                                status: "Your order is ready for transport.",
-                                estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                progressValue: 0.1)
-                            .foregroundColor(.primary)
+                        ForEach(ordersViewModel.orders, id: \.orderId) { order in
+                            NavigationLink{
+                                OrderInfoView(order: order)
+                            }label: {
+                                ActiveOrderCardView(
+                                    orderNumber: String(order.orderId),
+                                    productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
+                                    status: order.orderStatus.lowercased(),
+                                    estimatedDelivery: order.wishedDeliveryDate,
+                                    progressValue: order.progressInPercent/100)
+                                .foregroundColor(.primary)
+                            }
                         }
                         
-                        NavigationLink{
-                            OrderInfoView()
-                        }label: {
-                            ActiveOrderCardView(
-                                orderNumber: "#12345",
-                                supplierName: "Gjørts AS",
-                                status: "Your order is registered.",
-                                estimatedDelivery: "Friday between 10 - 11 am.",
-                                progressValue: 0.05)
-                            .foregroundColor(.primary)
-                        }
-                        
-                        NavigationLink{
-                            OrderInfoView()
-                        }label: {
-                            ActiveOrderCardView(
-                                orderNumber: "#12345",
-                                supplierName: "Gjørts AS",
-                                status: "Your order is ready for transport.",
-                                estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                progressValue: 0.1)
-                            .foregroundColor(.primary)
-                        }
                     }
                     ScanToOrderBtn()
                 }
             }
-        }.tint(.black)
-    }
-}
-
-
-#Preview {
-    LandingPageView()
-}
-
-
-struct ScanToOrderBtn: View {
-    var body: some View {
-        Button(action: {
-            // Action for the button tap
-        }) {
-            HStack {
-                Text("Scan to order")
-                    .font(.system(size: 20, weight: .medium)) // Adjust font size and weight as needed
-                    .foregroundColor(Color.black)
+            .tint(.black)
+            .onAppear(){
+                Task{
+                    do{
+                        try await ordersViewModel.fetchOrders(token: userStateViewModel.currentUser?.token ?? "")
+                    }catch{
+                        print("Could not fetch orders")
+                    }
+                }
                 
-                Spacer() // This will push the text and the icon to opposite sides
-                
-                Image(systemName: "barcode.viewfinder")
-                    .foregroundColor(.black)
-                    .font(.system(size: 35)) // Adjust icon size as needed
             }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 15) // Adjust padding as needed
-            .background(Color.yellow) // Use the color that matches your design
-            .cornerRadius(10) // Adjust corner radius to match your design
         }
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .padding()
     }
 }
+    
+    
+    #Preview {
+        LandingPageView()
+    }
+    
+    
+

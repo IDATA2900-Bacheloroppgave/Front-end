@@ -9,14 +9,16 @@ import Foundation
 
 struct Product: Codable {
     var productId: Int
-    var name, description, supplier: String
+    var name: String
+    var description: String
+    var supplier: String
     var bestBeforeDate: String
     var productType: String
     var price: Double
     var gtin: Int
     var batch: Int
     var inventory: Inventory?
-    var packaging: Packaging
+    var packaging: Packaging?
     
     mutating func setInventory(inventory: Inventory){
         self.inventory = inventory
@@ -33,7 +35,8 @@ struct Inventory: Codable {
 
 struct Packaging: Codable {
     var packageType: String
-    var quantityPrPackage, weightInGrams: Int
+    var quantityPrPackage: Int
+    var weightInGrams: Int
     var dimensionInCm3: Double
 }
 

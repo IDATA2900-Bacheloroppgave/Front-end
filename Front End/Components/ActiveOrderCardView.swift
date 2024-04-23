@@ -10,7 +10,7 @@ import SwiftUI
 struct ActiveOrderCardView: View {
     
     let orderNumber: String
-    let supplierName: String
+    let productsInOrder: Int
     let status: String
     let estimatedDelivery: String
     let progressValue: Double
@@ -26,13 +26,13 @@ struct ActiveOrderCardView: View {
                     .frame(width: 30, height: 30)
                     .foregroundColor( Color(red: 1.00, green: 0.83, blue: 0.00))
                 
-                Text(orderNumber)
+                Text("#\(orderNumber)")
                     .fontWeight(.medium)
                     .font(.subheadline)
                 
                 Spacer()
                 
-                Text(supplierName)
+                Text(String("Products: \(productsInOrder)"))
                     .font(.footnote)
                     .foregroundColor(.gray)
                 
@@ -44,10 +44,10 @@ struct ActiveOrderCardView: View {
             
             HStack{
                 VStack (alignment: .leading){
-                    Text("STATUS: \(status)")
+                    Text("Status: \(status)")
                         .foregroundColor(.gray)
                         .font(.footnote)
-                    Text("Estimated delivery: \(estimatedDelivery)")
+                    Text("Requested delivery: \(estimatedDelivery)")
                         .foregroundColor(.bluePicker)
                         .font(.footnote)
                 }
@@ -68,5 +68,5 @@ struct ActiveOrderCardView: View {
 }
 
 #Preview {
-    ActiveOrderCardView(orderNumber: "#12345", supplierName: "Gjørts AS", status: "Skodje", estimatedDelivery: "Tomorrow before noon", progressValue: 0.1)
+    ActiveOrderCardView(orderNumber: "#12345", productsInOrder: 1, status: "Skodje", estimatedDelivery: "Tomorrow before noon", progressValue: 0.1)
 }

@@ -13,7 +13,7 @@ struct ProductInfoCard: View {
     let supplierName: String
     let batchNumber: Int
     let bestBeforeDate: String
-    let quantityInfo: String
+    let quantityInfo: Int
     
     
     var body: some View {
@@ -43,7 +43,7 @@ struct ProductInfoCard: View {
                 .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
             }
             Spacer() // Add Spacer to push "5-Dpak" to the end
-            Text("5-Dpak")
+            Text(String(quantityInfo))
                 .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
                 .frame(maxHeight: .infinity, alignment: .center)
                 .background(.accent .opacity(0.4))
@@ -59,5 +59,5 @@ struct ProductInfoCard: View {
 }
 
 #Preview {
-    ProductInfoCard(productName: "Speltrundstykker", productIcon: "fork.knife.circle.fill", supplierName: "Hatting", batchNumber: 123, bestBeforeDate: "17.02.25", quantityInfo: "5 D-pak")
+    ProductInfoCard(productName: "Speltrundstykker", productIcon: "fork.knife.circle.fill", supplierName: "Hatting", batchNumber: 123, bestBeforeDate: "17.02.25", quantityInfo: 5)
 }

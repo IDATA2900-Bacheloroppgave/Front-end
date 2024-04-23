@@ -9,8 +9,8 @@ import SwiftUI
 
 struct PastOrderCardView: View {
     
-    let orderNumber: String
-    let supplierName: String
+    let orderNumber: Int
+    let supplierName: Int
     let status: String
     let estimatedDelivery: String
     let progressValue: Double
@@ -25,11 +25,11 @@ struct PastOrderCardView: View {
                     .frame(width: 30, height: 30)
                     .foregroundColor(Color.gray)
                 
-                Text(orderNumber)
+                Text(String("#\(orderNumber)"))
                     .fontWeight(.medium)
                     .font(.subheadline)
                 Spacer()
-                Text(supplierName)
+                Text(String(supplierName))
                     .font(.footnote)
                     .foregroundColor(.gray)
                 
@@ -42,7 +42,7 @@ struct PastOrderCardView: View {
             
             HStack{
                 VStack (alignment: .leading){
-                    Text("STATUS: \(status)")
+                    Text("Status: \(status.lowercased())")
                         .foregroundColor(.gray)
                         .font(.footnote)
                 }
@@ -63,5 +63,5 @@ struct PastOrderCardView: View {
 }
 
 #Preview {
-    PastOrderCardView(orderNumber: "#12345", supplierName: "Gjørts AS", status: "Skodje", estimatedDelivery: "Tomorrow before noon", progressValue: 1)
+    PastOrderCardView(orderNumber: 1, supplierName: 1, status: "Skodje", estimatedDelivery: "Tomorrow before noon", progressValue: 1)
 }

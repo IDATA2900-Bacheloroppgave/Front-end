@@ -10,6 +10,8 @@ import SwiftUI
 
 struct OrderHistoryView: View {
     @State private var selection = 0
+    @EnvironmentObject var userStateViewModel : AuthViewModel
+    @StateObject var ordersViewModel = OrdersViewModel()
     
     var body: some View {
         NavigationStack {
@@ -48,96 +50,34 @@ struct OrderHistoryView: View {
                     VStack{
                         ScrollView{
                             if selection == 0{
-                                NavigationLink{
-                                    OrderInfoView()
-                                }label: {
-                                    ActiveOrderCardView(
-                                        orderNumber: "#12345",
-                                        supplierName: "Gjørts AS",
-                                        status: "Your order is ready for transport.",
-                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                        progressValue: 0.1)
-                                    .foregroundColor(.primary)
-                                }
-                                
-                                NavigationLink{
-                                    OrderInfoView()
-                                }label: {
-                                    ActiveOrderCardView(
-                                        orderNumber: "#12345",
-                                        supplierName: "Gjørts AS",
-                                        status: "Your order is registered.",
-                                        estimatedDelivery: "Friday between 10 - 11 am.",
-                                        progressValue: 0.05)
-                                    .foregroundColor(.primary)
-                                }
-                                
-                                NavigationLink{
-                                    OrderInfoView()
-                                }label: {
-                                    ActiveOrderCardView(
-                                        orderNumber: "#12345",
-                                        supplierName: "Gjørts AS",
-                                        status: "Your order is ready for transport.",
-                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                        progressValue: 0.1)
-                                    .foregroundColor(.primary)
-                                }
-                                NavigationLink{
-                                    OrderInfoView()
-                                }label: {
-                                    ActiveOrderCardView(
-                                        orderNumber: "#12345",
-                                        supplierName: "Gjørts AS",
-                                        status: "Your order is ready for transport.",
-                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                        progressValue: 0.1)
-                                    .foregroundColor(.primary)
-                                }
-                                NavigationLink{
-                                    OrderInfoView()
-                                }label: {
-                                    ActiveOrderCardView(
-                                        orderNumber: "#12345",
-                                        supplierName: "Gjørts AS",
-                                        status: "Your order is ready for transport.",
-                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                        progressValue: 0.1)
-                                    .foregroundColor(.primary)
+                                let activeOrders = ordersViewModel.getActiveOrders()
+                                ForEach(activeOrders, id: \.orderId) { order in
+                                    NavigationLink{
+                                        OrderInfoView(order: order)
+                                    }label: {
+                                        ActiveOrderCardView(
+                                            orderNumber: String(order.orderId),
+                                            productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
+                                            status: order.orderStatus.lowercased(),
+                                            estimatedDelivery: order.wishedDeliveryDate,
+                                            progressValue: order.progressInPercent/100)
+                                        .foregroundColor(.primary)
+                                    }
                                 }
                             }else{
-                                NavigationLink{
-                                    OrderInfoView()
-                                }label: {
-                                    PastOrderCardView(
-                                        orderNumber: "#12345",
-                                        supplierName: "Gjørts AS",
-                                        status: "Your order is ready for transport.",
-                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                        progressValue: 1)
-                                    .foregroundColor(.primary)
-                                }
-                                NavigationLink{
-                                    OrderInfoView()
-                                }label: {
-                                    PastOrderCardView(
-                                        orderNumber: "#12345",
-                                        supplierName: "Gjørts AS",
-                                        status: "Your order is ready for transport.",
-                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                        progressValue: 1)
-                                    .foregroundColor(.primary)
-                                }
-                                NavigationLink{
-                                    OrderInfoView()
-                                }label: {
-                                    PastOrderCardView(
-                                        orderNumber: "#12345",
-                                        supplierName: "Gjørts AS",
-                                        status: "Your order is ready for transport.",
-                                        estimatedDelivery: "Tomorrow between 10 - 11 am.",
-                                        progressValue: 1)
-                                    .foregroundColor(.primary)
+                                let activeOrders = ordersViewModel.getPastOrders()
+                                ForEach(activeOrders, id: \.orderId) { order in
+                                    NavigationLink{
+                                        OrderInfoView(order: order)
+                                    }label: {
+                                        PastOrderCardView(
+                                            orderNumber: order.orderId,
+                                            supplierName: 1,
+                                            status: order.orderStatus,
+                                            estimatedDelivery: order.wishedDeliveryDate,
+                                            progressValue: order.progressInPercent/100)
+                                        .foregroundColor(.primary)
+                                    }
                                 }
                             }
 
@@ -146,6 +86,16 @@ struct OrderHistoryView: View {
                 }
             }
         }.tint(.black)
+            .onAppear(){
+                Task{
+                    do{
+                        try await ordersViewModel.fetchOrders(token: userStateViewModel.currentUser?.token ?? "")
+                    }catch{
+                        print("Could not fetch orders")
+                    }
+                }
+                
+            }
     }
 }
 

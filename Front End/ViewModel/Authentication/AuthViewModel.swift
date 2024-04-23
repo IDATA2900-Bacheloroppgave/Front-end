@@ -18,8 +18,8 @@ class AuthViewModel: ObservableObject, Observable{
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let loginDetails : [String: Any] = [
-            "email" : "doee@gdmail.com",
-            "password" : "password123"
+            "email" : "staveliemm@gmail.com",
+            "password" : "testpassword11hehe"
         ]
         
         guard let httpBody = try?
@@ -95,6 +95,7 @@ class AuthViewModel: ObservableObject, Observable{
                 print("User \(user)")
                 DispatchQueue.main.async{
                     self.currentUser = user
+                    self.currentUser?.token = token
                 }
             }catch{
                 print("AAAA MISTAKE")
