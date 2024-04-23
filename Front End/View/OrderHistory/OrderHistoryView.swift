@@ -12,6 +12,8 @@ struct OrderHistoryView: View {
     @State private var selection = 0
     @EnvironmentObject var userStateViewModel : AuthViewModel
     @StateObject var ordersViewModel = OrdersViewModel()
+    @State private var isFilterVisible = false
+
     
     var body: some View {
         NavigationStack {
@@ -36,7 +38,9 @@ struct OrderHistoryView: View {
                         .colorMultiply(.bluePicker)
                         .pickerStyle(SegmentedPickerStyle())
                         
-                        Button(action: {}) {
+                        Button(action: {
+                            isFilterVisible.toggle()
+                        }) {
                             Image(systemName: "line.horizontal.3")
                                 .font(.system(size: 25))
                                 .foregroundStyle(Color.black)
@@ -83,6 +87,14 @@ struct OrderHistoryView: View {
 
                         }
                     }
+                    .sheet(isPresented: $isFilterVisible) {
+                        VStack {
+                               FilterOrderView(isVisible: $isFilterVisible)
+                                   .frame(maxWidth: .infinity) // Set maximum width
+                                   .presentationDetents([.medium, .large]) // Set your desired height
+                           }
+                    }
+                    
                 }
             }
         }.tint(.black)

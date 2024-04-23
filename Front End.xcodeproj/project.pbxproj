@@ -17,6 +17,7 @@
 		EC9659172BD145F200DDE431 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9659162BD145F200DDE431 /* OrdersViewModel.swift */; };
 		EC96591C2BD146E800DDE431 /* yellowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96591B2BD146E800DDE431 /* yellowButton.swift */; };
 		EC9659202BD7CF3200DDE431 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96591F2BD7CF3200DDE431 /* ProductView.swift */; };
+		EC9659222BD7EFF100DDE431 /* FilterOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9659212BD7EFF100DDE431 /* FilterOrderView.swift */; };
 		ECADC82B2BCEFFD2002C51B1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */; };
 		ECADC82D2BCFFD65002C51B1 /* PastOrderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECADC82C2BCFFD65002C51B1 /* PastOrderCardView.swift */; };
 		ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */; };
@@ -72,6 +73,7 @@
 		EC9659162BD145F200DDE431 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrdersViewModel.swift; path = "Front End/Model/OrdersViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		EC96591B2BD146E800DDE431 /* yellowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yellowButton.swift; sourceTree = "<group>"; };
 		EC96591F2BD7CF3200DDE431 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		EC9659212BD7EFF100DDE431 /* FilterOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOrderView.swift; sourceTree = "<group>"; };
 		ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ECADC82C2BCFFD65002C51B1 /* PastOrderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrderCardView.swift; sourceTree = "<group>"; };
 		ECEBD0602BC88497007F9D8A /* Front End.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Front End.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +255,7 @@
 				ECEBD1732BCC5BA3007F9D8A /* OrderHistory */,
 				ECEBD1742BCC5BAF007F9D8A /* NewOrder */,
 				EC96591F2BD7CF3200DDE431 /* ProductView.swift */,
+				EC9659212BD7EFF100DDE431 /* FilterOrderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 			files = (
 				ECEBD16F2BCC59A3007F9D8A /* NewOrderView.swift in Sources */,
 				ECADC82B2BCEFFD2002C51B1 /* SettingsView.swift in Sources */,
+				EC9659222BD7EFF100DDE431 /* FilterOrderView.swift in Sources */,
 				EC96591C2BD146E800DDE431 /* yellowButton.swift in Sources */,
 				ECEBD1522BC947EE007F9D8A /* NewOrderViewModel.swift in Sources */,
 				ECEBD16D2BCA1377007F9D8A /* ContentView.swift in Sources */,

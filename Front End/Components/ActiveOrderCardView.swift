@@ -24,7 +24,8 @@ struct ActiveOrderCardView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30, height: 30)
-                    .foregroundColor( Color(red: 1.00, green: 0.83, blue: 0.00))
+                  
+                    .foregroundColor( .darkgrey)
                 
                 Text("#\(orderNumber)")
                     .fontWeight(.medium)
@@ -68,5 +69,5 @@ struct ActiveOrderCardView: View {
 }
 
 #Preview {
-    ActiveOrderCardView(orderNumber: "#12345", productsInOrder: 1, status: "Skodje", estimatedDelivery: "Tomorrow before noon", progressValue: 0.1)
+    ActiveOrderCardView(orderNumber: "12345", productsInOrder: 1, status: "Skodje", estimatedDelivery: "Tomorrow before noon", progressValue: 0.1)
 }
