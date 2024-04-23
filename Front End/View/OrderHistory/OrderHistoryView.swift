@@ -13,6 +13,9 @@ struct OrderHistoryView: View {
     @EnvironmentObject var userStateViewModel : AuthViewModel
     @StateObject var ordersViewModel = OrdersViewModel()
     @State private var isFilterVisible = false
+    @State private var quickFilter = 0
+    @State private var toDate = Date()
+    @State private var fromDate = Date()
 
     
     var body: some View {
@@ -27,7 +30,7 @@ struct OrderHistoryView: View {
                             .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
                             .background(.accent)
-                            
+                    
                     }
                     
                     HStack {
@@ -89,7 +92,7 @@ struct OrderHistoryView: View {
                     }
                     .sheet(isPresented: $isFilterVisible) {
                         VStack {
-                               FilterOrderView(isVisible: $isFilterVisible)
+                            FilterOrderView(isVisible: $isFilterVisible, quickFilter: $quickFilter, toDate: $toDate, fromDate: $fromDate)
                                    .frame(maxWidth: .infinity) // Set maximum width
                                    .presentationDetents([.medium, .large]) // Set your desired height
                            }
