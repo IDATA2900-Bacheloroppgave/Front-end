@@ -57,9 +57,9 @@ struct LandingPageView: View {
                             .fontWeight(.medium)
                             .padding(EdgeInsets(top: 10, leading: 2, bottom: 10, trailing: 2))
                         
-                        //The subsequent upcoming deliveries
                         
-                        ForEach(ordersViewModel.orders, id: \.orderId) { order in
+                        
+                        ForEach(ordersViewModel.getActiveOrders(), id: \.orderId) { order in
                             NavigationLink{
                                 OrderInfoView(order: order)
                             }label: {
