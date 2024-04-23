@@ -43,9 +43,10 @@ struct ProductInfoCard: View {
                 .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
             }
             Spacer() // Add Spacer to push "5-Dpak" to the end
-            Text(String(quantityInfo))
-                .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
-                .frame(maxHeight: .infinity, alignment: .center)
+            Text(String("\(quantityInfo) D-Pk"))
+                .font(.system(size: 14))
+                .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+                .frame(maxWidth: 100, maxHeight: .infinity, alignment: .center)
                 .background(.accent .opacity(0.4))
         }
         .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)

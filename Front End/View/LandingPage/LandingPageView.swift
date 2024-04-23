@@ -77,7 +77,6 @@ struct LandingPageView: View {
                     ScanToOrderBtn()
                 }
             }
-            .tint(.black)
             .onAppear(){
                 Task{
                     do{
@@ -88,7 +87,7 @@ struct LandingPageView: View {
                 }
                 
             }
-        }
+        }.tint(.black)
     }
 }
     

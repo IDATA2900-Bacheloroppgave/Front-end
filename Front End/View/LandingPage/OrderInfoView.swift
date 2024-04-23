@@ -13,45 +13,61 @@ struct OrderInfoView: View {
         self.order = order
     }
     var body: some View {
-        ZStack {
-            Color(red: 0.96, green: 0.96, blue: 0.96)
-                .edgesIgnoringSafeArea(.all)
-            VStack{
-                VStack {
-                    Text("Order #\(order.orderId)")
-                        .font(.system(size: 20))
-                        .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-                        .background(.accent)
-                }
-                VStack {
-                    DeliveryCardView(
-                        mainTitle: "Order: \(order.orderDate)",
-                        orderNumber: "#\(order.orderId)",
-                        progressValue: order.progressInPercent/100,
-                        currentLocation: "Curent location: TO DO",
-                        arrivalTime: "Estimated delivery: Today 12 - 2 pm TO DO",
-                        supplierName: "Gjørts AS").padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+        NavigationStack{
+            ZStack {
+                Color(red: 0.96, green: 0.96, blue: 0.96)
+                    .edgesIgnoringSafeArea(.all)
+                VStack{
                     VStack {
-                        Text("Products in order")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(.headline)
-                            .padding()
-                        ScrollView{
-                            ForEach(order.quantities.indices, id: \.self) { index in
-                                let quantity = order.quantities[index]
-                                ProductInfoCard(productName:quantity.product.name,
-                                                productIcon: "fork.knife.circle.fill",
-                                                supplierName: quantity.product.supplier,
-                                                batchNumber: quantity.product.batch,
-                                                bestBeforeDate: quantity.product.bestBeforeDate,
-                                                quantityInfo: quantity.productQuantity)
+                        Text("Order #\(order.orderId)")
+                            .font(.system(size: 20))
+                            .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                            .background(.accent)
+                    }
+                    VStack {
+                        DeliveryCardView(
+                            mainTitle: "Order: \(order.orderDate)",
+                            orderNumber: "#\(order.orderId)",
+                            progressValue: order.progressInPercent/100,
+                            currentLocation: "Curent location: TO DO",
+                            arrivalTime: "Estimated delivery: Today 12 - 2 pm TO DO",
+                            supplierName: "Gjørts AS").padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                        VStack {
+                            Text("Products in order")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(.headline)
+                                .padding()
+                            ScrollView{
+                                ForEach(order.quantities.indices, id: \.self) { index in
+                                    let quantity = order.quantities[index]
+                                    NavigationLink{
+                                        ProductView(
+                                            productName: quantity.product.name,
+                                            supplier: quantity.product.supplier,
+                                            currentStock: quantity.product.inventory?.availableStock ?? 0,
+                                            productType: quantity.product.productType,
+                                            packaging: quantity.product.packaging?.packageType ?? "", contentPerPackage: quantity.product.packaging?.quantityPrPackage ?? 0,
+                                            price: quantity.product.price,
+                                            weight: Double(quantity.product.packaging?.weightInGrams ?? Int(0.0)), gtin: quantity.product.gtin, 
+                                            batch: quantity.product.batch,
+                                            bestBefore: quantity.product.bestBeforeDate)
+                                    }label: {
+                                        ProductInfoCard(productName:quantity.product.name,
+                                                        productIcon: "fork.knife.circle.fill",
+                                                        supplierName: quantity.product.supplier,
+                                                        batchNumber: quantity.product.batch,
+                                                        bestBeforeDate: quantity.product.bestBeforeDate,
+                                                        quantityInfo: quantity.productQuantity)
+                                    }
+                                    }
+                                    
                             }
                         }
+                        .padding(0)
                     }
-                    .padding(0)
                 }
-            }
+            }.tint(.black)
         }
     }
 }
