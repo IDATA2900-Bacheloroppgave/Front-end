@@ -31,8 +31,11 @@ struct FilterOrderView: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .foregroundColor(.black).font(.system(size: 20))
                    
-                }  
+                }
+                .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                 .padding(.horizontal)
+                
+              
                 VStack{
                     VStack{
                         Text("Quick filters")

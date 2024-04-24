@@ -31,10 +31,12 @@ struct NewOrderView: View {
                     VStack{
                         VStack{
                             HStack{
-                                Text("Searchbar here")
-                                    .frame(maxWidth: .infinity)
-                                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
-                                    
+                                TextField("Search", text: $searchterm)
+                                                                   .padding(.horizontal, 5)
+                                                                   .padding(.vertical, 7)
+                                                                   .background(Color.white)
+                                                                   .cornerRadius(10)
+                                                                   .foregroundColor(.black)
                                 Button(action: {
                                     // Action for the button tap
                                 }) {
@@ -51,9 +53,8 @@ struct NewOrderView: View {
                                     .cornerRadius(10) // Adjust corner radius to match your design
                                 }
                                 .frame(minWidth: 0)
-                                
-                           
-                            }
+                            
+                            }  .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                             HStack{
                                 Picker(selection: $pickerSelection, label: Text("Options")) {
                                     Text("All products").tag(0)
