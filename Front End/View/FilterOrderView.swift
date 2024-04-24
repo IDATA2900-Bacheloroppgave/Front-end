@@ -73,8 +73,6 @@ struct FilterOrderView: View {
                             .padding(.horizontal)
                             //.colorMultiply(.accent)
                             .pickerStyle(SegmentedPickerStyle())
-                            
-                            
                         }
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                        

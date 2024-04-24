@@ -49,7 +49,7 @@ struct OrderInfoView: View {
                                             productType: quantity.product.productType,
                                             packaging: quantity.product.packaging?.packageType ?? "", contentPerPackage: quantity.product.packaging?.quantityPrPackage ?? 0,
                                             price: quantity.product.price,
-                                            weight: Double(quantity.product.packaging?.weightInGrams ?? Int(0.0)), gtin: quantity.product.gtin, 
+                                            weight: Double(quantity.product.packaging?.weightInGrams ?? Int(0.0)), gtin: quantity.product.gtin,
                                             batch: quantity.product.batch,
                                             bestBefore: quantity.product.bestBeforeDate)
                                     }label: {
@@ -60,8 +60,8 @@ struct OrderInfoView: View {
                                                         bestBeforeDate: quantity.product.bestBeforeDate,
                                                         quantityInfo: quantity.productQuantity)
                                     }
-                                    }
-                                    
+                                }
+                                
                             }
                         }
                         .padding(0)

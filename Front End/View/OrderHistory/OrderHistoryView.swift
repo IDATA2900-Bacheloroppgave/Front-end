@@ -49,7 +49,7 @@ struct OrderHistoryView: View {
                     return false
                 }
             }
-        
+            
         }
         
         if !Calendar.current.isDate(dateNow, equalTo: toDate, toGranularity: .day) || !Calendar.current.isDate(dateNow, equalTo: fromDate, toGranularity: .day){
@@ -58,20 +58,20 @@ struct OrderHistoryView: View {
             print(toDate)
             print(fromDate)
             print(dateNow)
-        
+            
             return ordersViewModel.orders.filter { order in
-                   if let orderDate = order.orderDateAsDate {
-                       return orderDate >= fromDate && orderDate <= toDate
-                   }
-                   return false
-               }
+                if let orderDate = order.orderDateAsDate {
+                    return orderDate >= fromDate && orderDate <= toDate
+                }
+                return false
+            }
         }
         
         return ordersViewModel.orders
     }
-
-
-
+    
+    
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -84,7 +84,7 @@ struct OrderHistoryView: View {
                             .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
                             .background(.accent)
-                    
+                        
                     }
                     
                     HStack {
@@ -141,15 +141,15 @@ struct OrderHistoryView: View {
                                     }
                                 }
                             }
-
+                            
                         }
                     }
                     .sheet(isPresented: $isFilterVisible) {
                         VStack {
                             FilterOrderView(isVisible: $isFilterVisible, quickFilter: $quickFilter, toDate: $toDate, fromDate: $fromDate, nowDate: $dateNow)
-                                   .frame(maxWidth: .infinity) // Set maximum width
-                                   .presentationDetents([.medium, .large]) // Set your desired height
-                           }
+                                .frame(maxWidth: .infinity) // Set maximum width
+                                .presentationDetents([.medium, .large]) // Set your desired height
+                        }
                     }
                     
                 }
