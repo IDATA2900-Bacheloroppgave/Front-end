@@ -48,7 +48,7 @@ struct LogInView: View {
                               
                                     }catch{
                                         print("Could not log in user")
-                                        userFeedback =  authViewModel.error!
+                                        userFeedback =  authViewModel.error! ///GHER BLIR DET FEIL NÅR APPEN IKKE ER OPPE
                                     }
                                 }
                             }

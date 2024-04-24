@@ -66,7 +66,7 @@ class OrdersViewModel: ObservableObject{
         return products
     }
     
-    func getActiveOrders() -> [Order]{
+    func getActiveOrders(orders: [Order]) -> [Order]{
         var activeOrders: [Order] = []
         for order in orders {
             if order.orderStatus != "DELIVERED" && order.orderStatus != "CANCELLED"{
@@ -79,7 +79,7 @@ class OrdersViewModel: ObservableObject{
         
     }
     
-    func getPastOrders() -> [Order]{
+    func getPastOrders(orders: [Order]) -> [Order]{
         var pastOrders: [Order] = []
         for order in orders {
             if order.orderStatus == "DELIVERED"{

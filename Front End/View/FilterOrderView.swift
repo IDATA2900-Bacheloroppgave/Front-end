@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FilterOrderView: View {
     @Binding var isVisible: Bool
-    @Binding  var quickFilter: Int
+    @Binding var quickFilter: Int
     @Binding var toDate: Date
     @Binding var fromDate: Date
 
@@ -41,13 +41,38 @@ struct FilterOrderView: View {
                          
                         HStack{
                             Picker("Options", selection: $quickFilter) {
-                                Text("Past week").tag(0).foregroundStyle(Color.white)
-                                Text("Past month").tag(1)
-                                Text("Pas six months").tag(2)
+                                Text("Past week").tag(1).foregroundStyle(Color.white)
+                                Text("Past month").tag(2)
+                                Text("Past six months").tag(3)
                             }
+                            .onChange(of: quickFilter) { newValue, _ in
+                                // Handle changes in quickFilter selection
+                                print(quickFilter)
+                                    if quickFilter == 1 {
+                                        // Perform actions for Past week selection
+                                        // Example: Update toDate and fromDate based on past week
+                                        let pastWeekDate = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+                                        toDate = Date() // Set toDate to current date
+                                        fromDate = pastWeekDate // Set fromDate to past week date
+                                    } else if quickFilter == 2 {
+                                        // Perform actions for Past month selection
+                                        // Example: Update toDate and fromDate based on past month
+                                        let pastMonthDate = Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date()
+                                        toDate = Date() // Set toDate to current date
+                                        fromDate = pastMonthDate // Set fromDate to past month date
+                                    } else if quickFilter == 3 {
+                                        // Perform actions for Past six months selection
+                                        // Example: Update toDate and fromDate based on past six months
+                                        let pastSixMonthsDate = Calendar.current.date(byAdding: .month, value: -6, to: Date()) ?? Date()
+                                        toDate = Date() // Set toDate to current date
+                                        fromDate = pastSixMonthsDate // Set fromDate to past six months date
+                                    }
+                                }
+                            
                             .padding(.horizontal)
-                            .colorMultiply(.accent)
+                            //.colorMultiply(.accent)
                             .pickerStyle(SegmentedPickerStyle())
+                            
                             
                         }
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -60,21 +85,22 @@ struct FilterOrderView: View {
                             .fontWeight(.medium)
                             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                       
-                     
-                            DatePicker(selection: $toDate,
+                        DatePicker(selection: $fromDate,
+                               in: ...Date(),
+                               displayedComponents: .date,
+                               label: {
+                                   Text("From:")
+                               }
+                           ) .padding(.horizontal)
+                            
+                        DatePicker(selection: $toDate,
                                    in: ...Date(),
                                    displayedComponents: .date,
                                    label: {
                                        Text("To:")
                                    }
                                ) .padding(.horizontal)
-                            DatePicker(selection: $fromDate,
-                                   in: ...Date(),
-                                   displayedComponents: .date,
-                                   label: {
-                                       Text("From:")
-                                   }
-                               ) .padding(.horizontal)
+                        
                            
         
                     }
@@ -82,6 +108,7 @@ struct FilterOrderView: View {
                     .padding(.vertical)
                     
                 }
+                .padding(.horizontal)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 .padding(.vertical)
            

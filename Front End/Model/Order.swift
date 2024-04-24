@@ -15,6 +15,12 @@ struct Order: Codable{
     var progressInPercent: Double
     var customer: User
     var quantities: [Quantity]
+    
+    var orderDateAsDate: Date? {
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = "yyyy-MM-dd" // Adjust the date format according to your string
+           return dateFormatter.date(from: orderDate)
+       }
 }
 
 

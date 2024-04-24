@@ -59,7 +59,7 @@ struct LandingPageView: View {
                         
                         
                         
-                        ForEach(ordersViewModel.getActiveOrders(), id: \.orderId) { order in
+                        ForEach(ordersViewModel.getActiveOrders(orders: ordersViewModel.orders), id: \.orderId) { order in
                             NavigationLink{
                                 OrderInfoView(order: order)
                             }label: {

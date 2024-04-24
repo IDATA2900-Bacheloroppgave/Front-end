@@ -16,8 +16,57 @@ struct OrderHistoryView: View {
     @State private var quickFilter = 0
     @State private var toDate = Date()
     @State private var fromDate = Date()
-
+    private var dateNow = Date()
     
+    var filteredOrders: [Order] {
+        if quickFilter != 0 {
+            // Apply quick filter
+            if quickFilter == 1 {
+                // Filter for past week
+                let pastWeekDate = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+                return ordersViewModel.orders.filter { order in
+                    if let orderDate = order.orderDateAsDate {
+                        return orderDate >= pastWeekDate
+                    }
+                    return false
+                }
+            } else if quickFilter == 2 {
+                // Filter for past month
+                let pastMonthDate = Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date()
+                return ordersViewModel.orders.filter { order in
+                    if let orderDate = order.orderDateAsDate {
+                        return orderDate >= pastMonthDate
+                    }
+                    return false
+                }
+            } else if quickFilter == 3 {
+                // Filter for past six months
+                let pastSixMonthsDate = Calendar.current.date(byAdding: .month, value: -6, to: Date()) ?? Date()
+                return ordersViewModel.orders.filter { order in
+                    if let orderDate = order.orderDateAsDate {
+                        return orderDate >= pastSixMonthsDate
+                    }
+                    return false
+                }
+            }
+        
+        }
+        
+        if toDate != dateNow && fromDate != dateNow{
+        
+            return ordersViewModel.orders.filter { order in
+                   if let orderDate = order.orderDateAsDate {
+                       return orderDate >= fromDate && orderDate <= toDate
+                   }
+                   return false
+               }
+        }
+        
+        return ordersViewModel.orders
+    }
+
+
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -57,7 +106,7 @@ struct OrderHistoryView: View {
                     VStack{
                         ScrollView{
                             if selection == 0{
-                                let activeOrders = ordersViewModel.getActiveOrders()
+                                let activeOrders = ordersViewModel.getActiveOrders(orders: filteredOrders)
                                 ForEach(activeOrders, id: \.orderId) { order in
                                     NavigationLink{
                                         OrderInfoView(order: order)
@@ -72,7 +121,7 @@ struct OrderHistoryView: View {
                                     }
                                 }
                             }else{
-                                let activeOrders = ordersViewModel.getPastOrders()
+                                let activeOrders = ordersViewModel.getPastOrders(orders: filteredOrders)
                                 ForEach(activeOrders, id: \.orderId) { order in
                                     NavigationLink{
                                         OrderInfoView(order: order)
@@ -105,6 +154,7 @@ struct OrderHistoryView: View {
                 Task{
                     do{
                         try await ordersViewModel.fetchOrders(token: userStateViewModel.currentUser?.token ?? "")
+                        
                     }catch{
                         print("Could not fetch orders")
                     }

@@ -38,7 +38,8 @@ struct DeliveryCardView: View {
                 .tint(.yellow)
                 .frame(width: 340)
                 .padding(.vertical, 4) // Adjust padding as needed
-                .scaleEffect(x: 1, y: 2)
+                .scaleEffect(x: 1, y: 2.5)
+                
             
             VStack(alignment: .center) {
                 HStack {
