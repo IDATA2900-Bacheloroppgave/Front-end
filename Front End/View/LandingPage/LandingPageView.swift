@@ -74,7 +74,7 @@ struct LandingPageView: View {
                         }
                         
                     }
-                    ScanToOrderBtn()
+                    yellowButton()
                 }
             }
             .onAppear(){

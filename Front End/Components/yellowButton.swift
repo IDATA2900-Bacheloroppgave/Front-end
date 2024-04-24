@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ScanToOrderBtn: View {
+struct yellowButton: View {
     var body: some View {
         Button(action: {
             // Action for the button tap
@@ -35,5 +35,5 @@ struct ScanToOrderBtn: View {
 
 
 #Preview {
-    ScanToOrderBtn()
+    yellowButton()
 }

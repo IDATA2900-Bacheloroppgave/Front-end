@@ -16,7 +16,7 @@ struct OrderHistoryView: View {
     @State private var quickFilter = 0
     @State private var toDate = Date()
     @State private var fromDate = Date()
-    private var dateNow = Date()
+    @State private var dateNow = Date()
     
     var filteredOrders: [Order] {
         if quickFilter != 0 {
@@ -52,7 +52,12 @@ struct OrderHistoryView: View {
         
         }
         
-        if toDate != dateNow && fromDate != dateNow{
+        if !Calendar.current.isDate(dateNow, equalTo: toDate, toGranularity: .day) || !Calendar.current.isDate(dateNow, equalTo: fromDate, toGranularity: .day){
+            
+            print("INSIDE")
+            print(toDate)
+            print(fromDate)
+            print(dateNow)
         
             return ordersViewModel.orders.filter { order in
                    if let orderDate = order.orderDateAsDate {
@@ -141,7 +146,7 @@ struct OrderHistoryView: View {
                     }
                     .sheet(isPresented: $isFilterVisible) {
                         VStack {
-                            FilterOrderView(isVisible: $isFilterVisible, quickFilter: $quickFilter, toDate: $toDate, fromDate: $fromDate)
+                            FilterOrderView(isVisible: $isFilterVisible, quickFilter: $quickFilter, toDate: $toDate, fromDate: $fromDate, nowDate: $dateNow)
                                    .frame(maxWidth: .infinity) // Set maximum width
                                    .presentationDetents([.medium, .large]) // Set your desired height
                            }
@@ -159,7 +164,6 @@ struct OrderHistoryView: View {
                         print("Could not fetch orders")
                     }
                 }
-                
             }
     }
 }

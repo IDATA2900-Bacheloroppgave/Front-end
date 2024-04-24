@@ -12,6 +12,7 @@ struct FilterOrderView: View {
     @Binding var quickFilter: Int
     @Binding var toDate: Date
     @Binding var fromDate: Date
+    @Binding var nowDate : Date
 
         var body: some View {
             VStack {
@@ -99,13 +100,52 @@ struct FilterOrderView: View {
                                    label: {
                                        Text("To:")
                                    }
-                               ) .padding(.horizontal)
-                        
-                           
-        
-                    }
+                               ) 
+                        .padding(.horizontal)
 
+                    }
                     .padding(.vertical)
+                    
+                    VStack{
+                        Button(action: {
+                            toDate = Date()
+                            fromDate = Date()
+                            nowDate = Date()
+                            quickFilter = 0
+                            isVisible = false
+                        }) {
+                            HStack {
+                                Text("Remove filters")
+                                    .font(.system(size: 16, weight: .medium)) // Adjust font size and weight as needed
+                                    .foregroundColor(Color.black)
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10) // Adjust padding as needed
+                            .background(.warning) // Use the color that matches your design
+                            .cornerRadius(10) // Adjust corner radius to match your design
+                        }
+                        .padding(.horizontal)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        
+                        Button(action: {
+                            isVisible = false
+                        }) {
+                            HStack {
+                                Text("See results")
+                                    .font(.system(size: 16, weight: .medium)) // Adjust font size and weight as needed
+                                    .foregroundColor(Color.black)
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10) // Adjust padding as needed
+                            .background(.greenProgressbar) // Use the color that matches your design
+                            .cornerRadius(10) // Adjust corner radius to match your design
+                        }
+                        .padding(.horizontal)
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                      
+                    }.padding(.vertical)
                     
                 }
                 .padding(.horizontal)
@@ -121,5 +161,5 @@ struct FilterOrderView: View {
 }
 
 #Preview {
-    FilterOrderView(isVisible: .constant(true), quickFilter: .constant(0), toDate: .constant(Date.now), fromDate: .constant(Date.now))
+    FilterOrderView(isVisible: .constant(true), quickFilter: .constant(0), toDate: .constant(Date.now), fromDate: .constant(Date.now), nowDate: .constant(Date.now))
 }
