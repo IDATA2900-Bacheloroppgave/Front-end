@@ -25,6 +25,7 @@ struct NewOrderView: View {
                             .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
                             .background(.accent)
+                          
                         
                     }
                     
@@ -33,10 +34,13 @@ struct NewOrderView: View {
                             HStack{
                                 TextField("Search", text: $searchterm)
                                                                    .padding(.horizontal, 5)
-                                                                   .padding(.vertical, 7)
+                                                                   .padding(.vertical, 8)
                                                                    .background(Color.white)
-                                                                   .cornerRadius(10)
+                                                                   .cornerRadius(5)
+                                                                   .shadow(radius: 1)
                                                                    .foregroundColor(.black)
+                                                                   .backgroundStyle(.white)
+            
                                 Button(action: {
                                     // Action for the button tap
                                 }) {
@@ -47,10 +51,13 @@ struct NewOrderView: View {
                                             .foregroundColor(.black)
                                             .font(.system(size: 25)) // Adjust icon size as needed
                                     }
+                                    
                                     .padding(.horizontal, 5)
                                     .padding(.vertical, 5) // Adjust padding as needed
                                     .background(Color.yellow) // Use the color that matches your design
-                                    .cornerRadius(10) // Adjust corner radius to match your design
+                                    
+                                    .cornerRadius(5)
+                                    .shadow(radius: 1)// Adjust corner radius to match your design
                                 }
                                 .frame(minWidth: 0)
                             
