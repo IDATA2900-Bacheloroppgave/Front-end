@@ -11,6 +11,7 @@ struct NewOrderView: View {
     @StateObject var testViewModel = NewOrderViewModel()
     @State private var searchterm = ""
     @State private var amount = 0
+    @State private var productAmounts: [Int: Int] = [:]
     @State private var pickerSelection = 0
     
     var body: some View {
@@ -34,7 +35,7 @@ struct NewOrderView: View {
                             HStack{
                                 TextField("Search", text: $searchterm)
                                                                    .padding(.horizontal, 5)
-                                                                   .padding(.vertical, 8)
+                                                                   .padding(.vertical, 7)
                                                                    .background(Color.white)
                                                                    .cornerRadius(5)
                                                                    .shadow(radius: 1)
@@ -56,8 +57,7 @@ struct NewOrderView: View {
                                     .padding(.vertical, 5) // Adjust padding as needed
                                     .background(Color.yellow) // Use the color that matches your design
                                     
-                                    .cornerRadius(5)
-                                    .shadow(radius: 1)// Adjust corner radius to match your design
+                                    .cornerRadius(5) // Adjust corner radius to match your design
                                 }
                                 .frame(minWidth: 0)
                             
@@ -76,12 +76,7 @@ struct NewOrderView: View {
                         .padding(.horizontal)
                         ScrollView{
                             ForEach(testViewModel.products, id: \.productId) { product in
-                                
-                                NewProductCardView(amount: $amount,
-                                                   productIcon: "fork.knife.circle.fill",
-                                                   product: product
-                                )
-                                
+                                NewProductCardView(product: product, productAmounts: $productAmounts)
                             }
                         }
                     }

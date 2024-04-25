@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct NewProductCardView: View {
-    @Binding var amount : Int
-    let productIcon: String
-    let product: Product
-    
-    
+    var product: Product
+    @State private var amount = 0
+    @Binding var productAmounts: [Int: Int]
     
     var body: some View {
         HStack{
@@ -30,7 +28,7 @@ struct NewProductCardView: View {
                         bestBefore: product.bestBeforeDate)
                 }label: {
                     HStack(spacing: 4) {
-                        Image(systemName: productIcon)
+                        Image(systemName: "fork.knife.circle.fill")
                             .resizable()
                             .frame(width: 30, height: 30)
                             .foregroundColor(.iconVeggie)
@@ -61,6 +59,10 @@ struct NewProductCardView: View {
                     .foregroundStyle(.bluePicker)
                 Stepper("", value: $amount, in: 0...100)
                     .labelsHidden()
+                    .onChange(of: amount) { newValue, oldValue in
+                                            // Update the product amount in the dictionary
+                                            productAmounts[product.productId] = newValue
+                    }
                 
             }
             .frame(maxWidth: 100)
@@ -78,5 +80,5 @@ struct NewProductCardView: View {
 }
 
 #Preview {
-    NewProductCardView(amount: .constant(0), productIcon: "fork.knife.circle.fill", product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 12, gtin: 12, batch: 12))
+    NewProductCardView(product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 12, gtin: 12, batch: 12), productAmounts: .constant([1:1]))
 }

@@ -30,7 +30,7 @@ struct OrderInfoView: View {
                             mainTitle: "Order: \(order.orderDate)",
                             orderNumber: "#\(order.orderId)",
                             progressValue: order.progressInPercent/100,
-                            currentLocation: "Curent location: \(order.currentLocation!)",
+                            currentLocation: "Curent location: \(order.currentLocation ?? "Not available" )",
                             arrivalTime: "Requested delivery: \(order.wishedDeliveryDate)",
                             supplierName: "Gjørts AS").padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                         VStack {

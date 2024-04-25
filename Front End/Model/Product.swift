@@ -29,6 +29,11 @@ struct Product: Codable {
     }
 }
 
+struct ProductQuantity: Codable{
+    var productQuantity: Int
+    var product: Product
+}
+
 struct Inventory: Codable {
     var totalStock, reservedStock, availableStock: Int
 }
