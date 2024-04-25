@@ -17,6 +17,7 @@
 		EC9659202BD7CF3200DDE431 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96591F2BD7CF3200DDE431 /* ProductView.swift */; };
 		EC9659222BD7EFF100DDE431 /* FilterOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9659212BD7EFF100DDE431 /* FilterOrderView.swift */; };
 		EC9659242BD949A200DDE431 /* NewProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9659232BD949A200DDE431 /* NewProductCardView.swift */; };
+		EC9659262BDA9B8300DDE431 /* ShoppingCartSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9659252BDA9B8300DDE431 /* ShoppingCartSheetView.swift */; };
 		ECADC82B2BCEFFD2002C51B1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */; };
 		ECADC82D2BCFFD65002C51B1 /* PastOrderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECADC82C2BCFFD65002C51B1 /* PastOrderCardView.swift */; };
 		ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */; };
@@ -72,6 +73,7 @@
 		EC96591F2BD7CF3200DDE431 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		EC9659212BD7EFF100DDE431 /* FilterOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOrderView.swift; sourceTree = "<group>"; };
 		EC9659232BD949A200DDE431 /* NewProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductCardView.swift; sourceTree = "<group>"; };
+		EC9659252BDA9B8300DDE431 /* ShoppingCartSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartSheetView.swift; sourceTree = "<group>"; };
 		ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ECADC82C2BCFFD65002C51B1 /* PastOrderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrderCardView.swift; sourceTree = "<group>"; };
 		ECEBD0602BC88497007F9D8A /* Front End.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Front End.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				ECEBD16E2BCC59A3007F9D8A /* NewOrderView.swift */,
+				EC9659252BDA9B8300DDE431 /* ShoppingCartSheetView.swift */,
 			);
 			path = NewOrder;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */,
 				ECEBD14B2BC93076007F9D8A /* User.swift in Sources */,
 				ECEBD1802BCEA430007F9D8A /* ValidataionViewModel.swift in Sources */,
+				EC9659262BDA9B8300DDE431 /* ShoppingCartSheetView.swift in Sources */,
 				003BB0332BCEBE750048D751 /* ActiveOrderCardView.swift in Sources */,
 				EC9659202BD7CF3200DDE431 /* ProductView.swift in Sources */,
 				ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */,

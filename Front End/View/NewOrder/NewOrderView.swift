@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewOrderView: View {
     @StateObject var testViewModel = NewOrderViewModel()
+    @State private var itemSelected = false
     @State private var searchterm = ""
     @State private var amount = 0
     @State private var productAmounts: [Int: Int] = [:]
@@ -26,7 +27,7 @@ struct NewOrderView: View {
                             .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
                             .background(.accent)
-                          
+                        
                         
                     }
                     
@@ -34,19 +35,19 @@ struct NewOrderView: View {
                         VStack{
                             HStack{
                                 TextField("Search", text: $searchterm)
-                                                                   .padding(.horizontal, 5)
-                                                                   .padding(.vertical, 7)
-                                                                   .background(Color.white)
-                                                                   .cornerRadius(5)
-                                                                   .shadow(radius: 1)
-                                                                   .foregroundColor(.black)
-                                                                   .backgroundStyle(.white)
-            
+                                    .padding(.horizontal, 5)
+                                    .padding(.vertical, 7)
+                                    .background(Color.white)
+                                    .cornerRadius(5)
+                                    .shadow(radius: 1)
+                                    .foregroundColor(.black)
+                                    .backgroundStyle(.white)
+                                
                                 Button(action: {
                                     // Action for the button tap
                                 }) {
                                     HStack {
-
+                                        
                                         
                                         Image(systemName: "barcode.viewfinder")
                                             .foregroundColor(.black)
@@ -60,7 +61,7 @@ struct NewOrderView: View {
                                     .cornerRadius(5) // Adjust corner radius to match your design
                                 }
                                 .frame(minWidth: 0)
-                            
+                                
                             }  .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                             HStack{
                                 Picker(selection: $pickerSelection, label: Text("Options")) {
@@ -76,11 +77,24 @@ struct NewOrderView: View {
                         .padding(.horizontal)
                         ScrollView{
                             ForEach(testViewModel.products, id: \.productId) { product in
-                                NewProductCardView(product: product, productAmounts: $productAmounts)
+                                NewProductCardView(product: product, productAmounts: $productAmounts, itemSelected: $itemSelected)
                             }
                         }
                     }
-                }.tint(.black)
+                }
+                .sheet(isPresented: $itemSelected) {
+                    VStack {
+                        ShoppingCartSheetView()
+                            .presentationDetents([.fraction(0.2)])
+                            .presentationBackgroundInteraction(
+                                .enabled(upThrough: .fraction(0.2))
+                            )
+                        
+                    }
+                }
+                
+                
+                .tint(.black)
             }
         }.tint(.black)
             .onAppear(){

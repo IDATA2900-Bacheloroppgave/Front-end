@@ -11,6 +11,7 @@ struct NewProductCardView: View {
     var product: Product
     @State private var amount = 0
     @Binding var productAmounts: [Int: Int]
+    @Binding var itemSelected : Bool
     
     var body: some View {
         HStack{
@@ -53,7 +54,7 @@ struct NewProductCardView: View {
                     }
                 }
             }
-            Spacer() // Add Spacer to push "5-Dpak" to the end
+            Spacer() 
             VStack {
                 Text("\(amount)")
                     .foregroundStyle(.bluePicker)
@@ -61,7 +62,9 @@ struct NewProductCardView: View {
                     .labelsHidden()
                     .onChange(of: amount) { newValue, oldValue in
                                             // Update the product amount in the dictionary
-                                            productAmounts[product.productId] = newValue
+                        productAmounts[product.productId] = newValue
+                        itemSelected = true //FIKS SÅ DEN KUN SETTES TIL TRUE NÅR DET ER 1 eller flere
+                       
                     }
                 
             }
@@ -80,5 +83,5 @@ struct NewProductCardView: View {
 }
 
 #Preview {
-    NewProductCardView(product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 12, gtin: 12, batch: 12), productAmounts: .constant([1:1]))
+    NewProductCardView(product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 12, gtin: 12, batch: 12), productAmounts: .constant([1:1]), itemSelected: .constant(false))
 }
