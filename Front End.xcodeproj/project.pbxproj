@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000A1C022BDBA0EB008B55AE /* ConfirmOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A1C012BDBA0EB008B55AE /* ConfirmOrderView.swift */; };
 		003BB0312BCEBE2E0048D751 /* DeliveryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0302BCEBE2E0048D751 /* DeliveryCardView.swift */; };
 		003BB0332BCEBE750048D751 /* ActiveOrderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0322BCEBE750048D751 /* ActiveOrderCardView.swift */; };
 		003BB0352BCEBECE0048D751 /* ProductInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000A1C012BDBA0EB008B55AE /* ConfirmOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmOrderView.swift; sourceTree = "<group>"; };
 		003BB0302BCEBE2E0048D751 /* DeliveryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCardView.swift; sourceTree = "<group>"; };
 		003BB0322BCEBE750048D751 /* ActiveOrderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveOrderCardView.swift; sourceTree = "<group>"; };
 		003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoCardView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				ECEBD16E2BCC59A3007F9D8A /* NewOrderView.swift */,
 				EC9659252BDA9B8300DDE431 /* ShoppingCartSheetView.swift */,
+				000A1C012BDBA0EB008B55AE /* ConfirmOrderView.swift */,
 			);
 			path = NewOrder;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				EC9659242BD949A200DDE431 /* NewProductCardView.swift in Sources */,
 				ECEBD1652BC9DDA4007F9D8A /* ProductsDataService.swift in Sources */,
 				ECEBD1792BCD472E007F9D8A /* Store.swift in Sources */,
+				000A1C022BDBA0EB008B55AE /* ConfirmOrderView.swift in Sources */,
 				EC9659172BD145F200DDE431 /* OrdersViewModel.swift in Sources */,
 				ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */,
 				ECEBD1592BC969D6007F9D8A /* LoginView.swift in Sources */,
