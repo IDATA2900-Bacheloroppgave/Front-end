@@ -146,7 +146,7 @@ struct OrderHistoryView: View {
                     }
                     .sheet(isPresented: $isFilterVisible) {
                         VStack {
-                            FilterOrderView(isVisible: $isFilterVisible, quickFilter: $quickFilter, toDate: $toDate, fromDate: $fromDate, nowDate: $dateNow)
+                            FilterOrderSheetView(isVisible: $isFilterVisible, quickFilter: $quickFilter, toDate: $toDate, fromDate: $fromDate, nowDate: $dateNow)
                                 .frame(maxWidth: .infinity) // Set maximum width
                                 .presentationDetents([.medium, .large]) // Set your desired height
                         }

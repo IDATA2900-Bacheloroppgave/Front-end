@@ -56,13 +56,13 @@ struct NewProductCardView: View {
             }
             Spacer() 
             VStack {
-                Text("\(amount)")
+                Text("\(amount) D-Pk")
                     .foregroundStyle(.bluePicker)
                 Stepper("", value: $amount, in: 0...100)
                     .labelsHidden()
                     .onChange(of: amount) { newValue, oldValue in
                                             // Update the product amount in the dictionary
-                        productAmounts[product.productId] = newValue
+                        productAmounts[product.productId] = newValue + 1
                         itemSelected = true //FIKS SÅ DEN KUN SETTES TIL TRUE NÅR DET ER 1 eller flere
                        
                     }

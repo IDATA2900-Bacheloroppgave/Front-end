@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FilterOrderView: View {
+struct FilterOrderSheetView: View {
     @Binding var isVisible: Bool
     @Binding var quickFilter: Int
     @Binding var toDate: Date
@@ -162,5 +162,5 @@ struct FilterOrderView: View {
 }
 
 #Preview {
-    FilterOrderView(isVisible: .constant(true), quickFilter: .constant(0), toDate: .constant(Date.now), fromDate: .constant(Date.now), nowDate: .constant(Date.now))
+    FilterOrderSheetView(isVisible: .constant(true), quickFilter: .constant(0), toDate: .constant(Date.now), fromDate: .constant(Date.now), nowDate: .constant(Date.now))
 }

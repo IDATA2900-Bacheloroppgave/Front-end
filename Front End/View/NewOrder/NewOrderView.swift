@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct NewOrderView: View {
+    
     @StateObject var testViewModel = NewOrderViewModel()
-    @State private var itemSelected = false
-    @State private var searchterm = ""
-    @State private var amount = 0
-    @State private var productAmounts: [Int: Int] = [:]
-    @State private var pickerSelection = 0
+    @EnvironmentObject var userStateViewModel : AuthViewModel
+    
+    @State private var wishedDelivery = Date()
+    @State private var productAmounts: [Int: Int] = [:] // LIST OF PRODUCTID AND
+    @State private var placeOrder = false
+    
+    @State private var itemSelected = false //SHOW FILTER VIEW
+    @State private var searchterm = "" /// SEARCH TERM
+    @State private var amount = 0 //AMOUNT
+    @State private var pickerSelection = 0 //PICKER FILTER
     
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(red: 0.96, green: 0.96, blue: 0.96)
+                Color(Color.white)
                     .edgesIgnoringSafeArea(.all) // Ensure the color fills the entire screen
                 VStack(alignment: .leading) {
                     HStack {
@@ -84,10 +90,10 @@ struct NewOrderView: View {
                 }
                 .sheet(isPresented: $itemSelected) {
                     VStack {
-                        ShoppingCartSheetView()
-                            .presentationDetents([.fraction(0.2)])
+                        ShoppingCartSheetView(itemSelected: $itemSelected, wishedDelivery: $wishedDelivery, placeOrder: $placeOrder, productAmounts: $productAmounts)
+                            .presentationDetents([.fraction(0.25)])
                             .presentationBackgroundInteraction(
-                                .enabled(upThrough: .fraction(0.2))
+                                .enabled(upThrough: .fraction(0.25))
                             )
                         
                     }
@@ -107,6 +113,7 @@ struct NewOrderView: View {
                 }
                 
             }
+        
     }
 }
 
