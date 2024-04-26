@@ -10,9 +10,11 @@ import SwiftUI
 struct ShoppingCartSheetView: View {
     @Binding var itemSelected : Bool
     @Binding var wishedDelivery: Date
-    @Binding var placeOrder : Bool
+    @Binding var placeOrder : Bool //??
     @Binding var productAmounts: [Int: Int]
-
+    @Binding var user: User
+    
+    @ObservedObject var newOrderViewModel: NewOrderViewModel
     
     var body: some View {
         VStack{
@@ -59,6 +61,14 @@ struct ShoppingCartSheetView: View {
             HStack{
                 Button(action: {
                     placeOrder = true
+                    Task{
+                        do{
+                            try await newOrderViewModel.placeOrder(wishedDate: wishedDelivery, orderList: productAmounts, user: user)
+                        }catch{
+                            print(error)
+                        }
+                    }
+                    
                 }) {
                     HStack {
                         Text("Place order ")
@@ -73,7 +83,7 @@ struct ShoppingCartSheetView: View {
                 }
                 .padding(.horizontal)
                 .frame(minWidth: 0, maxWidth: .infinity)
-               
+                
             }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
             
         }
@@ -81,7 +91,7 @@ struct ShoppingCartSheetView: View {
         .onAppear(){
             
         }
-            
+        
         Spacer()
     }
     
@@ -94,5 +104,5 @@ func getAmountOfProducts(productAmountsList: [Int:Int]) -> Int{
 
 
 #Preview {
-    ShoppingCartSheetView(itemSelected: .constant(false), wishedDelivery: .constant(Date.now), placeOrder: .constant(false), productAmounts: .constant([1:1]))
+    ShoppingCartSheetView(itemSelected: .constant(false), wishedDelivery: .constant(Date.now), placeOrder: .constant(false), productAmounts: .constant([1:1]), user: .constant(User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 12, storeId: 12))), newOrderViewModel: NewOrderViewModel())
 }
