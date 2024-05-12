@@ -9,9 +9,15 @@ import SwiftUI
 
 struct NewProductCardView: View {
     var product: Product
+    var itemAvailanle : Bool
+    var availableQuantity : Int
+    
     @State private var amount = 0
     @Binding var productAmounts: [Int: Int]
     @Binding var itemSelected : Bool
+  
+ 
+   
     
     var body: some View {
         HStack{
@@ -58,8 +64,10 @@ struct NewProductCardView: View {
             VStack {
                 Text("\(amount) D-Pk")
                     .foregroundStyle(.bluePicker)
-                Stepper("", value: $amount, in: 0...100)
+                Stepper("", value: $amount, in: 0...availableQuantity)
                     .labelsHidden()
+                    .opacity(0.5)
+                    .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                     .onChange(of: amount) { newValue, oldValue in
                                             // Update the product amount in the dictionary
                         productAmounts[product.productId] = newValue + 1
@@ -83,5 +91,5 @@ struct NewProductCardView: View {
 }
 
 #Preview {
-    NewProductCardView(product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 12, gtin: 12, batch: 12), productAmounts: .constant([1:1]), itemSelected: .constant(false))
+    NewProductCardView(product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 12, gtin: 12, batch: 12), itemAvailanle:true, availableQuantity: 2, productAmounts: .constant([1:1]), itemSelected: .constant(false))
 }

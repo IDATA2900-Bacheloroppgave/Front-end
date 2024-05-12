@@ -51,7 +51,7 @@ class NewOrderViewModel: ObservableObject {
         }
     }
     
-    func placeOrder(wishedDate: Date, orderList: [Int:Int], user: User)  async throws {
+    func placeOrder(wishedDate: Date, orderList: [Int:Int], token: String)  async throws {
         print("PLACED ORDER")
         
         let jsonBody = try createJSONBody(wishedDate: wishedDate, productAmounts: orderList)
@@ -64,7 +64,7 @@ class NewOrderViewModel: ObservableObject {
         
         let headers = [
             "content-type" : "application/json",
-            "authorization" : "Bearer \(user.token!)"
+            "authorization" : "Bearer \(token)"
         ]
         
         var request = URLRequest(url: url)
@@ -72,13 +72,9 @@ class NewOrderViewModel: ObservableObject {
         request.allHTTPHeaderFields = headers
         
         
-        guard let httpBody = try?
-                jsonBody else {
-            print("Failed to serialize login data to JSON")
-            throw NSError(domain: "Serialization Error", code: 0, userInfo: nil)
-        }
         
-        request.httpBody = httpBody
+        
+        request.httpBody = jsonBody
         
         do{
             let (_, response) = try await URLSession.shared.data(for: request)
@@ -92,38 +88,42 @@ class NewOrderViewModel: ObservableObject {
         }
     }
     
-    
     func createJSONBody(wishedDate: Date, productAmounts: [Int: Int]) throws -> Data {
         // Convert Date to ISO8601 string representation
         let dateFormatter = ISO8601DateFormatter()
         let wishedDateString = dateFormatter.string(from: wishedDate)
         
-        // Map productAmounts to JSON structure
-        let quantities = productAmounts.map { (productId, quantity) -> [String: Any] in
-            return [
-                "productQuantity": quantity,
-                "product": [
-                    "productId": productId
-                ]
-            ]
-        }
+        // Initialize an empty array to hold the quantities
+        var quantities = [[String: Any]]()
         
-        print(quantities)
+        // Map productAmounts to the required JSON structure
+        for (productId, quantity) in productAmounts {
+            let productDict: [String: Any] = ["productId": productId]
+            let quantityDict: [String: Any] = [
+                "productQuantity": quantity,
+                "product": productDict  // Nested "product" dictionary
+            ]
+            // Append each dictionary to the quantities array
+            quantities.append(quantityDict)
+        }
         
         // Construct JSON body
         let jsonBody: [String: Any] = [
-            "wishedDeliveryDate": wishedDateString, // Use the string representation of the date
-            "quantities": quantities
+            "wishedDeliveryDate": wishedDateString,
+            "quantities": quantities  // This is the list of dictionaries with "productQuantity" and nested "product"
         ]
         
-        // Step 2: Serialize the JSON data
+        print(jsonBody)
+        
+        // Serialize the JSON data
         guard JSONSerialization.isValidJSONObject(jsonBody) else {
             throw NSError(domain: "Invalid JSON", code: 0, userInfo: nil)
         }
         
         return try JSONSerialization.data(withJSONObject: jsonBody)
     }
-    
+
+
     
     
 }

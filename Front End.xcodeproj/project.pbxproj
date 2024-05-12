@@ -21,6 +21,8 @@
 		EC9659262BDA9B8300DDE431 /* ShoppingCartSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9659252BDA9B8300DDE431 /* ShoppingCartSheetView.swift */; };
 		ECADC82B2BCEFFD2002C51B1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */; };
 		ECADC82D2BCFFD65002C51B1 /* PastOrderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECADC82C2BCFFD65002C51B1 /* PastOrderCardView.swift */; };
+		ECB293562BF0CCE4005AE99A /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB293552BF0CCE4005AE99A /* KeychainManager.swift */; };
+		ECB293582BF0CDC8005AE99A /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB293572BF0CDC8005AE99A /* LoginResponse.swift */; };
 		ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */; };
 		ECEBD0682BC88499007F9D8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD0672BC88499007F9D8A /* Assets.xcassets */; };
 		ECEBD06B2BC88499007F9D8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */; };
@@ -78,6 +80,8 @@
 		EC9659252BDA9B8300DDE431 /* ShoppingCartSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartSheetView.swift; sourceTree = "<group>"; };
 		ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ECADC82C2BCFFD65002C51B1 /* PastOrderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrderCardView.swift; sourceTree = "<group>"; };
+		ECB293552BF0CCE4005AE99A /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		ECB293572BF0CDC8005AE99A /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		ECEBD0602BC88497007F9D8A /* Front End.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Front End.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndApp.swift; sourceTree = "<group>"; };
 		ECEBD0672BC88499007F9D8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 				ECEBD1782BCD472E007F9D8A /* Store.swift */,
 				ECEBD1682BC9EDE0007F9D8A /* Product.swift */,
 				EC9659102BD141D700DDE431 /* Order.swift */,
+				ECB293552BF0CCE4005AE99A /* KeychainManager.swift */,
+				ECB293572BF0CDC8005AE99A /* LoginResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -497,9 +503,11 @@
 				ECEBD1592BC969D6007F9D8A /* LoginView.swift in Sources */,
 				ECEBD15D2BC96A0E007F9D8A /* ResetPasswordView.swift in Sources */,
 				ECEBD15B2BC969EF007F9D8A /* RegisterView.swift in Sources */,
+				ECB293562BF0CCE4005AE99A /* KeychainManager.swift in Sources */,
 				ECEBD16B2BC9F1FB007F9D8A /* LoginDataService.swift in Sources */,
 				003BB0372BCEC2ED0048D751 /* OrderInfoView.swift in Sources */,
 				003BB0312BCEBE2E0048D751 /* DeliveryCardView.swift in Sources */,
+				ECB293582BF0CDC8005AE99A /* LoginResponse.swift in Sources */,
 				ECEBD14F2BC93AD7007F9D8A /* AuthViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

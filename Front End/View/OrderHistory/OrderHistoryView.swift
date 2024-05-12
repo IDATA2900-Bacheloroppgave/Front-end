@@ -17,6 +17,8 @@ struct OrderHistoryView: View {
     @State private var toDate = Date()
     @State private var fromDate = Date()
     @State private var dateNow = Date()
+    @State private var isLoading = false
+
     
     var filteredOrders: [Order] {
         if quickFilter != 0 {
@@ -108,62 +110,74 @@ struct OrderHistoryView: View {
                     
                     Spacer()
                     
-                    VStack{
-                        ScrollView{
-                            if selection == 0{
-                                let activeOrders = ordersViewModel.getActiveOrders(orders: filteredOrders)
-                                ForEach(activeOrders, id: \.orderId) { order in
-                                    NavigationLink{
-                                        OrderInfoView(order: order)
-                                    }label: {
-                                        ActiveOrderCardView(
-                                            orderNumber: String(order.orderId),
-                                            productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
-                                            status: order.orderStatus.lowercased(),
-                                            estimatedDelivery: order.wishedDeliveryDate,
-                                            progressValue: order.progressInPercent/100)
-                                        .foregroundColor(.primary)
+                    if isLoading{
+                        ProgressView()
+                            .scaleEffect(1.5, anchor: .center) // Make the spinner larger
+                            .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
+                                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }else{
+                        VStack{
+                            ScrollView{
+                                if selection == 0{
+                                    let activeOrders = ordersViewModel.getActiveOrders(orders: filteredOrders)
+                                    ForEach(activeOrders, id: \.orderId) { order in
+                                        NavigationLink{
+                                            OrderInfoView(order: order)
+                                        }label: {
+                                            ActiveOrderCardView(
+                                                orderNumber: String(order.orderId),
+                                                productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
+                                                status: order.orderStatus.lowercased(),
+                                                estimatedDelivery: order.wishedDeliveryDate,
+                                                progressValue: order.progressInPercent/100)
+                                            .foregroundColor(.primary)
+                                        }
+                                    }
+                                }else{
+                                    let activeOrders = ordersViewModel.getPastOrders(orders: filteredOrders)
+                                    ForEach(activeOrders, id: \.orderId) { order in
+                                        NavigationLink{
+                                            OrderInfoView(order: order)
+                                        }label: {
+                                            PastOrderCardView(
+                                                orderNumber: order.orderId,
+                                                supplierName: 1,
+                                                status: order.orderStatus,
+                                                estimatedDelivery: order.wishedDeliveryDate,
+                                                progressValue: order.progressInPercent/100)
+                                            .foregroundColor(.primary)
+                                        }
                                     }
                                 }
-                            }else{
-                                let activeOrders = ordersViewModel.getPastOrders(orders: filteredOrders)
-                                ForEach(activeOrders, id: \.orderId) { order in
-                                    NavigationLink{
-                                        OrderInfoView(order: order)
-                                    }label: {
-                                        PastOrderCardView(
-                                            orderNumber: order.orderId,
-                                            supplierName: 1,
-                                            status: order.orderStatus,
-                                            estimatedDelivery: order.wishedDeliveryDate,
-                                            progressValue: order.progressInPercent/100)
-                                        .foregroundColor(.primary)
-                                    }
-                                }
+                                
                             }
-                            
                         }
-                    }
-                    .sheet(isPresented: $isFilterVisible) {
-                        VStack {
-                            FilterOrderSheetView(isVisible: $isFilterVisible, quickFilter: $quickFilter, toDate: $toDate, fromDate: $fromDate, nowDate: $dateNow)
-                                .frame(maxWidth: .infinity) // Set maximum width
-                                .presentationDetents([.medium, .large]) // Set your desired height
+                        .sheet(isPresented: $isFilterVisible) {
+                            VStack {
+                                FilterOrderSheetView(isVisible: $isFilterVisible, quickFilter: $quickFilter, toDate: $toDate, fromDate: $fromDate, nowDate: $dateNow)
+                                    .frame(maxWidth: .infinity) // Set maximum width
+                                    .presentationDetents([.medium, .large]) // Set your desired height
+                            }
                         }
+
                     }
-                    
                 }
             }
         }.tint(.black)
-            .onAppear(){
-                Task{
-                    do{
-                        try await ordersViewModel.fetchOrders(token: userStateViewModel.currentUser?.token ?? "")
-                        
-                    }catch{
-                        print("Could not fetch orders")
-                    }
-                }
+            .onAppear() {
+                isLoading = true
+                   Task {
+                       if let token = userStateViewModel.getToken() {
+                           do {
+                               try await ordersViewModel.fetchOrders(token: token)
+                           } catch {
+                               print("Could not fetch orders: \(error)")
+                           }
+                       } else {
+                           print("No token available, user might need to log in again.")
+                       }
+                       isLoading = false
+                   }
             }
     }
 }

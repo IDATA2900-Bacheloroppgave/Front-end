@@ -79,11 +79,13 @@ struct LandingPageView: View {
             }
             .onAppear(){
                 Task{
-                    do{
-                        try await ordersViewModel.fetchOrders(token: userStateViewModel.currentUser?.token ?? "")
-                    }catch{
-                        print("Could not fetch orders")
-                    }
+                    Task {
+                                      if let token = userStateViewModel.getToken() {
+                                          try await ordersViewModel.fetchOrders(token: token)
+                                      } else {
+                                          // Handle error - no token available
+                                      }
+                                  }
                 }
                 
             }

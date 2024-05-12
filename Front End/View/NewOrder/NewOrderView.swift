@@ -84,7 +84,13 @@ struct NewOrderView: View {
                         .padding(.horizontal)
                         ScrollView{
                             ForEach(newOrderViewModel.products, id: \.productId) { product in
-                                NewProductCardView(product: product, productAmounts: $productAmounts, itemSelected: $itemSelected)
+                                
+                               // let availableQuantity = product.inventory!.availableStock
+                                
+                               
+                                NewProductCardView(product: product, itemAvailanle: false, availableQuantity: 10, productAmounts: $productAmounts, itemSelected: $itemSelected)
+                                
+                               
                             }
                         }
                     }
@@ -104,18 +110,24 @@ struct NewOrderView: View {
                 .tint(.black)
             }
         }.tint(.black)
-            .onAppear(){
-               
-                Task{
-                    do{
+            .onAppear() {
+                Task {
+                    do {
                         try await newOrderViewModel.fetchProducts()
-                        user = userStateViewModel.currentUser!
-                    }catch{
+                        // Safely unwrap the currentUser using optional binding
+                        if let user = userStateViewModel.currentUser {
+                            self.user = user
+                        } else {
+                            // Handle the case where there is no current user
+                            // For example, you could redirect to a login view or show an error message
+                            print("No current user available")
+                        }
+                    } catch {
                         print("Could not fetch products")
                     }
                 }
-                
             }
+
         
     }
 }
