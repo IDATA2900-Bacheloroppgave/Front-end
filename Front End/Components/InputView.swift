@@ -11,6 +11,7 @@ struct InputView: View {
     @Binding var text: String
     let placeholder: String
     var isSecureField = false
+    var borderColor: Color = Color.black
     
     var body: some View {
         if isSecureField{
@@ -19,7 +20,7 @@ struct InputView: View {
                 .background(Color.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.black, lineWidth: 2)
+                        .stroke(borderColor, lineWidth: 2)
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .textInputAutocapitalization(.never)
@@ -33,7 +34,7 @@ struct InputView: View {
                 .background(Color.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke( Color.black, lineWidth: 2)
+                        .stroke( borderColor, lineWidth: 2)
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .textInputAutocapitalization(.never)

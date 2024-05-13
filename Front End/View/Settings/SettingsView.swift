@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var userStateViewModel : AuthViewModel
+    @EnvironmentObject var authViewModel : AuthViewModel
     @Environment(\.dismiss) var dismiss
     @State private var selectedStore = "Rema Averøy" // The default selected store
     let stores = ["Rema Averøy", "Rema Ålesund", "Kiwi Ålesund"] // List of stores
@@ -120,9 +120,9 @@ struct SettingsView: View {
                     
                     
                     Button(action: {
-                        if userStateViewModel.logout() {
-                            dismiss()
-                        }
+                        if let email = authViewModel.currentUser?.email, authViewModel.logout(email: email) {
+                                            dismiss()
+                                        }
                         
                     }) {
                         HStack {

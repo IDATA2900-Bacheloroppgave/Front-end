@@ -11,10 +11,12 @@ import SwiftUI
 struct LogInView: View {
     @EnvironmentObject var authViewModel : AuthViewModel
     @StateObject var stores = StoresViewModel()
-   
+    
     
     @State private var email = ""
     @State private var password = ""
+    @State private var emailBorderColor = Color.black
+    @State private var passwordBorderColor = Color.black
     @State private var userFeedback = ""
     
     
@@ -24,33 +26,32 @@ struct LogInView: View {
                 Color(red: 1.00, green: 0.83, blue: 0.00).ignoresSafeArea()
                 VStack {
                     Spacer()
-                    VStack(spacing: 40) {
+                    VStack {
                         Text("TraceGo")
                             .fontWeight(.bold)
                             .font(.system(size: 45))
-
-                        LazyVStack(spacing:20){
-                            InputView(text: $email, placeholder: "Email")
-                            
-                            InputView(text: $password, placeholder: "Password", isSecureField: true)
-                        } 
-                        .background(Color.init(red: 1.00, green: 0.83, blue: 0.00))
-                        .scrollContentBackground(.hidden)
-                        .scrollDisabled(true)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
                         
-                        VStack{
-                            Text(userFeedback).foregroundStyle(Color.red)
-                            Button("Log in") {
-                                Task{
-                                    do{
-                                        try await stores.fetchStores()
-                                        try await authViewModel.login(email: email, password: password)
-                              
-                                    }catch{
-                                        print("Could not log in user")
-                                        userFeedback =  authViewModel.error! ///GHER BLIR DET FEIL NÅR APPEN IKKE ER OPPE
-                                    }
+                        LazyVStack(spacing: 20) {
+                            InputView(text: $email, placeholder: "Email", borderColor: emailBorderColor)
+                                .onChange(of: email){
+                                    let isValid = authViewModel.validateEmail(email: email)
+                                    emailBorderColor = isValid ? .black : .red
                                 }
+                            
+                            InputView(text: $password, placeholder: "Password", isSecureField: true, borderColor: passwordBorderColor)
+                                .onChange(of: password) {
+                                    let isValid = authViewModel.validatePassword(password: password)
+                                    passwordBorderColor = isValid ? .black : .red
+                                }
+                            
+                            Text(userFeedback)
+                                .foregroundColor(.red)
+                                .frame(height: 20) // Fixed frame height
+                                .opacity(userFeedback.isEmpty ? 0 : 1)
+                            
+                            Button("Log in") {
+                                performLogin()
                             }
                             .foregroundColor(Color.black)
                             .frame(width: 150, height: 50)
@@ -61,6 +62,11 @@ struct LogInView: View {
                                     .stroke(Color.black, lineWidth: 1)
                             )
                         }
+                        .background(Color.init(red: 1.00, green: 0.83, blue: 0.00))
+                        .scrollContentBackground(.hidden)
+                        .scrollDisabled(true)
+                        
+                       
                     }
                     Spacer()
                     NavigationLink{
@@ -74,23 +80,44 @@ struct LogInView: View {
                         }
                         .padding(.bottom, 20)
                     }
-                   
                 }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                EmptyView()
-            }
-        
-        }.onTapGesture {
+        .onTapGesture {
             hideKeyboard()
         }
         .onAppear {
-                    // Reset user feedback
-                    userFeedback = ""
+            // Reset user feedback
+            userFeedback = ""
+        }
+    }
+    
+    
+    func performLogin() {
+        if !authViewModel.validateEmail(email: email) && !authViewModel.validatePassword(password: password) {
+            userFeedback = "Invalid email and password"
+            emailBorderColor = .red
+            passwordBorderColor = .red
+        }else if !authViewModel.validateEmail(email: email) {
+            userFeedback = "Invalid email"
+            emailBorderColor = .red
+        }else if !authViewModel.validatePassword(password: password) {
+            userFeedback = "Invalid password"
+            passwordBorderColor = .red
+        } else {
+            userFeedback = ""
+            passwordBorderColor = .black
+            passwordBorderColor = .black
+            Task {
+                do {
+                    try await stores.fetchStores()
+                    try await authViewModel.login(email: email, password: password)
+                } catch {
+                    userFeedback = authViewModel.error
                 }
+            }
+        }
     }
 }
 
@@ -101,7 +128,9 @@ struct LogInView: View {
 
 extension LogInView{
     func hideKeyboard() {
-            let resign = #selector(UIResponder.resignFirstResponder)
-            UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
-        }
+        let resign = #selector(UIResponder.resignFirstResponder)
+        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+    }
 }
+
+

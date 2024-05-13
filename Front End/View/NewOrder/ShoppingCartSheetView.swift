@@ -15,6 +15,7 @@ struct ShoppingCartSheetView: View {
     @Binding var user: User
     
     @ObservedObject var newOrderViewModel: NewOrderViewModel
+    @EnvironmentObject var authViewModel : AuthViewModel
     
     var body: some View {
         VStack{
@@ -61,13 +62,18 @@ struct ShoppingCartSheetView: View {
             HStack{
                 Button(action: {
                     placeOrder = true
-                    Task{
-                        do{
-                            try await newOrderViewModel.placeOrder(wishedDate: wishedDelivery, orderList: productAmounts, user: user)
-                        }catch{
-                            print(error)
-                        }
-                    }
+                    
+                    Task {
+                           if let token = authViewModel.getToken() {
+                               do {
+                                   try await newOrderViewModel.placeOrder(wishedDate: wishedDelivery, orderList: productAmounts, token: token)
+                               } catch {
+                                   print("Failed to place order: \(error)")
+                               }
+                           } else {
+                               print("Authentication error: Token is missing.")
+                           }
+                       }
                     
                 }) {
                     HStack {

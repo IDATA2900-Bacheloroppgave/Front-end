@@ -22,15 +22,16 @@ struct DeliveryCardView: View {
                 VStack(alignment: .leading) {
                     Text(mainTitle)
                         .font(.headline)
-                        .foregroundColor(.bluePicker)
+                        .foregroundStyle(Color(.bluepicker1))
                     Text(orderNumber)
-                        .foregroundColor(.gray)
+                        .foregroundStyle(Color(.greyText))
                         .font(.system(size: 14))
+                        
                 }
                 Spacer()
                 Text(supplierName) // This can also be made dynamic if needed
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(Color(.greyText))
             }
             .padding()
             
