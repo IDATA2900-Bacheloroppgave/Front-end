@@ -7,21 +7,19 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct NewOrderView: View {
-    
     @StateObject var newOrderViewModel = NewOrderViewModel()
     @EnvironmentObject var userStateViewModel: AuthViewModel
-    
+
     @State private var isLoading = true
     @State private var user = User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 12, storeId: 12))
     @State private var wishedDelivery = Date()
     @State private var productAmounts: [Int: Int] = [:]
     @State private var placeOrder = false
-    
     @State private var itemSelected = false
-    @State private var searchterm = "" /// SEARCH TERM
-    @State private var pickerSelection = 0 // PICKER FILTER
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -32,11 +30,11 @@ struct NewOrderView: View {
                         .frame(maxWidth: .infinity)
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
                         .background(Color.accent)
-                    
-                    VStack{
-                        VStack{
-                            HStack{
-                                TextField("Search...", text: $searchterm)
+
+                    VStack {
+                        VStack {
+                            HStack {
+                                TextField("Search...", text: $newOrderViewModel.searchTerm)  // Bound to viewModel
                                     .padding(.horizontal, 5)
                                     .padding(.vertical, 7)
                                     .background(Color.white)
@@ -45,27 +43,23 @@ struct NewOrderView: View {
                                     .foregroundColor(.black)
                                     .backgroundStyle(.white)
                                 Button(action: {
-                                    // Action for the button tap
+                               
                                 }) {
                                     HStack {
-                                        
-                                        
                                         Image(systemName: "barcode.viewfinder")
                                             .foregroundColor(.black)
-                                            .font(.system(size: 25)) // Adjust icon size as needed
+                                            .font(.system(size: 25))
                                     }
-                                    
                                     .padding(.horizontal, 5)
-                                    .padding(.vertical, 5) // Adjust padding as needed
-                                    .background(Color.yellow) // Use the color that matches your design
-                                    
-                                    .cornerRadius(5) // Adjust corner radius to match your design
+                                    .padding(.vertical, 5)
+                                    .background(Color.yellow)
+                                    .cornerRadius(5)
                                 }
                                 .frame(minWidth: 0)
-                                
-                            }  .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-                            HStack{
-                                Picker(selection: $pickerSelection, label: Text("Options")) {
+                            }
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                            HStack {
+                                Picker(selection: $newOrderViewModel.pickerSelection, label: Text("Options")) {
                                     Text("All goods").tag(0)
                                     Text("Refrigerated").tag(1)
                                     Text("Frozen").tag(2)
@@ -76,17 +70,17 @@ struct NewOrderView: View {
                         }
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                         .padding(.horizontal)
-                        if isLoading{
+                        if isLoading {
                             VStack {
-                                Spacer() // Pushes the progress view down in the ScrollView
+                                Spacer()
                                 ProgressView()
                                     .scaleEffect(1.5)
                                     .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
-                                Spacer() // Ensures the progress view stays centered
+                                Spacer()
                             }
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        }else{
-                            ScrollView{
+                        } else {
+                            ScrollView {
                                 ForEach(filteredProducts, id: \.productId) { product in
                                     NewProductCardView(product: product, itemAvailanle: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts, itemSelected: $itemSelected)
                                 }
@@ -98,37 +92,33 @@ struct NewOrderView: View {
                     VStack {
                         ShoppingCartSheetView(itemSelected: $itemSelected, wishedDelivery: $wishedDelivery, placeOrder: $placeOrder, productAmounts: $productAmounts, user: $user, newOrderViewModel: newOrderViewModel)
                             .presentationDetents([.fraction(0.25)])
-                            .presentationBackgroundInteraction(
-                                .enabled(upThrough: .fraction(0.25))
-                            )
-                        
+                            .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.25)))
                     }
                 }
-                
-                
                 .tint(.black)
             }
-        }.tint(.black)
-            .onAppear() {
-                isLoading = true
-                Task {
-                    do {
-                        try await newOrderViewModel.fetchProducts()
-                        if let currentUser = userStateViewModel.currentUser {
-                            self.user = currentUser
-                        } else {
-                            print("No current user available")
-                        }
-                    } catch {
-                        print("Could not fetch products")
+        }
+        .tint(.black)
+        .onAppear {
+            isLoading = true
+            Task {
+                do {
+                    try await newOrderViewModel.fetchProducts()
+                    if let currentUser = userStateViewModel.currentUser {
+                        self.user = currentUser
+                    } else {
+                        print("No current user available")
                     }
-                    isLoading = false
+                } catch {
+                    print("Could not fetch products")
                 }
+                isLoading = false
             }
+        }
     }
-    
-    var filteredProducts: [Product] {
-        switch pickerSelection {
+
+    var filteredProducts: [Product] {  // Filter products based on picker selection
+        switch newOrderViewModel.pickerSelection {
         case 1:
             return newOrderViewModel.products.filter { $0.productType == "REFRIGERATED_GOODS" }
         case 2:
@@ -140,6 +130,11 @@ struct NewOrderView: View {
         }
     }
 }
+
+#Preview {
+    NewOrderView()
+}
+
 
 #Preview {
     NewOrderView()

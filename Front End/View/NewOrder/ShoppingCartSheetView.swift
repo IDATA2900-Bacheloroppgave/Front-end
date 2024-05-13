@@ -78,14 +78,14 @@ struct ShoppingCartSheetView: View {
                 }) {
                     HStack {
                         Text("Place order ")
-                            .font(.system(size: 16, weight: .medium)) // Adjust font size and weight as needed
+                            .font(.system(size: 16, weight: .medium))
                             .foregroundColor(Color.black)
                             .frame(maxWidth: .infinity)
                     }
                     .padding(.horizontal, 20)
-                    .padding(.vertical, 8) // Adjust padding as needed
-                    .background(.greenProgressbar) // Use the color that matches your design
-                    .cornerRadius(10) // Adjust corner radius to match your design
+                    .padding(.vertical, 8)
+                    .background(.greenProgressbar)
+                    .cornerRadius(10)
                 }
                 .padding(.horizontal)
                 .frame(minWidth: 0, maxWidth: .infinity)

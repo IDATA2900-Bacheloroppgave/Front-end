@@ -10,23 +10,23 @@ import SwiftUI
 struct yellowButton: View {
     var body: some View {
         Button(action: {
-            // Action for the button tap
+     
         }) {
             HStack {
                 Text("Scan to order")
-                    .font(.system(size: 20, weight: .medium)) // Adjust font size and weight as needed
+                    .font(.system(size: 20, weight: .medium))
                     .foregroundColor(Color.black)
                 
-                Spacer() // This will push the text and the icon to opposite sides
+                Spacer() /
                 
                 Image(systemName: "barcode.viewfinder")
                     .foregroundColor(.black)
-                    .font(.system(size: 35)) // Adjust icon size as needed
+                    .font(.system(size: 35))
             }
             .padding(.horizontal, 20)
-            .padding(.vertical, 15) // Adjust padding as needed
-            .background(Color.yellow) // Use the color that matches your design
-            .cornerRadius(10) // Adjust corner radius to match your design
+            .padding(.vertical, 15)
+            .background(Color.yellow)
+            .cornerRadius(10)
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding()
