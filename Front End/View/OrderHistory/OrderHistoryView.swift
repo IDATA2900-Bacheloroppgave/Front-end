@@ -119,7 +119,7 @@ struct OrderHistoryView: View {
                         VStack{
                             ScrollView{
                                 if selection == 0{
-                                    let activeOrders = ordersViewModel.getActiveOrders(orders: filteredOrders)
+                                    let activeOrders = ordersViewModel.getActiveOrders()
                                     ForEach(activeOrders, id: \.orderId) { order in
                                         NavigationLink{
                                             OrderInfoView(order: order)
@@ -134,7 +134,7 @@ struct OrderHistoryView: View {
                                         }
                                     }
                                 }else{
-                                    let activeOrders = ordersViewModel.getPastOrders(orders: filteredOrders)
+                                    let activeOrders = ordersViewModel.getPastOrders()
                                     ForEach(activeOrders, id: \.orderId) { order in
                                         NavigationLink{
                                             OrderInfoView(order: order)

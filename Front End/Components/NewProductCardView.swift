@@ -16,6 +16,7 @@ struct NewProductCardView: View {
     @Binding var productAmounts: [Int: Int]
     @Binding var itemSelected : Bool
   
+    
  
    
     
@@ -38,7 +39,7 @@ struct NewProductCardView: View {
                         Image(systemName: "fork.knife.circle.fill")
                             .resizable()
                             .frame(width: 30, height: 30)
-                            .foregroundColor(.iconVeggie)
+                            .foregroundColor(setColor())
                             .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
                         VStack(alignment: .leading, spacing: 2){
                             Text(product.name)
@@ -66,8 +67,8 @@ struct NewProductCardView: View {
                     .foregroundStyle(.bluePicker)
                 Stepper("", value: $amount, in: 0...availableQuantity)
                     .labelsHidden()
-                    .opacity(0.5)
-                    .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    .opacity(1.0)
+                    .disabled(false)
                     .onChange(of: amount) { newValue, oldValue in
                                             // Update the product amount in the dictionary
                         productAmounts[product.productId] = newValue + 1
@@ -88,8 +89,21 @@ struct NewProductCardView: View {
         .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
         .padding(.horizontal)
     }
+    
+    func setColor () -> Color{
+        var color = Color.dryGoods
+        if self.product.productType == "REFRIGERATED_GOODS"{
+            color = Color.iconVeggie
+        }else if self.product.productType == "FREEZED_GOODS"{
+            color = Color.freezedGoods
+        }
+        return color;
+    }
+
 }
 
 #Preview {
     NewProductCardView(product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 12, gtin: 12, batch: 12), itemAvailanle:true, availableQuantity: 2, productAmounts: .constant([1:1]), itemSelected: .constant(false))
 }
+
+

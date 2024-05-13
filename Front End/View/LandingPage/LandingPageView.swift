@@ -12,6 +12,7 @@ struct LandingPageView: View {
     @EnvironmentObject var userStateViewModel : AuthViewModel
     @StateObject var ordersViewModel = OrdersViewModel()
     @Environment(\.dismiss) var dismiss
+    @State private var isLoading = true
     
     
     
@@ -28,75 +29,94 @@ struct LandingPageView: View {
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
                             .background(.accent)
                     }
-                    ScrollView{
-                        Text("Next delivery")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(.headline)
-                            .padding(.leading)
-                            .fontWeight(.medium)
-                            .padding(EdgeInsets(top: 0, leading: 2, bottom: 10, trailing: 2))
-                        //The next arriving order
-                        //Backedn here
-                        NavigationLink{
-                            OrderInfoView(order: Order(orderId: 1, orderDate: "", orderStatus: "", wishedDeliveryDate: "", progressInPercent: 0.8, customer: User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 1, storeId: 1)), quantities: [Quantity(productQuantity: 12, product: Product(productId: 1, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 0.2, gtin: 1, batch: 1, packaging: Packaging(packageType: "", quantityPrPackage: 1, weightInGrams: 1, dimensionInCm3: 0.1)))])) //Midlertidig for å ikke få feilmelding
-                        }label: {
-                            DeliveryCardView(
-                                mainTitle: "Frysevarer",
-                                orderNumber: "#12345",
-                                progressValue: 0.5,
-                                currentLocation: "Current location: Skodje",
-                                arrivalTime: "Requested delivery: Today 12 - 2 pm",
-                                supplierName: "Gjørts AS")
-                            .foregroundColor(.primary)
+                    
+                    if isLoading{
+                        VStack {
+                            Spacer() // Pushes the progress view down in the ScrollView
+                            ProgressView()
+                                .scaleEffect(1.5)
+                                .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
+                            Spacer() // Ensures the progress view stays centered
                         }
-                        
-                        Text("Upcoming deliveries")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(.headline)
-                            .padding(.leading)
-                            .fontWeight(.medium)
-                            .padding(EdgeInsets(top: 10, leading: 2, bottom: 10, trailing: 2))
-                        
-                        
-                        
-                        ForEach(ordersViewModel.getActiveOrders(orders: ordersViewModel.orders), id: \.orderId) { order in
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }else{
+                        ScrollView{
+                            Title(title: "Next delivery")
+                           
                             NavigationLink{
-                                OrderInfoView(order: order)
+                                OrderInfoView(order: ordersViewModel.getActiveOrders().first!) //Midlertidig for å ikke få feilmelding
                             }label: {
-                                ActiveOrderCardView(
-                                    orderNumber: String(order.orderId),
-                                    productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
-                                    status: order.orderStatus.lowercased(),
-                                    estimatedDelivery: order.wishedDeliveryDate,
-                                    progressValue: order.progressInPercent/100)
+                                DeliveryCardView(
+                                    mainTitle: ordersViewModel.getActiveOrders().first!.orderDate,
+                                    orderNumber: "#\(ordersViewModel.getActiveOrders().first!.orderId)",
+                                    progressValue: ordersViewModel.getActiveOrders().first!.progressInPercent/100,
+                                    currentLocation: "Current location: \(ordersViewModel.getActiveOrders().first!.currentLocation ?? "unknown")",
+                                    arrivalTime: "Requested delivery: \(ordersViewModel.getActiveOrders().first!.wishedDeliveryDate)",
+                                    supplierName: "Products: \(ordersViewModel.getAmountOfProducts(order: ordersViewModel.getActiveOrders().first!))")
                                 .foregroundColor(.primary)
                             }
+                            
+                            Title(title: "Upcoming deliveries")
+                            
+                            ForEach(ordersViewModel.getActiveOrders(), id: \.orderId) { order in
+                                NavigationLink{
+                                    OrderInfoView(order: order)
+                                }label: {
+                                    ActiveOrderCardView(
+                                        orderNumber: String(order.orderId),
+                                        productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
+                                        status: order.orderStatus.lowercased(),
+                                        estimatedDelivery: order.wishedDeliveryDate,
+                                        progressValue: order.progressInPercent/100)
+                                    .foregroundColor(.primary)
+                                }
+                            }
                         }
+                        yellowButton()
                         
                     }
-                    yellowButton()
-                }
-            }
-            .onAppear(){
-                Task{
-                    Task {
-                                      if let token = userStateViewModel.getToken() {
-                                          try await ordersViewModel.fetchOrders(token: token)
-                                      } else {
-                                          // Handle error - no token available
-                                      }
-                                  }
                 }
                 
+          
             }
+        }
+        .onAppear(){
+            isLoading = true;
+            Task {
+                if let token = userStateViewModel.getToken() {
+                    do {
+                        try await ordersViewModel.fetchOrders(token: token)
+                    } catch {
+                        print("Failed to fetch orders: \(error.localizedDescription)")
+                    }
+                } else {
+                    print("No token available, user might need to log in again.")
+                }
+                isLoading = false  // End loading
+            }
+            
+            
         }.tint(.black)
     }
 }
-    
-    
-    #Preview {
-        LandingPageView()
-    }
-    
-    
 
+
+
+#Preview {
+    LandingPageView()
+}
+
+
+
+
+struct Title: View {
+    var title: String
+    var body: some View {
+        Text(title)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .font(.headline)
+            .padding(.leading)
+            .fontWeight(.medium)
+            .padding(EdgeInsets(top: 10, leading: 2, bottom: 10, trailing: 2))
+    }
+}

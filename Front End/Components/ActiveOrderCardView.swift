@@ -46,10 +46,10 @@ struct ActiveOrderCardView: View {
             HStack{
                 VStack (alignment: .leading){
                     Text("Status: \(status)")
-                        .foregroundColor(.gray)
+                        .foregroundStyle(Color(.greyText))
                         .font(.footnote)
                     Text("Requested delivery: \(estimatedDelivery)")
-                        .foregroundColor(.bluePicker)
+                        .foregroundStyle(Color(.bluepicker1))
                         .font(.footnote)
                 }
                 Spacer()

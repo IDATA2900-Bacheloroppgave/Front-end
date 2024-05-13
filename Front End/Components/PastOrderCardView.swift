@@ -31,7 +31,7 @@ struct PastOrderCardView: View {
                 Spacer()
                 Text(String(supplierName))
                     .font(.footnote)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(Color(.greyText))
                 
             }
             .padding(EdgeInsets(top: 5, leading: 2, bottom: 5, trailing: 0))
@@ -43,7 +43,7 @@ struct PastOrderCardView: View {
             HStack{
                 VStack (alignment: .leading){
                     Text("Status: \(status.lowercased())")
-                        .foregroundColor(.gray)
+                        .foregroundStyle(Color(.greyText))
                         .font(.footnote)
                 }
                 Spacer()

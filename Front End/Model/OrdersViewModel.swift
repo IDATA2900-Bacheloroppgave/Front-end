@@ -73,29 +73,13 @@ class OrdersViewModel: ObservableObject{
         return products
     }
     
-    func getActiveOrders(orders: [Order]) -> [Order]{
-        var activeOrders: [Order] = []
-        for order in orders {
-            if order.orderStatus != "DELIVERED" && order.orderStatus != "CANCELLED"{
-                activeOrders.append(order)
-                print(order.orderStatus)
-            }
-        }
-        print(activeOrders)
-        return activeOrders
+    func getActiveOrders() -> [Order]{
+        orders.filter { $0.orderStatus != "DELIVERED" && $0.orderStatus != "CANCELLED" }
         
     }
     
-    func getPastOrders(orders: [Order]) -> [Order]{
-        var pastOrders: [Order] = []
-        for order in orders {
-            if order.orderStatus == "DELIVERED"{
-                pastOrders.append(order)
-                print(order.orderStatus)
-            }
-        }
-        print(pastOrders)
-        return pastOrders
+    func getPastOrders() -> [Order]{
+        orders.filter { $0.orderStatus == "DELIVERED" }
     }
     
     func getCurrentLocation(orderId: Int) async throws -> String {
@@ -126,51 +110,5 @@ class OrdersViewModel: ObservableObject{
             throw error
         }
     }
-
-
-    
-    
-    
-//    func fetchOrdersById(token: String, id: Int) async throws{
-//        
-//        guard let url = URL(string: "http://35.246.81.166:8080/api/orders/\(id)") else {
-//            print("Invalid URL")
-//            throw NSError(domain: "Invalid URL", code: 0, userInfo: nil)
-//        }
-//        
-//        let headers = [
-//            "content-type" : "application/json",
-//            "authorization" : "Bearer \(token)"
-//        ]
-//        
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "GET"
-//        request.allHTTPHeaderFields = headers
-//
-//        
-//        
-//        do{
-//            let (data, response) = try await URLSession.shared.data(for: request)
-//            guard let httpResponse = response as? HTTPURLResponse,
-//                  (200...299).contains(httpResponse.statusCode) else{
-//                print("Error with the response, unexpected status code: \(String(describing: response))")
-//                throw NSError(domain: "Response Error", code: 0, userInfo: nil)
-//            }
-//            
-//            do{
-//                print("trying to decode json resoonse")
-//                print("data:\(data)")
-//                let order = try JSONDecoder().decode([Order].self, from: data) //FEIL HER
-//                print("Order \(order)")
-//                DispatchQueue.main.async{
-//                    self.orders.append(contentsOf: order)
-//                }
-//            }catch{
-//                print("AAAA MISTAKE")
-//                throw error
-//            }
-//        }
-//        
-//    }
     
 }

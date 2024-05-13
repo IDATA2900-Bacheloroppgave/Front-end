@@ -31,7 +31,7 @@ struct ProductInfoCard: View {
                     Text(supplierName)
                         .font(.system(size: 14))
                     VStack(alignment: .leading){
-                        Text("Batch: \(batchNumber)")
+                        Text("Batch: \(String(batchNumber))")
                             .foregroundStyle(.greyText)
                             .font(.system(size: 12))
                         Text("Best before: \(bestBeforeDate)")

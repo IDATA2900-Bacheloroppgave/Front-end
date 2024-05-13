@@ -2,10 +2,29 @@ import Foundation
 
 class AuthViewModel: ObservableObject, Observable{
     @Published var currentUser: User?
-    @Published var error: String?
+    @Published var error: String = ""
+    
+    //Validate email function
+    func validateEmail(email: String) -> Bool {
+           let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+           let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegex)
+           return emailTest.evaluate(with: email)
+       }
+       
+       // Validate password
+    func validatePassword(password: String) -> Bool {
+        let passwordRegex = "(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        return passwordTest.evaluate(with: password)
+    }
+    
+    //Validate name
+    func validateName(name: String) -> Bool {
+        return !name.isEmpty && name.count >= 2
+    }
     
     
-    // This function will be called to perform the login operation.
+    // LOGIN FUNCTION
     func login(email: String, password: String) async throws{
         let urlString = "http://35.246.81.166:8080/auth/login"
         guard let url = URL(string: urlString) else {

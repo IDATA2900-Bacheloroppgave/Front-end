@@ -41,7 +41,7 @@ struct NewOrderView: View {
                     VStack{
                         VStack{
                             HStack{
-                                TextField("Search", text: $searchterm)
+                                TextField("Search...", text: $searchterm)
                                     .padding(.horizontal, 5)
                                     .padding(.vertical, 7)
                                     .background(Color.white)
@@ -49,7 +49,6 @@ struct NewOrderView: View {
                                     .shadow(radius: 1)
                                     .foregroundColor(.black)
                                     .backgroundStyle(.white)
-                                
                                 Button(action: {
                                     // Action for the button tap
                                 }) {
@@ -72,10 +71,10 @@ struct NewOrderView: View {
                             }  .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                             HStack{
                                 Picker(selection: $pickerSelection, label: Text("Options")) {
-                                    Text("All products").tag(0)
-                                    Text("Option 2").tag(1)
-                                    Text("Option 3").tag(2)
-                                    Text("Option 4").tag(3)
+                                    Text("All goods").tag(0)
+                                    Text("Refrigerated").tag(1)
+                                    Text("Freezed").tag(2)
+                                    Text("Dry").tag(3)
                                 }
                                 .pickerStyle(SegmentedPickerStyle())
                             }
