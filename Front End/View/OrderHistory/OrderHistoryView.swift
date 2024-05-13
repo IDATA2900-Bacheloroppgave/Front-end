@@ -61,27 +61,35 @@ struct OrderHistoryView: View {
                             .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     } else {
-                        ScrollView {
-                            ForEach(filteredOrders, id: \.orderId) { order in
-                                NavigationLink {
-                                    OrderInfoView(order: order)
-                                } label: {
-                                    if selection == 0 {
+                        ScrollView{
+                            if selection == 0{
+                                let activeOrders = ordersViewModel.getActiveOrders(o: filteredOrders)
+                                ForEach(activeOrders, id: \.orderId) { order in
+                                    NavigationLink{
+                                        OrderInfoView(order: order)
+                                    }label: {
                                         ActiveOrderCardView(
                                             orderNumber: String(order.orderId),
-                                            productsInOrder: ordersViewModel.getAmountOfProducts(order: order),
+                                            productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
                                             status: order.orderStatus.lowercased(),
                                             estimatedDelivery: order.wishedDeliveryDate,
-                                            progressValue: order.progressInPercent/100
-                                        ).foregroundColor(.primary)
-                                    } else {
+                                            progressValue: order.progressInPercent/100)
+                                        .foregroundColor(.primary)
+                                    }
+                                }
+                            }else{
+                                let activeOrders = ordersViewModel.getPastOrders(o: filteredOrders)
+                                ForEach(activeOrders, id: \.orderId) { order in
+                                    NavigationLink{
+                                        OrderInfoView(order: order)
+                                    }label: {
                                         PastOrderCardView(
                                             orderNumber: order.orderId,
                                             supplierName: 1,
                                             status: order.orderStatus,
                                             estimatedDelivery: order.wishedDeliveryDate,
-                                            progressValue: order.progressInPercent/100
-                                        ).foregroundColor(.primary)
+                                            progressValue: order.progressInPercent/100)
+                                        .foregroundColor(.primary)
                                     }
                                 }
                             }

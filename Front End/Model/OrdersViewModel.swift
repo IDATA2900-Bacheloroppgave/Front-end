@@ -73,13 +73,13 @@ class OrdersViewModel: ObservableObject{
         return products
     }
     
-    func getActiveOrders() -> [Order]{
-        orders.filter { $0.orderStatus != "DELIVERED" && $0.orderStatus != "CANCELLED" }
+    func getActiveOrders(o: [Order]) -> [Order]{
+        o.filter { $0.orderStatus != "DELIVERED" && $0.orderStatus != "CANCELLED" }
         
     }
     
-    func getPastOrders() -> [Order]{
-        orders.filter { $0.orderStatus == "DELIVERED" }
+    func getPastOrders(o: [Order]) -> [Order]{
+        o.filter { $0.orderStatus == "DELIVERED" }
     }
     
     func getCurrentLocation(orderId: Int) async throws -> String {

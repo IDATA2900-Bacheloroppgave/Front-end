@@ -44,21 +44,21 @@ struct LandingPageView: View {
                             Title(title: "Next delivery")
                            
                             NavigationLink{
-                                OrderInfoView(order: ordersViewModel.getActiveOrders().first!) //Midlertidig for å ikke få feilmelding
+                                OrderInfoView(order: ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!) //Midlertidig for å ikke få feilmelding
                             }label: {
                                 DeliveryCardView(
-                                    mainTitle: ordersViewModel.getActiveOrders().first!.orderDate,
-                                    orderNumber: "#\(ordersViewModel.getActiveOrders().first!.orderId)",
-                                    progressValue: ordersViewModel.getActiveOrders().first!.progressInPercent/100,
-                                    currentLocation: "Current location: \(ordersViewModel.getActiveOrders().first!.currentLocation ?? "unknown")",
-                                    arrivalTime: "Requested delivery: \(ordersViewModel.getActiveOrders().first!.wishedDeliveryDate)",
-                                    supplierName: "Products: \(ordersViewModel.getAmountOfProducts(order: ordersViewModel.getActiveOrders().first!))")
+                                    mainTitle: ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!.orderDate,
+                                    orderNumber: "#\(ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!.orderId)",
+                                    progressValue: ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!.progressInPercent/100,
+                                    currentLocation: "Current location: \(ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!.currentLocation ?? "unknown")",
+                                    arrivalTime: "Requested delivery: \(ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!.wishedDeliveryDate)",
+                                    supplierName: "Products: \(ordersViewModel.getAmountOfProducts(order: ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!))")
                                 .foregroundColor(.primary)
                             }
                             
                             Title(title: "Upcoming deliveries")
                             
-                            ForEach(ordersViewModel.getActiveOrders(), id: \.orderId) { order in
+                            ForEach(ordersViewModel.getActiveOrders(o: ordersViewModel.orders), id: \.orderId) { order in
                                 NavigationLink{
                                     OrderInfoView(order: order)
                                 }label: {
