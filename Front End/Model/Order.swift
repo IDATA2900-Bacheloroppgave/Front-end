@@ -39,7 +39,8 @@ class Order: Identifiable, Codable {
 }
 
 
-struct Quantity: Codable{
+struct Quantity: Identifiable, Codable {
+    var id: Int { product.productId } // Using product's ID as Quantity's ID for uniqueness
     var productQuantity: Int
     var product: Product
 }

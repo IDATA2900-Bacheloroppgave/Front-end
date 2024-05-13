@@ -17,8 +17,8 @@ struct Product: Codable {
     var price: Double
     var gtin: Int
     var batch: Int
-    var inventory: Inventory?
-    var packaging: Packaging?
+    var inventory: Inventory
+    var packaging: Packaging
     
     mutating func setInventory(inventory: Inventory){
         self.inventory = inventory

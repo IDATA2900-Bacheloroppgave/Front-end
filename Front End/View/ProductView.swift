@@ -8,17 +8,7 @@
 import SwiftUI
 
 struct ProductView: View {
-    let productName: String
-    let supplier: String
-    let currentStock: Int
-    let productType: String
-    let packaging: String
-    let contentPerPackage: Int
-    let price: Double
-    let weight: Double
-    let gtin: Int
-    let batch: Int
-    let bestBefore: String
+    let product: Product
     
     var body: some View {
         ZStack {
@@ -46,9 +36,9 @@ struct ProductView: View {
                                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                                     
                                     VStack(spacing: 5, content: {
-                                        TextInfoField(type: "Name:", text: productName)
-                                        TextInfoField(type: "Supplier:", text: supplier)
-                                        TextInfoField(type: "Stock:", text: String(currentStock))
+                                        TextInfoField(type: "Name:", text: product.name)
+                                        TextInfoField(type: "Supplier:", text: product.supplier)
+                                        TextInfoField(type: "Stock:", text: String(product.inventory.availableStock))
                                     
                                     })
                                     .padding()
@@ -59,11 +49,11 @@ struct ProductView: View {
                                 Divider()
                                     .padding(.horizontal)
                                 VStack(spacing: 5, content: {
-                                    TextInfoField(type: "Product type:", text: productType)
-                                    TextInfoField(type: "Packaging:", text: packaging )
-                                    TextInfoField(type: "Quantity:", text: String(contentPerPackage))
-                                    TextInfoField(type: "Price:", text: String(price))
-                                    TextInfoField(type: "Weight:", text: "\(weight) g")
+                                    TextInfoField(type: "Product type:", text: product.productType)
+                                    TextInfoField(type: "Packaging:", text: product.packaging.packageType )
+                                    TextInfoField(type: "Quantity:", text: String(product.packaging.quantityPrPackage))
+                                    TextInfoField(type: "Price:", text: String(product.price))
+                                    TextInfoField(type: "Weight:", text: "\(product.packaging.weightInGrams) g")
                                 
                                 })
                                 .padding(.vertical)
@@ -71,9 +61,9 @@ struct ProductView: View {
                                 Divider()
                                     .padding(.horizontal)
                                 VStack(spacing: 5, content: {
-                                    TextInfoField(type: "GTIN:", text: String(gtin))
-                                    TextInfoField(type: "Batch:", text: String(batch) )
-                                    TextInfoField(type: "Best before:", text: bestBefore)
+                                    TextInfoField(type: "GTIN:", text: String(product.gtin))
+                                    TextInfoField(type: "Batch:", text: String(product.batch) )
+                                    TextInfoField(type: "Best before:", text: product.bestBeforeDate)
                                    
                                 
                                 })
@@ -98,7 +88,7 @@ struct ProductView: View {
 }
 
 #Preview {
-    ProductView(productName: "test", supplier: "test", currentStock: 12, productType: "test", packaging: "test", contentPerPackage: 12, price: 20.0, weight: 21.0, gtin: 10, batch: 10, bestBefore: "12-09-99")
+    ProductView(product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 12, gtin: 12, batch: 12, inventory: Inventory(totalStock: 12, reservedStock: 12, availableStock: 12), packaging: Packaging(packageType: "", quantityPrPackage: 12, weightInGrams: 12, dimensionInCm3: 12)))
 }
 
 struct TextInfoField: View {

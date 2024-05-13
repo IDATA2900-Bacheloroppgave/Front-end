@@ -264,7 +264,6 @@
 				ECEBD1732BCC5BA3007F9D8A /* OrderHistory */,
 				ECEBD1742BCC5BAF007F9D8A /* NewOrder */,
 				EC96591F2BD7CF3200DDE431 /* ProductView.swift */,
-				EC9659212BD7EFF100DDE431 /* FilterOrderSheetView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,6 +309,7 @@
 		ECEBD1732BCC5BA3007F9D8A /* OrderHistory */ = {
 			isa = PBXGroup;
 			children = (
+				EC9659212BD7EFF100DDE431 /* FilterOrderSheetView.swift */,
 				ECEBD1702BCC59D1007F9D8A /* OrderHistoryView.swift */,
 			);
 			path = OrderHistory;
