@@ -10,34 +10,28 @@ import SwiftUI
 struct NewOrderView: View {
     
     @StateObject var newOrderViewModel = NewOrderViewModel()
-    @EnvironmentObject var userStateViewModel : AuthViewModel
-
+    @EnvironmentObject var userStateViewModel: AuthViewModel
+    
     @State private var isLoading = true
     @State private var user = User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 12, storeId: 12))
     @State private var wishedDelivery = Date()
-    @State private var productAmounts: [Int: Int] = [:] // LIST OF PRODUCTID AND
+    @State private var productAmounts: [Int: Int] = [:]
     @State private var placeOrder = false
     
-    @State private var itemSelected = false //SHOW FILTER VIEW
+    @State private var itemSelected = false
     @State private var searchterm = "" /// SEARCH TERM
-    @State private var amount = 0 //AMOUNTs
-    @State private var pickerSelection = 0 //PICKER FILTER
+    @State private var pickerSelection = 0 // PICKER FILTER
     
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(Color.white)
-                    .edgesIgnoringSafeArea(.all) // Ensure the color fills the entire screen
+                Color.white.edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
-                    HStack {
-                        Text("New Order")
-                            .font(.system(size: 22))
-                            .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
-                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-                            .background(.accent)
-                        
-                        
-                    }
+                    Text("New Order")
+                        .font(.system(size: 22))
+                        .frame(maxWidth: .infinity)
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
+                        .background(Color.accent)
                     
                     VStack{
                         VStack{
@@ -93,14 +87,8 @@ struct NewOrderView: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }else{
                             ScrollView{
-                                ForEach(newOrderViewModel.products, id: \.productId) { product in
-                                    
-                                   // let availableQuantity = product.inventory!.availableStock
-                                    
-                                   
-                                    NewProductCardView(product: product, itemAvailanle: false, availableQuantity: 10, productAmounts: $productAmounts, itemSelected: $itemSelected)
-                                    
-                                   
+                                ForEach(filteredProducts, id: \.productId) { product in
+                                    NewProductCardView(product: product, itemAvailanle: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts, itemSelected: $itemSelected)
                                 }
                             }
                         }
@@ -122,26 +110,34 @@ struct NewOrderView: View {
             }
         }.tint(.black)
             .onAppear() {
-                isLoading = true;
+                isLoading = true
                 Task {
                     do {
                         try await newOrderViewModel.fetchProducts()
-                        // Safely unwrap the currentUser using optional binding
-                        if let user = userStateViewModel.currentUser {
-                            self.user = user
+                        if let currentUser = userStateViewModel.currentUser {
+                            self.user = currentUser
                         } else {
-                            // Handle the case where there is no current user
-                            // For example, you could redirect to a login view or show an error message
                             print("No current user available")
                         }
                     } catch {
                         print("Could not fetch products")
                     }
-                    isLoading = false;
+                    isLoading = false
                 }
             }
-
-        
+    }
+    
+    var filteredProducts: [Product] {
+        switch pickerSelection {
+        case 1:
+            return newOrderViewModel.products.filter { $0.productType == "REFRIGERATED_GOODS" }
+        case 2:
+            return newOrderViewModel.products.filter { $0.productType == "FROZEN_GOODS" }
+        case 3:
+            return newOrderViewModel.products.filter { $0.productType == "DRY_GOODS" }
+        default:
+            return newOrderViewModel.products
+        }
     }
 }
 
