@@ -12,6 +12,7 @@ struct NewOrderView: View {
     @StateObject var newOrderViewModel = NewOrderViewModel()
     @EnvironmentObject var userStateViewModel : AuthViewModel
 
+    @State private var isLoading = true
     @State private var user = User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 12, storeId: 12))
     @State private var wishedDelivery = Date()
     @State private var productAmounts: [Int: Int] = [:] // LIST OF PRODUCTID AND
@@ -73,7 +74,7 @@ struct NewOrderView: View {
                                 Picker(selection: $pickerSelection, label: Text("Options")) {
                                     Text("All goods").tag(0)
                                     Text("Refrigerated").tag(1)
-                                    Text("Freezed").tag(2)
+                                    Text("Frozen").tag(2)
                                     Text("Dry").tag(3)
                                 }
                                 .pickerStyle(SegmentedPickerStyle())
@@ -81,15 +82,26 @@ struct NewOrderView: View {
                         }
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                         .padding(.horizontal)
-                        ScrollView{
-                            ForEach(newOrderViewModel.products, id: \.productId) { product in
-                                
-                               // let availableQuantity = product.inventory!.availableStock
-                                
-                               
-                                NewProductCardView(product: product, itemAvailanle: false, availableQuantity: 10, productAmounts: $productAmounts, itemSelected: $itemSelected)
-                                
-                               
+                        if isLoading{
+                            VStack {
+                                Spacer() // Pushes the progress view down in the ScrollView
+                                ProgressView()
+                                    .scaleEffect(1.5)
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
+                                Spacer() // Ensures the progress view stays centered
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }else{
+                            ScrollView{
+                                ForEach(newOrderViewModel.products, id: \.productId) { product in
+                                    
+                                   // let availableQuantity = product.inventory!.availableStock
+                                    
+                                   
+                                    NewProductCardView(product: product, itemAvailanle: false, availableQuantity: 10, productAmounts: $productAmounts, itemSelected: $itemSelected)
+                                    
+                                   
+                                }
                             }
                         }
                     }
@@ -110,6 +122,7 @@ struct NewOrderView: View {
             }
         }.tint(.black)
             .onAppear() {
+                isLoading = true;
                 Task {
                     do {
                         try await newOrderViewModel.fetchProducts()
@@ -124,6 +137,7 @@ struct NewOrderView: View {
                     } catch {
                         print("Could not fetch products")
                     }
+                    isLoading = false;
                 }
             }
 

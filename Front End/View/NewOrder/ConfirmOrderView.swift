@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct ConfirmOrderView: View {
+
     var order : Order
+    
     init(order: Order) {
         self.order = order
     }
+    
 var body: some View {
     NavigationStack{
         ZStack {

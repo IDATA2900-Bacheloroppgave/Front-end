@@ -94,7 +94,7 @@ struct NewProductCardView: View {
         var color = Color.dryGoods
         if self.product.productType == "REFRIGERATED_GOODS"{
             color = Color.iconVeggie
-        }else if self.product.productType == "FREEZED_GOODS"{
+        }else if self.product.productType == "FROZEN_GOODS"{
             color = Color.freezedGoods
         }
         return color;
