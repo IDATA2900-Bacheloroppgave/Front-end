@@ -18,7 +18,7 @@ struct NewOrderView: View {
     @State private var wishedDelivery = Date()
     @State private var productAmounts: [Int: Int] = [:]
     @State private var placeOrder = false
-    @State private var itemSelected = false
+    @State private var showSheet = false
 
     var body: some View {
         NavigationStack {
@@ -82,21 +82,24 @@ struct NewOrderView: View {
                         } else {
                             ScrollView {
                                 ForEach(filteredProducts, id: \.productId) { product in
-                                    NewProductCardView(product: product, itemAvailanle: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts, itemSelected: $itemSelected)
+                                    NewProductCardView(product: product, itemAvailanle: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts, itemSelected: $showSheet)
                                 }
                             }
                         }
                     }
                 }
-                .sheet(isPresented: $itemSelected) {
+                .sheet(isPresented: $showSheet ) {
                     VStack {
-                        ShoppingCartSheetView(itemSelected: $itemSelected, wishedDelivery: $wishedDelivery, placeOrder: $placeOrder, productAmounts: $productAmounts, user: $user, newOrderViewModel: newOrderViewModel)
+                        ShoppingCartSheetView(itemSelected: $showSheet, wishedDelivery: $wishedDelivery, placeOrder: $placeOrder, showSheet: $showSheet, productAmounts: $productAmounts, user: $user, newOrderViewModel: newOrderViewModel)
                             .presentationDetents([.fraction(0.25)])
                             .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.25)))
                     }
                 }
                 .tint(.black)
             }
+            .navigationDestination(isPresented: $placeOrder) {
+                ConfirmOrderView(wishedDelivery: $wishedDelivery, productAmounts: $productAmounts, newOrderViewModel: newOrderViewModel)
+                       }
         }
         .tint(.black)
         .onAppear {
@@ -139,3 +142,5 @@ struct NewOrderView: View {
 #Preview {
     NewOrderView()
 }
+
+

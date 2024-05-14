@@ -37,7 +37,7 @@ struct NewProductCardView: View {
                             Text(product.supplier)
                                 .font(.system(size: 14))
                             VStack(alignment: .leading) {
-                                Text("Batch: \(product.batch)")
+                                Text("Batch: \(String(product.batch))")
                                     .foregroundStyle(.greyText)
                                     .font(.system(size: 12))
                                 Text("Best before: \(product.bestBeforeDate)")

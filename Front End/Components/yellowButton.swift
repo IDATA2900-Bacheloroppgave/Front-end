@@ -17,7 +17,7 @@ struct yellowButton: View {
                     .font(.system(size: 20, weight: .medium))
                     .foregroundColor(Color.black)
                 
-                Spacer() /
+                Spacer()
                 
                 Image(systemName: "barcode.viewfinder")
                     .foregroundColor(.black)
@@ -25,7 +25,7 @@ struct yellowButton: View {
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 15)
-            .background(Color.yellow)
+            .background(.accent)
             .cornerRadius(10)
         }
         .frame(minWidth: 0, maxWidth: .infinity)

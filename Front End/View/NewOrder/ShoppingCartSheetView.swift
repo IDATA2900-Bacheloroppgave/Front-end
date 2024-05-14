@@ -11,6 +11,7 @@ struct ShoppingCartSheetView: View {
     @Binding var itemSelected : Bool
     @Binding var wishedDelivery: Date
     @Binding var placeOrder : Bool //??
+    @Binding var showSheet : Bool
     @Binding var productAmounts: [Int: Int]
     @Binding var user: User
     
@@ -60,20 +61,10 @@ struct ShoppingCartSheetView: View {
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             .padding(.horizontal)
             HStack{
+             
                 Button(action: {
                     placeOrder = true
-                    
-                    Task {
-                           if let token = authViewModel.getToken() {
-                               do {
-                                   try await newOrderViewModel.placeOrder(wishedDate: wishedDelivery, orderList: productAmounts, token: token)
-                               } catch {
-                                   print("Failed to place order: \(error)")
-                               }
-                           } else {
-                               print("Authentication error: Token is missing.")
-                           }
-                       }
+                    showSheet = false
                     
                 }) {
                     HStack {
@@ -110,5 +101,5 @@ func getAmountOfProducts(productAmountsList: [Int:Int]) -> Int{
 
 
 #Preview {
-    ShoppingCartSheetView(itemSelected: .constant(false), wishedDelivery: .constant(Date.now), placeOrder: .constant(false), productAmounts: .constant([1:1]), user: .constant(User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 12, storeId: 12))), newOrderViewModel: NewOrderViewModel())
+    ShoppingCartSheetView(itemSelected: .constant(false), wishedDelivery: .constant(Date.now), placeOrder: .constant(false), showSheet: .constant(false), productAmounts: .constant([1:1]), user: .constant(User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 12, storeId: 12))), newOrderViewModel: NewOrderViewModel())
 }

@@ -72,7 +72,7 @@ struct LandingPageView: View {
                                 }
                             }
                         }
-                        yellowButton()
+                       yellowButton()
                         
                     }
                 }
