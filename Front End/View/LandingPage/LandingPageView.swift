@@ -42,35 +42,45 @@ struct LandingPageView: View {
                     }else{
                         ScrollView{
                             Title(title: "Next delivery")
-                           
-                            NavigationLink{
-                                OrderInfoView(order: ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!) //Midlertidig for å ikke få feilmelding
-                            }label: {
-                                DeliveryCardView(
-                                    mainTitle: ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!.orderDate,
-                                    orderNumber: "#\(ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!.orderId)",
-                                    progressValue: ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!.progressInPercent/100,
-                                    currentLocation: "Current location: \(ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!.currentLocation ?? "unknown")",
-                                    arrivalTime: "Requested delivery: \(ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!.wishedDeliveryDate)",
-                                    supplierName: "Products: \(ordersViewModel.getAmountOfProducts(order: ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first!))")
-                                .foregroundColor(.primary)
+                            if let nextOrder = ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first {
+                                NavigationLink{
+                                    //HUSK Å HENDRE
+                                    //HUSKE Å HENDRE
+                                    OrderInfoView(order: nextOrder ) //Midlertidig for å ikke få feilmelding
+                                }label: {
+                                   DeliveryCardView(
+                                    mainTitle: "Order (\(nextOrder.orderDate))", orderNumber: "#\(nextOrder.orderId)",
+                                        progressValue: nextOrder.progressInPercent/100,
+                                        currentLocation: "Current location: \(nextOrder.currentLocation ?? "unknown")",
+                                        arrivalTime: "Requested delivery: \(nextOrder.wishedDeliveryDate)",
+                                    supplierName: "Products: \(nextOrder.quantities.count)")
+                                   .foregroundColor(.primary)
+                                }
+                            }else{
+                                Text("No next order")
                             }
+                            
                             
                             Title(title: "Upcoming deliveries")
                             
-                            ForEach(ordersViewModel.getActiveOrders(o: ordersViewModel.orders), id: \.orderId) { order in
-                                NavigationLink{
-                                    OrderInfoView(order: order)
-                                }label: {
-                                    ActiveOrderCardView(
-                                        orderNumber: String(order.orderId),
-                                        productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
-                                        status: order.orderStatus.lowercased(),
-                                        estimatedDelivery: order.wishedDeliveryDate,
-                                        progressValue: order.progressInPercent/100)
-                                    .foregroundColor(.primary)
+                            if ordersViewModel.getActiveOrders(o: ordersViewModel.orders).isEmpty{
+                                Text("No orders to show")
+                            }else{
+                                ForEach(ordersViewModel.getActiveOrders(o: ordersViewModel.orders), id: \.orderId) { order in
+                                    NavigationLink{
+                                        OrderInfoView(order: order)
+                                    }label: {
+                                        ActiveOrderCardView(
+                                            orderNumber: String(order.orderId),
+                                            productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
+                                            status: order.orderStatus.lowercased(),
+                                            estimatedDelivery: order.wishedDeliveryDate,
+                                            progressValue: order.progressInPercent/100)
+                                        .foregroundColor(.primary)
+                                    }
                                 }
                             }
+                            
                         }
                        yellowButton()
                         

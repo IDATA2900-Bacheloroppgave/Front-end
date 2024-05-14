@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Product: Codable {
     var productId: Int
@@ -26,6 +27,16 @@ struct Product: Codable {
     
     mutating func setPackaging(packaging: Packaging){
         self.packaging = packaging
+    }
+    
+    func getProductColor() -> Color{
+        var color = Color.dryGoods
+        if self.productType == "REFRIGERATED_GOODS" {
+            color = Color.iconVeggie
+        } else if self.productType == "FROZEN_GOODS" {
+            color = Color.freezedGoods
+        }
+        return color
     }
 }
 

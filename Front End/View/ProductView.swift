@@ -32,7 +32,7 @@ struct ProductView: View {
                                         .resizable() // Make the image resizable
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 60, height: 60)
-                                        .foregroundColor(.iconVeggie)
+                                        .foregroundColor(product.getProductColor())
                                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                                     
                                     VStack(spacing: 5, content: {

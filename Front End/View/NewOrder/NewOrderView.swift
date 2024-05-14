@@ -82,7 +82,7 @@ struct NewOrderView: View {
                         } else {
                             ScrollView {
                                 ForEach(filteredProducts, id: \.productId) { product in
-                                    NewProductCardView(product: product, itemAvailanle: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts, itemSelected: $showSheet)
+                                    NewProductCardView(product: product, itemAvailable: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts, showsheet: $showSheet)
                                 }
                             }
                         }
@@ -98,7 +98,7 @@ struct NewOrderView: View {
                 .tint(.black)
             }
             .navigationDestination(isPresented: $placeOrder) {
-                ConfirmOrderView(wishedDelivery: $wishedDelivery, productAmounts: $productAmounts, newOrderViewModel: newOrderViewModel)
+                ConfirmOrderView(wishedDelivery: $wishedDelivery, productAmounts: $productAmounts, newOrderViewModel: newOrderViewModel, placeOrder: $placeOrder, showSheet: $showSheet)
                        }
         }
         .tint(.black)

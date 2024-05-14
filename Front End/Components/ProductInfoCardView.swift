@@ -8,33 +8,29 @@ import SwiftUI
 
 struct ProductInfoCard: View {
     
-    let productName: String
-    let productIcon: String
-    let supplierName: String
-    let batchNumber: Int
-    let bestBeforeDate: String
-    let quantityInfo: Int
+    let product : Product
+    let amount : Int
     
     
     var body: some View {
         HStack{
             HStack(spacing: 4) {
-                Image(systemName: productIcon)
+                Image(systemName: "fork.knife.circle.fill")
                     .resizable()
                     .frame(width: 30, height: 30)
-                    .foregroundColor(.iconVeggie)
+                    .foregroundColor(product.getProductColor())
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
                 VStack(alignment: .leading, spacing: 2){
-                    Text(productName)
+                    Text(product.name)
                         .foregroundStyle(.bluePicker)
                         .fontWeight(.medium)
-                    Text(supplierName)
+                    Text(product.supplier)
                         .font(.system(size: 14))
                     VStack(alignment: .leading){
-                        Text("Batch: \(String(batchNumber))")
+                        Text("Batch: \(String(product.batch))")
                             .foregroundStyle(.greyText)
                             .font(.system(size: 12))
-                        Text("Best before: \(bestBeforeDate)")
+                        Text("Best before: \(product.bestBeforeDate)")
                             .foregroundStyle(.greyText)
                             .font(.system(size: 12))
                     }
@@ -43,7 +39,7 @@ struct ProductInfoCard: View {
                 .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
             }
             Spacer() // Add Spacer to push "5-Dpak" to the end
-            Text(String("\(quantityInfo) D-Pk"))
+            Text(String("\(amount) D-Pk"))
                 .font(.system(size: 14))
                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                 .frame(maxWidth: 100, maxHeight: .infinity, alignment: .center)
@@ -57,8 +53,19 @@ struct ProductInfoCard: View {
         .padding(.horizontal)
     }
     
+    
+    func setColor() -> Color {
+        var color = Color.dryGoods
+        if self.product.productType == "REFRIGERATED_GOODS" {
+            color = Color.iconVeggie
+        } else if self.product.productType == "FROZEN_GOODS" {
+            color = Color.freezedGoods
+        }
+        return color
+    }
+    
 }
 
 #Preview {
-    ProductInfoCard(productName: "Speltrundstykker", productIcon: "fork.knife.circle.fill", supplierName: "Hatting", batchNumber: 123, bestBeforeDate: "17.02.25", quantityInfo: 5)
+    ProductInfoCard(product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 21, gtin: 12, batch: 12, inventory: Inventory(totalStock: 12, reservedStock: 12, availableStock: 12), packaging: Packaging(packageType: "", quantityPrPackage: 12, weightInGrams: 12, dimensionInCm3: 12)), amount: 2)
 }

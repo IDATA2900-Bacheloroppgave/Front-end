@@ -49,6 +49,20 @@ class NewOrderViewModel: ObservableObject {
 
         }
     }
+    
+    func getSelectedProducts(productsAmounts : [Int:Int]) -> [Product]{
+        var selectedProducts : [Product] = []
+        for product in products {
+            for productamounts in productsAmounts{
+                if product.productId == productamounts.key && productamounts.value>0{
+                    selectedProducts.append(product)
+                }
+                    
+            }
+        }
+        return selectedProducts
+    }
+    
 
     func placeOrder(wishedDate: Date, orderList: [Int: Int], token: String) async throws {
         print("PLACED ORDER")

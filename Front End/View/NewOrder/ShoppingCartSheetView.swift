@@ -75,7 +75,7 @@ struct ShoppingCartSheetView: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 8)
-                    .background(.greenProgressbar)
+                    .background(.accent)
                     .cornerRadius(10)
                 }
                 .padding(.horizontal)

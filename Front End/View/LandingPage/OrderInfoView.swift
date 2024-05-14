@@ -44,13 +44,7 @@ struct OrderInfoView: View {
                                            ProductView(
                                             product: quantity.product)
                                        } label: {
-                                           ProductInfoCard(
-                                               productName: quantity.product.name,
-                                               productIcon: "fork.knife.circle.fill",
-                                               supplierName: quantity.product.supplier,
-                                               batchNumber: quantity.product.batch,
-                                               bestBeforeDate: quantity.product.bestBeforeDate,
-                                               quantityInfo: quantity.productQuantity)
+                                           ProductInfoCard(product: quantity.product, amount: getAmountOfProduct(product: quantity.product))
                                        }
                                    
                                    
@@ -64,6 +58,18 @@ struct OrderInfoView: View {
             }.tint(.black)
         }
     }
+    
+    func getAmountOfProduct(product: Product) -> Int{
+        var amount = 0
+        for quantity in order.quantities {
+            if quantity.id == product.productId{
+                amount = quantity.productQuantity
+            }
+        }
+        return amount
+    }
+    
+    
 }
 
 #Preview {

@@ -1,13 +1,19 @@
+//
+//  showOrderCardView.swift
+//  Front End
+//
+//  Created by Siri Sandnes on 14/05/2024.
+//
+
 import SwiftUI
 
-struct NewProductCardView: View {
+struct ShowOrderCardView: View {
     var product: Product
     var itemAvailable: Bool
     var availableQuantity: Int
-    
+
     @Binding var productAmounts: [Int: Int]
-    @Binding var showsheet: Bool
-    
+
     var body: some View {
         let amountBinding = Binding<Int>(
             get: {
@@ -15,10 +21,9 @@ struct NewProductCardView: View {
             },
             set: {
                 self.productAmounts[self.product.productId] = $0
-                self.showsheet = $0 > 0
             }
         )
-        
+
         return HStack {
             NavigationStack {
                 NavigationLink {
@@ -69,6 +74,8 @@ struct NewProductCardView: View {
         .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
         .padding(.horizontal)
     }
+
+ 
 }
 
 #Preview {

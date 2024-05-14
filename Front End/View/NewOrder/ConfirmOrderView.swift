@@ -8,69 +8,127 @@
 import SwiftUI
 
 struct ConfirmOrderView: View {
-
+    
     @Binding var wishedDelivery: Date
     @Binding var productAmounts: [Int: Int]
     @ObservedObject var newOrderViewModel: NewOrderViewModel
     @EnvironmentObject var authViewModel : AuthViewModel
+    @Binding var placeOrder : Bool
+    @Binding var showSheet : Bool
+    @State private var showingAlert = false
     
-   
     
-var body: some View {
-    NavigationStack{
-        ZStack {
-            Color(red: 0.96, green: 0.96, blue: 0.96)
-                .edgesIgnoringSafeArea(.all)
-            VStack{
-                VStack {
-                    Text("Order Summary")
-                        .font(.system(size: 20))
-                        .frame(maxWidth: .infinity)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-                        .background(.accent)
-                }
-                VStack {
+    
+    var body: some View {
+        NavigationStack{
+            ZStack {
+                Color(red: 0.96, green: 0.96, blue: 0.96)
+                    .edgesIgnoringSafeArea(.all)
+                VStack{
                     VStack {
-                        Text("Products in order")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(.headline)
-                            .padding()
-                        ScrollView {
-                            ForEach(newOrderViewModel.products, id: \.productId) { product in
-                                Text(product.name)
-                            }
-                        }
-                        Button(action: {
-                            // Action for the button tap
-                        }) {
-                            HStack {
-                                Text("Confirm Order")
-                                    .font(.system(size: 20, weight: .medium))
-                                    .foregroundColor(Color.black)
-                                
-                                Spacer() // This will push the text and the icon to opposite sides
-                                
-                                Image(systemName: "arrow.right")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 35))
-                            }
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 15) // Adjust padding as needed
+                        Text("Order Summary")
+                            .font(.system(size: 20))
+                            .frame(maxWidth: .infinity)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                             .background(.accent)
-                            .cornerRadius(10)
-                        }
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .padding()
                     }
-                    .padding(0)
+                    VStack {
+                        VStack {
+                            Text("Products in order")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(.headline)
+                                .padding()
+                            ScrollView {
+                                ForEach(newOrderViewModel.getSelectedProducts(productsAmounts: productAmounts), id: \.productId) { product in
+                                    ShowOrderCardView(product: product, itemAvailable: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts)
+                                    
+                                    
+                                }
+                            }
+                           
+                            
+                            VStack{
+                                DatePicker(selection: $wishedDelivery,
+                                           in: Date()...,
+                                           displayedComponents: .date,
+                                           label: {
+                                    Text("Delivery date:")
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                )
+                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                .padding(.horizontal)
+                            } .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
+                                .background(Color.white)
+                                .cornerRadius(5)
+                                .shadow(radius: 1)
+                                .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
+                                .padding(.horizontal)
+                            
+                        
+                            Button(action: {
+                                performPlaceOrder()
+                                
+                            }) {
+                                HStack {
+                                    Text("Confirm Order")
+                                        .font(.system(size: 20, weight: .medium))
+                                        .foregroundColor(Color.black)
+                                    
+                                    Spacer() // This will push the text and the icon to opposite sides
+                                    
+                                    Image(systemName: "arrow.right")
+                                        .foregroundColor(.black)
+                                        .font(.system(size: 35))
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 15) // Adjust padding as needed
+                                .background(.accent)
+                                .cornerRadius(10)
+                            }  .alert(isPresented:$showingAlert) {
+                                Alert(
+                                    title: Text("Are you sure you want to delete this?"),
+                                    message: Text("There is no undo"),
+                                    primaryButton: .destructive(Text("Delete")) {
+                                        print("Deleting...")
+                                    },
+                                    secondaryButton: .cancel()
+                                )
+                            }
+                            .frame(minWidth: 0, maxWidth: .infinity)
+                            .padding()
+                        }
+                        .padding(0)
+                    }
                 }
-            }
-        }.tint(.black)
+            }.tint(.black)
+        }
+        
     }
+    
+    func performPlaceOrder(){
+        
+        Task {
+            if let token = authViewModel.getToken() {
+                do {
+                    try await newOrderViewModel.placeOrder(wishedDate: wishedDelivery, orderList: productAmounts, token: token)
+                    print("placed order")
+                    showingAlert = true
+                   
+                } catch {
+                    print("Failed to place order: \(error)")
+                }
+            } else {
+                print("Authentication error: Token is missing.")
+            }
+        }
+    }
+    
 }
-}
+
+
 
 
 #Preview {
-    ConfirmOrderView(wishedDelivery: .constant(Date.now), productAmounts: .constant([1:1]), newOrderViewModel: NewOrderViewModel())
+    ConfirmOrderView(wishedDelivery: .constant(Date.now), productAmounts: .constant([1:1]), newOrderViewModel: NewOrderViewModel(), placeOrder: .constant(false), showSheet: .constant(false))
 }
