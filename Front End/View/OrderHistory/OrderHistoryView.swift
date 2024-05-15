@@ -68,12 +68,7 @@ struct OrderHistoryView: View {
                                     NavigationLink{
                                         OrderInfoView(order: order)
                                     }label: {
-                                        ActiveOrderCardView(
-                                            orderNumber: String(order.orderId),
-                                            productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
-                                            status: order.orderStatus.lowercased(),
-                                            estimatedDelivery: order.wishedDeliveryDate,
-                                            progressValue: order.progressInPercent/100)
+                                        ActiveOrderCardView(order: order)
                                         .foregroundColor(.primary)
                                     }
                                 }
@@ -83,12 +78,7 @@ struct OrderHistoryView: View {
                                     NavigationLink{
                                         OrderInfoView(order: order)
                                     }label: {
-                                        PastOrderCardView(
-                                            orderNumber: order.orderId,
-                                            supplierName: 1,
-                                            status: order.orderStatus,
-                                            estimatedDelivery: order.wishedDeliveryDate,
-                                            progressValue: order.progressInPercent/100)
+                                        PastOrderCardView(order: order)
                                         .foregroundColor(.primary)
                                     }
                                 }
@@ -100,8 +90,8 @@ struct OrderHistoryView: View {
             .sheet(isPresented: $isFilterVisible) {
                                    VStack {
                                        FilterOrderSheetView(isVisible: $isFilterVisible, quickFilter: $quickFilter, toDate: $toDate, fromDate: $fromDate, nowDate: $dateNow)
-                                           .frame(maxWidth: .infinity) // Set maximum width
-                                           .presentationDetents([.medium, .large]) // Set your desired height
+                                           .frame(maxWidth: .infinity) 
+                                           .presentationDetents([.medium, .large])
                                    }
             }
         

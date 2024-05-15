@@ -18,7 +18,7 @@ struct ProductView: View {
                 VStack {
                     Text("Product info")
                         .font(.system(size: 20))
-                        .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
+                        .frame(maxWidth: .infinity)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                         .background(.accent)
                 }
@@ -28,8 +28,8 @@ struct ProductView: View {
                             VStack{
                                
                                 HStack{
-                                    Image(systemName: "fork.knife.circle.fill") //Set this to be dynamic
-                                        .resizable() // Make the image resizable
+                                    Image(systemName: "fork.knife.circle.fill") // Set this to be dynamic
+                                        .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: 60, height: 60)
                                         .foregroundColor(product.getProductColor())

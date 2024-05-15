@@ -51,26 +51,23 @@ struct FilterOrderSheetView: View {
                                 Text("Past six months").tag(3)
                             }
                             .onChange(of: quickFilter) { newValue, _ in
-                                // Handle changes in quickFilter selection
+                      
                                 print(quickFilter)
                                     if quickFilter == 1 {
-                                        // Perform actions for Past week selection
-                                        // Example: Update toDate and fromDate based on past week
+                                     
                                         let pastWeekDate = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
-                                        toDate = Date() // Set toDate to current date
-                                        fromDate = pastWeekDate // Set fromDate to past week date
+                                        toDate = Date()
+                                        fromDate = pastWeekDate
                                     } else if quickFilter == 2 {
-                                        // Perform actions for Past month selection
-                                        // Example: Update toDate and fromDate based on past month
+                                      
                                         let pastMonthDate = Calendar.current.date(byAdding: .month, value: -1, to: Date()) ?? Date()
-                                        toDate = Date() // Set toDate to current date
-                                        fromDate = pastMonthDate // Set fromDate to past month date
+                                        toDate = Date()
+                                        fromDate = pastMonthDate
                                     } else if quickFilter == 3 {
-                                        // Perform actions for Past six months selection
-                                        // Example: Update toDate and fromDate based on past six months
+                                        
                                         let pastSixMonthsDate = Calendar.current.date(byAdding: .month, value: -6, to: Date()) ?? Date()
-                                        toDate = Date() // Set toDate to current date
-                                        fromDate = pastSixMonthsDate // Set fromDate to past six months date
+                                        toDate = Date() 
+                                        fromDate = pastSixMonthsDate
                                     }
                                 }
                             
@@ -118,7 +115,7 @@ struct FilterOrderSheetView: View {
                         }) {
                             HStack {
                                 Text("Remove filters")
-                                    .font(.system(size: 16, weight: .medium)) // Adjust font size and weight as needed
+                                    .font(.system(size: 16, weight: .medium))
                                     .foregroundColor(Color.black)
                                     .frame(maxWidth: .infinity)
                             }
@@ -135,7 +132,7 @@ struct FilterOrderSheetView: View {
                         }) {
                             HStack {
                                 Text("See results")
-                                    .font(.system(size: 16, weight: .medium)) //
+                                    .font(.system(size: 16, weight: .medium))
                                     .foregroundColor(Color.black)
                                     .frame(maxWidth: .infinity)
                             }

@@ -9,11 +9,9 @@ import SwiftUI
 
 struct PastOrderCardView: View {
     
-    let orderNumber: Int
-    let supplierName: Int
-    let status: String
-    let estimatedDelivery: String
-    let progressValue: Double
+    let order: Order
+    
+ 
     
     var body: some View {
         VStack {
@@ -25,24 +23,24 @@ struct PastOrderCardView: View {
                     .frame(width: 30, height: 30)
                     .foregroundColor(Color.gray)
                 
-                Text(String("#\(orderNumber)"))
+                Text(String("#\(order.orderId)"))
                     .fontWeight(.medium)
                     .font(.subheadline)
                 Spacer()
-                Text(String(supplierName))
+                Text(String("Products: \(order.quantities.count)"))
                     .font(.footnote)
                     .foregroundStyle(Color(.greyText))
                 
             }
             .padding(EdgeInsets(top: 5, leading: 2, bottom: 5, trailing: 0))
             
-            ProgressView(value: progressValue)
+            ProgressView(value: order.progressInPercent/100)
                 .tint(.greenProgressbar)
                 .scaleEffect(x: 1, y: 2.5)
             
             HStack{
                 VStack (alignment: .leading){
-                    Text("Status: \(status.lowercased())")
+                    Text("Status: \(order.orderStatus.prefix(1).uppercased() + order.orderStatus.dropFirst().lowercased())")
                         .foregroundStyle(Color(.greyText))
                         .font(.footnote)
                 }
@@ -63,5 +61,5 @@ struct PastOrderCardView: View {
 }
 
 #Preview {
-    PastOrderCardView(orderNumber: 1, supplierName: 1, status: "Skodje", estimatedDelivery: "Tomorrow before noon", progressValue: 1)
+    PastOrderCardView(order: Order(orderId: 12, orderDate: "", orderStatus: "", wishedDeliveryDate: "", progressInPercent: 12, customer: User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 12, storeId: 12)), quantities: [Quantity(productQuantity: 12, product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 12, gtin: 21, batch: 12, inventory: Inventory(totalStock: 1, reservedStock: 1, availableStock: 1), packaging: Packaging(packageType: "", quantityPrPackage: 12, weightInGrams: 12, dimensionInCm3: 12)))]))
 }

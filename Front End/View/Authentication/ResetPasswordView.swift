@@ -10,7 +10,7 @@ import SwiftUI
 struct ResetPasswordView: View {
     @State private var username = ""
  
-    @State private var loginSuccessful = false  // Corrected the typo in variable name
+    @State private var loginSuccessful = false  
     @State var color = Color.red
     
     var body: some View {

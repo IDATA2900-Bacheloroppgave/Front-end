@@ -179,23 +179,23 @@ class AuthViewModel: ObservableObject, Observable{
     
     
         
-        // Works but should be updated
+
     func logout(email: String) -> Bool {
         do {
-            // Attempt to delete the token associated with the email from the Keychain
+    
             try KeychainManager.shared.deleteToken(for: email)
-            // Update UI on the main thread
+         
             DispatchQueue.main.async {
                 self.currentUser = nil
             }
-            // Return true indicating the logout was successful
+   
             return true
         } catch {
-            // Handle errors if the token deletion fails
+        
             DispatchQueue.main.async {
                 self.error = "Failed to delete token"
             }
-            // Return false indicating the logout was unsuccessful
+            
             return false
         }
     }

@@ -10,8 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var authViewModel : AuthViewModel
     @Environment(\.dismiss) var dismiss
-    @State private var selectedStore = "Rema Averøy" // The default selected store
-    let stores = ["Rema Averøy", "Rema Ålesund", "Kiwi Ålesund"] // List of stores
+    @State private var selectedStore = "Rema Averøy" 
+    let stores = ["Rema Averøy", "Rema Ålesund", "Kiwi Ålesund"]
     
     var body: some View {
         NavigationStack {

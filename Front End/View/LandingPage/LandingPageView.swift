@@ -25,18 +25,18 @@ struct LandingPageView: View {
                     VStack {
                         Text("My deliveries")
                             .font(.system(size: 22))
-                            .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
+                            .frame(maxWidth: .infinity) 
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
                             .background(.accent)
                     }
                     
                     if isLoading{
                         VStack {
-                            Spacer() // Pushes the progress view down in the ScrollView
+                            Spacer()
                             ProgressView()
                                 .scaleEffect(1.5)
                                 .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
-                            Spacer() // Ensures the progress view stays centered
+                            Spacer()
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }else{
@@ -70,12 +70,7 @@ struct LandingPageView: View {
                                     NavigationLink{
                                         OrderInfoView(order: order)
                                     }label: {
-                                        ActiveOrderCardView(
-                                            orderNumber: String(order.orderId),
-                                            productsInOrder:  ordersViewModel.getAmountOfProducts(order: order),
-                                            status: order.orderStatus.lowercased(),
-                                            estimatedDelivery: order.wishedDeliveryDate,
-                                            progressValue: order.progressInPercent/100)
+                                        ActiveOrderCardView(order: order)
                                         .foregroundColor(.primary)
                                     }
                                 }
@@ -102,7 +97,7 @@ struct LandingPageView: View {
                 } else {
                     print("No token available, user might need to log in again.")
                 }
-                isLoading = false  // End loading
+                isLoading = false
             }
             
             

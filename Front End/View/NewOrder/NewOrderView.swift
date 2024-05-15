@@ -34,7 +34,7 @@ struct NewOrderView: View {
                     VStack {
                         VStack {
                             HStack {
-                                TextField("Search...", text: $newOrderViewModel.searchTerm)  // Bound to viewModel
+                                TextField("Search...", text: $newOrderViewModel.searchTerm)
                                     .padding(.horizontal, 5)
                                     .padding(.vertical, 7)
                                     .background(Color.white)
@@ -120,7 +120,7 @@ struct NewOrderView: View {
         }
     }
 
-    var filteredProducts: [Product] {  // Filter products based on picker selection
+    var filteredProducts: [Product] {  
         switch newOrderViewModel.pickerSelection {
         case 1:
             return newOrderViewModel.products.filter { $0.productType == "REFRIGERATED_GOODS" }

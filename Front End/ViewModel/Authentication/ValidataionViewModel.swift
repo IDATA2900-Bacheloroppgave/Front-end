@@ -14,7 +14,7 @@ class ValidationViewModel: ObservableObject {
     @Published var passwordValidationColor: Color = .red
 
     func validateEmail(_ email: String) {
-        // Example validation logic for email
+
         if email.count > 8 {
             emailValidationColor = .green
         } else {
@@ -23,7 +23,7 @@ class ValidationViewModel: ObservableObject {
     }
 
     func validatePassword(_ password: String) {
-        // Example validation logic for password
+
         if password.count >= 8 {
             passwordValidationColor = .green
         } else {

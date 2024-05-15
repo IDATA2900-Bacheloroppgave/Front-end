@@ -21,7 +21,7 @@ struct OrderInfoView: View {
                     VStack {
                         Text("Order #\(order.orderId)")
                             .font(.system(size: 20))
-                            .frame(maxWidth: .infinity) // Stretch the text to fill the entire width
+                            .frame(maxWidth: .infinity) 
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                             .background(.accent)
                     }

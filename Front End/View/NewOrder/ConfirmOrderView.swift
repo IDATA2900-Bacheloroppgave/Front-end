@@ -75,14 +75,14 @@ struct ConfirmOrderView: View {
                                         .font(.system(size: 20, weight: .medium))
                                         .foregroundColor(Color.black)
                                     
-                                    Spacer() // This will push the text and the icon to opposite sides
+                                    Spacer()
                                     
                                     Image(systemName: "arrow.right")
                                         .foregroundColor(.black)
                                         .font(.system(size: 35))
                                 }
                                 .padding(.horizontal, 20)
-                                .padding(.vertical, 15) // Adjust padding as needed
+                                .padding(.vertical, 15) 
                                 .background(.accent)
                                 .cornerRadius(10)
                             }  .alert(isPresented:$showingAlert) {

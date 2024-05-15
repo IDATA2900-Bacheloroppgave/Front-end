@@ -9,12 +9,8 @@ import SwiftUI
 
 struct ActiveOrderCardView: View {
     
-    let orderNumber: String
-    let productsInOrder: Int
-    let status: String
-    let estimatedDelivery: String
-    let progressValue: Double
-    
+    let order: Order
+
     
     var body: some View {
         
@@ -27,28 +23,29 @@ struct ActiveOrderCardView: View {
                   
                     .foregroundColor( .darkgrey)
                 
-                Text("#\(orderNumber)")
+                Text("#\(order.orderId)")
                     .fontWeight(.medium)
                     .font(.subheadline)
                 
                 Spacer()
                 
-                Text(String("Products: \(productsInOrder)"))
+                Text(String("Products: \(order.quantities.count)"))
                     .font(.footnote)
                     .foregroundColor(.gray)
                 
             }.padding(EdgeInsets(top: 5, leading: 2, bottom: 5, trailing: 0))
             
-            ProgressView(value: progressValue)
+            ProgressView(value: order.progressInPercent/100)
                 .tint(.yellow)
                 .scaleEffect(x: 1, y: 2.5)
             
             HStack{
                 VStack (alignment: .leading){
-                    Text("Status: \(status)")
+                    Text("Status: \(order.orderStatus.prefix(1).uppercased() + order.orderStatus.dropFirst().lowercased())")
+
                         .foregroundStyle(Color(.greyText))
                         .font(.footnote)
-                    Text("Requested delivery: \(estimatedDelivery)")
+                    Text("Requested delivery: \(order.wishedDeliveryDate)")
                         .foregroundStyle(Color(.bluepicker1))
                         .font(.footnote)
                 }
@@ -69,5 +66,5 @@ struct ActiveOrderCardView: View {
 }
 
 #Preview {
-    ActiveOrderCardView(orderNumber: "12345", productsInOrder: 1, status: "Skodje", estimatedDelivery: "Tomorrow before noon", progressValue: 0.1)
+    ActiveOrderCardView(order: Order(orderId: 12, orderDate: "", orderStatus: "", wishedDeliveryDate: "", progressInPercent: 12, customer: User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 12, storeId: 12)), quantities: [Quantity(productQuantity: 12, product: Product(productId: 12, name: "", description: "", supplier: "", bestBeforeDate: "", productType: "", price: 12, gtin: 21, batch: 12, inventory: Inventory(totalStock: 1, reservedStock: 1, availableStock: 1), packaging: Packaging(packageType: "", quantityPrPackage: 12, weightInGrams: 12, dimensionInCm3: 12)))]))
 }

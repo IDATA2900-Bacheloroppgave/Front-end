@@ -16,10 +16,10 @@ class Order: Identifiable, Codable {
     var progressInPercent: Double
     var customer: User
     var quantities: [Quantity]
-    var currentLocation: String? // Add currentLocation property
+    var currentLocation: String?
     var orderDateAsDate: Date? {
            let dateFormatter = DateFormatter()
-           dateFormatter.dateFormat = "yyyy-MM-dd" // Adjust the date format according to your string
+           dateFormatter.dateFormat = "yyyy-MM-dd"
            return dateFormatter.date(from: orderDate)
        }
 
@@ -30,7 +30,7 @@ class Order: Identifiable, Codable {
         self.wishedDeliveryDate = wishedDeliveryDate
         self.progressInPercent = progressInPercent
         self.customer = customer
-        self.quantities = quantities// Initialize currentLocation property
+        self.quantities = quantities
     }
     
     func setCurrentLocation(location: String){
@@ -40,7 +40,7 @@ class Order: Identifiable, Codable {
 
 
 struct Quantity: Identifiable, Codable {
-    var id: Int { product.productId } // Using product's ID as Quantity's ID for uniqueness
+    var id: Int { product.productId }
     var productQuantity: Int
     var product: Product
 }

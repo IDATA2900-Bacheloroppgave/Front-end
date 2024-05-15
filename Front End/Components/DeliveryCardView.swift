@@ -29,7 +29,7 @@ struct DeliveryCardView: View {
                         
                 }
                 Spacer()
-                Text(supplierName) // This can also be made dynamic if needed
+                Text(supplierName)
                     .font(.subheadline)
                     .foregroundStyle(Color(.greyText))
             }
@@ -38,7 +38,7 @@ struct DeliveryCardView: View {
             ProgressView(value: progressValue)
                 .tint(.yellow)
                 .frame(width: 340)
-                .padding(.vertical, 4) // Adjust padding as needed
+                .padding(.vertical, 4)
                 .scaleEffect(x: 1, y: 2.5)
                 
             
