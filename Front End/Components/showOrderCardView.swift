@@ -57,7 +57,7 @@ struct ShowOrderCardView: View {
             }
             Spacer()
             VStack {
-                Text("\(amountBinding.wrappedValue) D-Pk") // Reflect the bound amount
+                Text("\(amountBinding.wrappedValue) D-Pk") 
                     .foregroundStyle(.bluePicker)
                 Stepper("", value: amountBinding, in: 0...availableQuantity)
                     .labelsHidden()

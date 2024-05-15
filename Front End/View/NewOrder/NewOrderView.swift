@@ -43,7 +43,7 @@ struct NewOrderView: View {
                                     .foregroundColor(.black)
                                     .backgroundStyle(.white)
                                 Button(action: {
-                               
+                                    // Barcode scanning action
                                 }) {
                                     HStack {
                                         Image(systemName: "barcode.viewfinder")
@@ -99,7 +99,7 @@ struct NewOrderView: View {
             }
             .navigationDestination(isPresented: $placeOrder) {
                 ConfirmOrderView(wishedDelivery: $wishedDelivery, productAmounts: $productAmounts, newOrderViewModel: newOrderViewModel, placeOrder: $placeOrder, showSheet: $showSheet)
-                       }
+            }
         }
         .tint(.black)
         .onAppear {
@@ -120,22 +120,25 @@ struct NewOrderView: View {
         }
     }
 
-    var filteredProducts: [Product] {  
+    var filteredProducts: [Product] {
+        let filteredByCategory: [Product]
         switch newOrderViewModel.pickerSelection {
         case 1:
-            return newOrderViewModel.products.filter { $0.productType == "REFRIGERATED_GOODS" }
+            filteredByCategory = newOrderViewModel.products.filter { $0.productType == "REFRIGERATED_GOODS" }
         case 2:
-            return newOrderViewModel.products.filter { $0.productType == "FROZEN_GOODS" }
+            filteredByCategory = newOrderViewModel.products.filter { $0.productType == "FROZEN_GOODS" }
         case 3:
-            return newOrderViewModel.products.filter { $0.productType == "DRY_GOODS" }
+            filteredByCategory = newOrderViewModel.products.filter { $0.productType == "DRY_GOODS" }
         default:
-            return newOrderViewModel.products
+            filteredByCategory = newOrderViewModel.products
+        }
+
+        if newOrderViewModel.searchTerm.isEmpty {
+            return filteredByCategory
+        } else {
+            return filteredByCategory.filter { $0.name.lowercased().contains(newOrderViewModel.searchTerm.lowercased()) }
         }
     }
-}
-
-#Preview {
-    NewOrderView()
 }
 
 

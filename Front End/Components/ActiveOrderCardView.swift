@@ -31,7 +31,7 @@ struct ActiveOrderCardView: View {
                 
                 Text(String("Products: \(order.quantities.count)"))
                     .font(.footnote)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color(.greyText))
                 
             }.padding(EdgeInsets(top: 5, leading: 2, bottom: 5, trailing: 0))
             

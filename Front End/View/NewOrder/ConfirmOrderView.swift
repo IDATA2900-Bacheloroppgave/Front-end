@@ -16,6 +16,7 @@ struct ConfirmOrderView: View {
     @Binding var placeOrder : Bool
     @Binding var showSheet : Bool
     @State private var showingAlert = false
+    @State  private var noProductsInOrder = false
     
     
     
@@ -38,15 +39,22 @@ struct ConfirmOrderView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .font(.headline)
                                 .padding()
-                            ScrollView {
-                                ForEach(newOrderViewModel.getSelectedProducts(productsAmounts: productAmounts), id: \.productId) { product in
-                                    ShowOrderCardView(product: product, itemAvailable: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts)
-                                    
-                                    
+                            if noProductsInOrder{
+                                VStack{
+                                    Spacer()
+                                    Text("No products selected").foregroundStyle(.red)
+                                    Spacer()
                                 }
+                            }else{
+                                ScrollView {
+                                    ForEach(newOrderViewModel.getSelectedProducts(productsAmounts: productAmounts), id: \.productId) { product in
+                                        ShowOrderCardView(product: product, itemAvailable: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts)
+                                        
+                                        
+                                    }
+                                }
+                               
                             }
-                           
-                            
                             VStack{
                                 DatePicker(selection: $wishedDelivery,
                                            in: Date()...,
@@ -64,6 +72,7 @@ struct ConfirmOrderView: View {
                                 .shadow(radius: 1)
                                 .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
                                 .padding(.horizontal)
+                                
                             
                         
                             Button(action: {
@@ -86,14 +95,7 @@ struct ConfirmOrderView: View {
                                 .background(.accent)
                                 .cornerRadius(10)
                             }  .alert(isPresented:$showingAlert) {
-                                Alert(
-                                    title: Text("Are you sure you want to delete this?"),
-                                    message: Text("There is no undo"),
-                                    primaryButton: .destructive(Text("Delete")) {
-                                        print("Deleting...")
-                                    },
-                                    secondaryButton: .cancel()
-                                )
+                                Alert(title: Text("Order sucessfully placed"))
                             }
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .padding()
@@ -111,9 +113,14 @@ struct ConfirmOrderView: View {
         Task {
             if let token = authViewModel.getToken() {
                 do {
-                    try await newOrderViewModel.placeOrder(wishedDate: wishedDelivery, orderList: productAmounts, token: token)
-                    print("placed order")
-                    showingAlert = true
+                    productAmounts = newOrderViewModel.removeObsoleteProducts(orderlist: productAmounts)
+                    if(!productAmounts.isEmpty){
+                        try await newOrderViewModel.placeOrder(wishedDate: wishedDelivery, orderList: productAmounts, token: token)
+                         print("placed order")
+                         showingAlert = true
+                    }else{
+                        noProductsInOrder = true
+                    }
                    
                 } catch {
                     print("Failed to place order: \(error)")
