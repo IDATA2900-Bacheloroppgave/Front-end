@@ -22,7 +22,6 @@ class NewOrderViewModel: ObservableObject {
         }
 
         guard let url = URL(string: "http://35.246.81.166:8080/api/products") else {
-            print("Invalid URL")
             throw NSError(domain: "Invalid URL", code: 0, userInfo: nil)
         }
 
@@ -43,7 +42,6 @@ class NewOrderViewModel: ObservableObject {
                     self.products.append(contentsOf: products)
                 }
             } catch {
-                print("MISTAKE")
                 throw error
             }
 
@@ -66,8 +64,12 @@ class NewOrderViewModel: ObservableObject {
 
     func placeOrder(wishedDate: Date, orderList: [Int: Int], token: String) async throws {
         print("PLACED ORDER")
+        
+        print()
+        
+        let correctOrderList = removeObsoleteProducts(orderlist: orderList)
 
-        let jsonBody = try createJSONBody(wishedDate: wishedDate, productAmounts: orderList)
+        let jsonBody = try createJSONBody(wishedDate: wishedDate, productAmounts: correctOrderList)
 
         let urlString = "http://35.246.81.166:8080/api/orders/createorder"
         guard let url = URL(string: urlString) else {
@@ -94,6 +96,15 @@ class NewOrderViewModel: ObservableObject {
             }
         }
     }
+    
+    func removeObsoleteProducts(orderlist: [Int:Int]) -> [Int:Int]{
+        var correctOrderList: [Int: Int] = [:]
+        for order in orderlist {
+            if order.value != 0 {
+                correctOrderList[order.key] = order.value
+            }
+        }
+        return correctOrderList    }
 
     func createJSONBody(wishedDate: Date, productAmounts: [Int: Int]) throws -> Data {
         // Convert Date to ISO8601 string representation

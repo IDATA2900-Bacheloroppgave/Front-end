@@ -1,8 +1,35 @@
+//
+//  KeychainManager.swift
+//  Front End
+//
+//  Created by Siri Sandnes on 18/04/2024.
+//
+
 import Foundation
 import Security
 
 class KeychainManager {
     static let shared = KeychainManager()
+
+    enum KeychainError: Error, LocalizedError {
+        case itemNotFound
+        case failedToDelete
+        case failedToSave(status: OSStatus)
+        case failedToLoad(status: OSStatus)
+        
+        var errorDescription: String? {
+            switch self {
+            case .itemNotFound:
+                return "The requested item could not be found in the keychain."
+            case .failedToDelete:
+                return "Failed to delete the existing item from the keychain."
+            case .failedToSave(let status):
+                return "Failed to save the item to the keychain with status code: \(status)."
+            case .failedToLoad(let status):
+                return "Failed to load the item from the keychain with status code: \(status)."
+            }
+        }
+    }
 
     func saveToken(_ token: String, for email: String) throws {
         let tokenData = Data(token.utf8)
@@ -12,23 +39,16 @@ class KeychainManager {
             kSecValueData as String: tokenData
         ]
 
-        // Attempt to delete any existing item first
+  
         let deleteStatus = SecItemDelete(query as CFDictionary)
-        if deleteStatus == errSecSuccess {
-            print("Previous token deleted successfully.")
-        } else {
-            print("No existing token to delete or failed to delete: \(deleteStatus).")
+        if deleteStatus != errSecSuccess && deleteStatus != errSecItemNotFound {
+            throw KeychainError.failedToDelete
         }
 
-        // Attempt to add the new item
+    
         let addStatus = SecItemAdd(query as CFDictionary, nil)
-        if addStatus == errSecSuccess {
-            print("Token saved successfully.")
-        } else {
-            if let errorMessage = SecCopyErrorMessageString(addStatus, nil) {
-                print("Failed to save token: \(errorMessage)")
-            }
-            throw NSError(domain: NSOSStatusErrorDomain, code: Int(addStatus), userInfo: nil)
+        if addStatus != errSecSuccess {
+            throw KeychainError.failedToSave(status: addStatus)
         }
     }
 
@@ -43,14 +63,11 @@ class KeychainManager {
         var item: AnyObject?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
         if status == errSecSuccess, let data = item as? Data, let token = String(data: data, encoding: .utf8) {
-            print("Token loaded successfully.")
             return token
+        } else if status == errSecItemNotFound {
+            throw KeychainError.itemNotFound
         } else {
-            print("Failed to load token, error code: \(status).")
-            if let errorMessage = SecCopyErrorMessageString(status, nil) {
-                print("Error message: \(errorMessage)")
-            }
-            throw NSError(domain: NSOSStatusErrorDomain, code: Int(status), userInfo: nil)
+            throw KeychainError.failedToLoad(status: status)
         }
     }
 
@@ -61,11 +78,8 @@ class KeychainManager {
         ]
 
         let status = SecItemDelete(query as CFDictionary)
-        if status == errSecSuccess {
-            print("Token deleted successfully.")
-        } else {
-            print("Failed to delete token, error code: \(status).")
-            throw NSError(domain: NSOSStatusErrorDomain, code: Int(status), userInfo: nil)
+        if status != errSecSuccess && status != errSecItemNotFound {
+            throw KeychainError.failedToDelete
         }
     }
 }

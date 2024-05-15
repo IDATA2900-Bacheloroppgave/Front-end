@@ -86,9 +86,6 @@ class AuthViewModel: ObservableObject, Observable{
         
     }
     
-    
-        
-     
 
         func fetchUser(email: String) async throws {
             print("Fetching user for email: \(email)")
