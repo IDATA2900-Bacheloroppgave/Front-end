@@ -30,15 +30,19 @@ struct LandingPageView: View {
                             .background(.accent)
                     }
                     
-                    if isLoading{
-                        VStack {
-                            Spacer()
-                            ProgressView()
-                                .scaleEffect(1.5)
-                                .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
-                            Spacer()
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    if isLoading {
+                                   Spacer()
+                                   
+                                   ProgressView()
+                                       .scaleEffect(1.5)
+                                       .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
+                                       .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                   
+                                   Spacer()
+                                   
+                                   yellowButton()
+                                    
+                               
                     }else{
                         ScrollView{
                             Title(title: "Next delivery")
