@@ -13,6 +13,7 @@ struct LandingPageView: View {
     @StateObject var ordersViewModel = OrdersViewModel()
     @Environment(\.dismiss) var dismiss
     @State private var isLoading = true
+    @State private var showBarcode = false
     
     
     
@@ -40,7 +41,27 @@ struct LandingPageView: View {
                                    
                                    Spacer()
                                    
-                                   yellowButton()
+                        Button(action: {
+                            showBarcode = true
+                        }) {
+                            HStack {
+                                Text("Scan to order")
+                                    .font(.system(size: 20, weight: .medium))
+                                    .foregroundColor(Color.black)
+                                
+                                Spacer()
+                                
+                                Image(systemName: "barcode.viewfinder")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 35))
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 15)
+                            .background(.accent)
+                            .cornerRadius(10)
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding()
                                     
                                
                     }else{
@@ -81,13 +102,36 @@ struct LandingPageView: View {
                             }
                             
                         }
-                       yellowButton()
+                        Button(action: {
+                            showBarcode = true
+                        }) {
+                            HStack {
+                                Text("Scan to order")
+                                    .font(.system(size: 20, weight: .medium))
+                                    .foregroundColor(Color.black)
+                                
+                                Spacer()
+                                
+                                Image(systemName: "barcode.viewfinder")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 35))
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 15)
+                            .background(.accent)
+                            .cornerRadius(10)
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .padding()
                         
                     }
                 }
                 
           
             }
+        }
+        .sheet(isPresented: $showBarcode){
+         BarcodeScannerView(showBarcode: $showBarcode)
         }
         .onAppear(){
             isLoading = true;

@@ -10,7 +10,7 @@ import SwiftUI
 struct ShoppingCartSheetView: View {
     @Binding var itemSelected : Bool
     @Binding var wishedDelivery: Date
-    @Binding var placeOrder : Bool //??
+    @Binding var placeOrder : Bool
     @Binding var showSheet : Bool
     @Binding var productAmounts: [Int: Int]
     @Binding var user: User
@@ -29,8 +29,12 @@ struct ShoppingCartSheetView: View {
                         .foregroundColor(.black)
                 }
                 
-                Button("X") {
-                    itemSelected = false
+                Button {
+                    showSheet = false
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.title3)
+                        .foregroundStyle(.black)
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .foregroundColor(.black).font(.system(size: 20))

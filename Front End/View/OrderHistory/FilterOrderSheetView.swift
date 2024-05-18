@@ -26,11 +26,16 @@ struct FilterOrderSheetView: View {
                             .foregroundColor(.black)
                     }
                     
-                    Button("X") {
+                    Button {
                         isVisible = false
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.title3)
+                            .foregroundStyle(.black)
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .foregroundColor(.black).font(.system(size: 20))
+                
                    
                 }
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))

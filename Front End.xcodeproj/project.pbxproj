@@ -14,7 +14,6 @@
 		003BB0372BCEC2ED0048D751 /* OrderInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003BB0362BCEC2ED0048D751 /* OrderInfoView.swift */; };
 		EC9659112BD141D700DDE431 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9659102BD141D700DDE431 /* Order.swift */; };
 		EC9659172BD145F200DDE431 /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9659162BD145F200DDE431 /* OrdersViewModel.swift */; };
-		EC96591C2BD146E800DDE431 /* yellowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96591B2BD146E800DDE431 /* yellowButton.swift */; };
 		EC9659202BD7CF3200DDE431 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96591F2BD7CF3200DDE431 /* ProductView.swift */; };
 		EC9659222BD7EFF100DDE431 /* FilterOrderSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9659212BD7EFF100DDE431 /* FilterOrderSheetView.swift */; };
 		EC9659242BD949A200DDE431 /* NewProductCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9659232BD949A200DDE431 /* NewProductCardView.swift */; };
@@ -25,6 +24,10 @@
 		ECB293582BF0CDC8005AE99A /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB293572BF0CDC8005AE99A /* LoginResponse.swift */; };
 		ECB2935A2BF11D91005AE99A /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB293592BF11D91005AE99A /* OrderService.swift */; };
 		ECBBF7DE2BF381A400A6AD16 /* showOrderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBF7DD2BF381A400A6AD16 /* showOrderCardView.swift */; };
+		ECBBF7E02BF55F0000A6AD16 /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBF7DF2BF55F0000A6AD16 /* BarcodeScannerView.swift */; };
+		ECBBF7E42BF79D9D00A6AD16 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBF7E32BF79D9D00A6AD16 /* ScannerView.swift */; };
+		ECBBF7E62BF7A15200A6AD16 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBF7E52BF7A15200A6AD16 /* Permission.swift */; };
+		ECBBF7E92BF7A62300A6AD16 /* BarcodeScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBF7E82BF7A62300A6AD16 /* BarcodeScannerDelegate.swift */; };
 		ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */; };
 		ECEBD0682BC88499007F9D8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD0672BC88499007F9D8A /* Assets.xcassets */; };
 		ECEBD06B2BC88499007F9D8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */; };
@@ -75,7 +78,6 @@
 		003BB0362BCEC2ED0048D751 /* OrderInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderInfoView.swift; sourceTree = "<group>"; };
 		EC9659102BD141D700DDE431 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		EC9659162BD145F200DDE431 /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrdersViewModel.swift; path = "Front End/Model/OrdersViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		EC96591B2BD146E800DDE431 /* yellowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yellowButton.swift; sourceTree = "<group>"; };
 		EC96591F2BD7CF3200DDE431 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		EC9659212BD7EFF100DDE431 /* FilterOrderSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOrderSheetView.swift; sourceTree = "<group>"; };
 		EC9659232BD949A200DDE431 /* NewProductCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductCardView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,10 @@
 		ECB293572BF0CDC8005AE99A /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		ECB293592BF11D91005AE99A /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
 		ECBBF7DD2BF381A400A6AD16 /* showOrderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showOrderCardView.swift; sourceTree = "<group>"; };
+		ECBBF7DF2BF55F0000A6AD16 /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
+		ECBBF7E32BF79D9D00A6AD16 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		ECBBF7E52BF7A15200A6AD16 /* Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
+		ECBBF7E82BF7A62300A6AD16 /* BarcodeScannerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerDelegate.swift; sourceTree = "<group>"; };
 		ECEBD0602BC88497007F9D8A /* Front End.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Front End.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndApp.swift; sourceTree = "<group>"; };
 		ECEBD0672BC88499007F9D8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,6 +152,16 @@
 				ECADC82A2BCEFFD2002C51B1 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		ECBBF7E72BF7A5EC00A6AD16 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				ECBBF7E32BF79D9D00A6AD16 /* ScannerView.swift */,
+				ECBBF7DF2BF55F0000A6AD16 /* BarcodeScannerView.swift */,
+				ECBBF7E82BF7A62300A6AD16 /* BarcodeScannerDelegate.swift */,
+			);
+			path = Scanner;
 			sourceTree = "<group>";
 		};
 		ECEBD0572BC88497007F9D8A = {
@@ -218,6 +234,7 @@
 				EC9659102BD141D700DDE431 /* Order.swift */,
 				ECB293552BF0CCE4005AE99A /* KeychainManager.swift */,
 				ECB293572BF0CDC8005AE99A /* LoginResponse.swift */,
+				ECBBF7E52BF7A15200A6AD16 /* Permission.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,7 +247,6 @@
 				003BB0322BCEBE750048D751 /* ActiveOrderCardView.swift */,
 				003BB0342BCEBECE0048D751 /* ProductInfoCardView.swift */,
 				ECADC82C2BCFFD65002C51B1 /* PastOrderCardView.swift */,
-				EC96591B2BD146E800DDE431 /* yellowButton.swift */,
 				EC9659232BD949A200DDE431 /* NewProductCardView.swift */,
 				ECBBF7DD2BF381A400A6AD16 /* showOrderCardView.swift */,
 			);
@@ -266,7 +282,6 @@
 				ECEBD1722BCC5B94007F9D8A /* LandingPage */,
 				ECEBD1732BCC5BA3007F9D8A /* OrderHistory */,
 				ECEBD1742BCC5BAF007F9D8A /* NewOrder */,
-				EC96591F2BD7CF3200DDE431 /* ProductView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,6 +339,8 @@
 				ECEBD16E2BCC59A3007F9D8A /* NewOrderView.swift */,
 				EC9659252BDA9B8300DDE431 /* ShoppingCartSheetView.swift */,
 				000A1C012BDBA0EB008B55AE /* ConfirmOrderView.swift */,
+				EC96591F2BD7CF3200DDE431 /* ProductView.swift */,
+				ECBBF7E72BF7A5EC00A6AD16 /* Scanner */,
 			);
 			path = NewOrder;
 			sourceTree = "<group>";
@@ -482,10 +499,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECEBD16F2BCC59A3007F9D8A /* NewOrderView.swift in Sources */,
+				ECBBF7E42BF79D9D00A6AD16 /* ScannerView.swift in Sources */,
 				ECB2935A2BF11D91005AE99A /* OrderService.swift in Sources */,
 				ECADC82B2BCEFFD2002C51B1 /* SettingsView.swift in Sources */,
+				ECBBF7E92BF7A62300A6AD16 /* BarcodeScannerDelegate.swift in Sources */,
 				EC9659222BD7EFF100DDE431 /* FilterOrderSheetView.swift in Sources */,
-				EC96591C2BD146E800DDE431 /* yellowButton.swift in Sources */,
 				ECEBD1522BC947EE007F9D8A /* NewOrderViewModel.swift in Sources */,
 				ECEBD16D2BCA1377007F9D8A /* ContentView.swift in Sources */,
 				ECEBD1712BCC59D1007F9D8A /* OrderHistoryView.swift in Sources */,
@@ -512,11 +530,13 @@
 				ECEBD15D2BC96A0E007F9D8A /* ResetPasswordView.swift in Sources */,
 				ECEBD15B2BC969EF007F9D8A /* RegisterView.swift in Sources */,
 				ECB293562BF0CCE4005AE99A /* KeychainManager.swift in Sources */,
+				ECBBF7E62BF7A15200A6AD16 /* Permission.swift in Sources */,
 				ECEBD16B2BC9F1FB007F9D8A /* LoginDataService.swift in Sources */,
 				003BB0372BCEC2ED0048D751 /* OrderInfoView.swift in Sources */,
 				003BB0312BCEBE2E0048D751 /* DeliveryCardView.swift in Sources */,
 				ECB293582BF0CDC8005AE99A /* LoginResponse.swift in Sources */,
 				ECEBD14F2BC93AD7007F9D8A /* AuthViewModel.swift in Sources */,
+				ECBBF7E02BF55F0000A6AD16 /* BarcodeScannerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,14 +700,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Front End/Preview Content\"";
+				DEVELOPMENT_TEAM = SRA6YXDR98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Front-End-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Use camera to scan barcode";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -709,14 +732,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Front End/Preview Content\"";
+				DEVELOPMENT_TEAM = SRA6YXDR98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Front-End-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Use camera to scan barcode";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

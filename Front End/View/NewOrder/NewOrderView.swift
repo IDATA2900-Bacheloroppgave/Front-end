@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct NewOrderView: View {
     @StateObject var newOrderViewModel = NewOrderViewModel()
     @EnvironmentObject var userStateViewModel: AuthViewModel
@@ -19,6 +17,8 @@ struct NewOrderView: View {
     @State private var productAmounts: [Int: Int] = [:]
     @State private var placeOrder = false
     @State private var showSheet = false
+    @State private var showBarcode = false
+    @State private var sheetOffset: CGFloat = 0
 
     var body: some View {
         NavigationStack {
@@ -43,7 +43,7 @@ struct NewOrderView: View {
                                     .foregroundColor(.black)
                                     .backgroundStyle(.white)
                                 Button(action: {
-                                    // Barcode scanning action
+                                    showBarcode = true
                                 }) {
                                     HStack {
                                         Image(systemName: "barcode.viewfinder")
@@ -88,11 +88,34 @@ struct NewOrderView: View {
                         }
                     }
                 }
+                .sheet(isPresented: $showBarcode){
+                    BarcodeScannerView(showBarcode: $showBarcode)
+                }
                 .sheet(isPresented: $showSheet ) {
                     VStack {
                         ShoppingCartSheetView(itemSelected: $showSheet, wishedDelivery: $wishedDelivery, placeOrder: $placeOrder, showSheet: $showSheet, productAmounts: $productAmounts, user: $user, newOrderViewModel: newOrderViewModel)
                             .presentationDetents([.fraction(0.25)])
                             .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.25)))
+                            .cornerRadius(20)
+                            .offset(y: max(sheetOffset, 0))
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { value in
+                                        let newOffset = sheetOffset + value.translation.height
+                                        if newOffset > 0 {
+                                            sheetOffset = newOffset
+                                        }
+                                    }
+                                    .onEnded { value in
+                                        if value.translation.height > 100 {
+                                            sheetOffset = UIScreen.main.bounds.height * 0.75
+                                        } else {
+                                            sheetOffset = 0
+                                        }
+                                    }
+                            )
+                            .animation(.easeInOut, value: sheetOffset)
+                            .transition(.move(edge: .bottom))
                     }
                 }
                 .tint(.black)
@@ -141,9 +164,7 @@ struct NewOrderView: View {
     }
 }
 
-
 #Preview {
     NewOrderView()
 }
-
 
