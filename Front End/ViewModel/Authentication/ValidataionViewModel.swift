@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 
+/**
+Manages Validation of email and password
+ */
 class ValidationViewModel: ObservableObject {
     @Published var emailValidationColor: Color = .red
     @Published var passwordValidationColor: Color = .red

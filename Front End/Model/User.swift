@@ -7,7 +7,9 @@
 
 import Foundation
 
-// A struct representing a User
+/*
+ A struct representing a User
+ */
 struct User: Codable {
     let email: String
     let firstName: String

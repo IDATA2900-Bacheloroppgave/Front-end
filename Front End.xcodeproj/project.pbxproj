@@ -242,7 +242,6 @@
 			children = (
 				ECEBD15E2BC96A27007F9D8A /* Authentication */,
 				ECEBD1752BCC5BCA007F9D8A /* LandingPage */,
-				ECEBD1762BCC5BDE007F9D8A /* OrderHistory */,
 				ECEBD1772BCC5BED007F9D8A /* NewOrder */,
 				ECEBD17B2BCE70A0007F9D8A /* StoresViewModel.swift */,
 			);
@@ -326,13 +325,6 @@
 				EC9659162BD145F200DDE431 /* OrdersViewModel.swift */,
 			);
 			path = LandingPage;
-			sourceTree = "<group>";
-		};
-		ECEBD1762BCC5BDE007F9D8A /* OrderHistory */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OrderHistory;
 			sourceTree = "<group>";
 		};
 		ECEBD1772BCC5BED007F9D8A /* NewOrder */ = {

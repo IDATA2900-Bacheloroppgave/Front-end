@@ -7,7 +7,9 @@
 
 import Foundation
 
-// A struct representing a Store
+/**
+ A struct representing a Store
+ */
 struct Store: Codable, Hashable{
 
     let name: String
