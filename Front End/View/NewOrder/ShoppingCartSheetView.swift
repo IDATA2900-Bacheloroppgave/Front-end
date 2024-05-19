@@ -79,7 +79,7 @@ struct ShoppingCartSheetView: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 8)
-                    .background(.accent)
+                    .background(.solwrYellow)
                     .cornerRadius(10)
                 }
                 .padding(.horizontal)

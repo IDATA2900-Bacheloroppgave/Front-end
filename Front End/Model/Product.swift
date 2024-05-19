@@ -8,6 +8,9 @@
 import Foundation
 import SwiftUI
 
+/**
+ A struct representing a Product
+ */
 struct Product: Codable {
     var productId: Int
     var name: String
@@ -29,26 +32,38 @@ struct Product: Codable {
         self.packaging = packaging
     }
     
+    /**
+     Returns the correct color associated with productType
+     */
     func getProductColor() -> Color{
-        var color = Color.dryGoods
+        var color = Color.solwrYellow
         if self.productType == "REFRIGERATED_GOODS" {
-            color = Color.iconVeggie
+            color = Color.solwrGreen
         } else if self.productType == "FROZEN_GOODS" {
-            color = Color.freezedGoods
+            color = Color.solwrLightBlue
         }
         return color
     }
 }
 
+/**
+ A struct representing ProductQuantity
+ */
 struct ProductQuantity: Codable{
     var productQuantity: Int
     var product: Product
 }
 
+/**
+ A struct represenitning Inventoy
+ */
 struct Inventory: Codable {
     var totalStock, reservedStock, availableStock: Int
 }
 
+/**
+ A struct represenitning Packaging
+ */
 struct Packaging: Codable {
     var packageType: String
     var quantityPrPackage: Int

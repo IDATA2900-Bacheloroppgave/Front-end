@@ -54,7 +54,7 @@ struct BarcodeScannerView: View {
                         
                         RoundedRectangle(cornerRadius: 2, style: .circular)
                             .trim(from: 0.61, to: 0.64)
-                            .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))  .rotationEffect(.init(degrees: rotation))
+                            .stroke(Color.solwrYellow, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))  .rotationEffect(.init(degrees: rotation))
                         
                         
                     }
@@ -74,7 +74,7 @@ struct BarcodeScannerView: View {
             } label: {
                 Image(systemName: "qrcode.viewfinder")
                     .font(.title)
-                    .foregroundStyle(.greyText)
+                    .foregroundStyle(.solwrGreyText)
                 
             }.padding(.bottom, 50)
             
@@ -100,6 +100,7 @@ struct BarcodeScannerView: View {
             if let code = newValue {
                 scannedCode = code
                 session.stopRunning()
+                showBarcode = false
             }
         }
 

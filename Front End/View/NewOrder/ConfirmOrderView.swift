@@ -31,7 +31,7 @@ struct ConfirmOrderView: View {
                             .font(.system(size: 20))
                             .frame(maxWidth: .infinity)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-                            .background(.accent)
+                            .background(.solwrYellow)
                     }
                     VStack {
                         VStack {
@@ -92,7 +92,7 @@ struct ConfirmOrderView: View {
                                 }
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 15) 
-                                .background(.accent)
+                                .background(.solwrYellow)
                                 .cornerRadius(10)
                             }  .alert(isPresented:$showingAlert) {
                                 Alert(title: Text("Order sucessfully placed"))

@@ -24,7 +24,7 @@ struct SettingsView: View {
                             .font(.system(size: 22))
                             .frame(maxWidth: .infinity)
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-                            .background(.accent)
+                            .background(.solwrYellow)
                        
                     VStack {
                         NavigationLink{
@@ -35,7 +35,7 @@ struct SettingsView: View {
                                     .font(.headline)
                                     .foregroundStyle(.white)
                                     .frame(width: 48, height: 48)
-                                    .background(Color(.accent).opacity(0.5))
+                                    .background(Color(.solwrYellow).opacity(0.5))
                                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                                     .padding(.horizontal)
                                 
@@ -138,7 +138,7 @@ struct SettingsView: View {
                         }
                         .foregroundColor(.black)
                         .padding()
-                        .background(Color.accent)
+                        .background(Color.yellow)
                         .cornerRadius(5)
                     }
                     .padding()

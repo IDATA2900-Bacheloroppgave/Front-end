@@ -36,7 +36,7 @@ struct ContentView: View {
                             
                         }
                     
-                }.tint(.bluePicker)
+                }.tint(.solwrBlue)
                 .onAppear(){
                     UITabBar.appearance().backgroundColor = .white
                 }

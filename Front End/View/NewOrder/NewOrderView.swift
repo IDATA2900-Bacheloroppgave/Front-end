@@ -3,13 +3,13 @@
 //  Front End
 //
 //  Created by Siri Sandnes on 14/04/2024.
-//
 
 import SwiftUI
 
 struct NewOrderView: View {
     @StateObject var newOrderViewModel = NewOrderViewModel()
     @EnvironmentObject var userStateViewModel: AuthViewModel
+    @StateObject var barcodeScannerDelegate = BarcodeScannerDelegate()
 
     @State private var isLoading = true
     @State private var user = User(email: "", firstName: "", lastName: "", store: Store(name: "", address: "", country: "", city: "", postalCode: 12, storeId: 12))
@@ -19,6 +19,7 @@ struct NewOrderView: View {
     @State private var showSheet = false
     @State private var showBarcode = false
     @State private var sheetOffset: CGFloat = 0
+    @State private var scannedProduct: Product?
 
     var body: some View {
         NavigationStack {
@@ -29,7 +30,7 @@ struct NewOrderView: View {
                         .font(.system(size: 22))
                         .frame(maxWidth: .infinity)
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-                        .background(Color.accent)
+                        .background(Color.solwrYellow)
 
                     VStack {
                         VStack {
@@ -75,23 +76,29 @@ struct NewOrderView: View {
                                 Spacer()
                                 ProgressView()
                                     .scaleEffect(1.5)
-                                    .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
+                                    .progressViewStyle(CircularProgressViewStyle(tint: Color(.solwrBlue)))
                                 Spacer()
                             }
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                         } else {
                             ScrollView {
-                                ForEach(filteredProducts, id: \.productId) { product in
-                                    NewProductCardView(product: product, itemAvailable: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts, showsheet: $showSheet)
+                                if let scannedProduct = scannedProduct {
+                                    // Display only the scanned product if available
+                                    NewProductCardView(product: scannedProduct, itemAvailable: scannedProduct.inventory.availableStock > 0, availableQuantity: scannedProduct.inventory.availableStock, productAmounts: $productAmounts, showsheet: $showSheet)
+                                } else {
+                                    // Otherwise, display the filtered products
+                                    ForEach(filteredProducts, id: \.productId) { product in
+                                        NewProductCardView(product: product, itemAvailable: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts, showsheet: $showSheet)
+                                    }
                                 }
                             }
                         }
                     }
                 }
-                .sheet(isPresented: $showBarcode){
+                .sheet(isPresented: $showBarcode) {
                     BarcodeScannerView(showBarcode: $showBarcode)
                 }
-                .sheet(isPresented: $showSheet ) {
+                .sheet(isPresented: $showSheet) {
                     VStack {
                         ShoppingCartSheetView(itemSelected: $showSheet, wishedDelivery: $wishedDelivery, placeOrder: $placeOrder, showSheet: $showSheet, productAmounts: $productAmounts, user: $user, newOrderViewModel: newOrderViewModel)
                             .presentationDetents([.fraction(0.25)])
@@ -127,6 +134,8 @@ struct NewOrderView: View {
         .tint(.black)
         .onAppear {
             isLoading = true
+
+            // Fetch products when the view appears
             Task {
                 do {
                     try await newOrderViewModel.fetchProducts()
@@ -141,10 +150,19 @@ struct NewOrderView: View {
                 isLoading = false
             }
         }
+        
+        
     }
 
     var filteredProducts: [Product] {
+        // If there's a scanned product, only show that product
+        if let scannedProduct = scannedProduct {
+            return [scannedProduct]
+        }
+
         let filteredByCategory: [Product]
+
+        // Filter by selected category
         switch newOrderViewModel.pickerSelection {
         case 1:
             filteredByCategory = newOrderViewModel.products.filter { $0.productType == "REFRIGERATED_GOODS" }
@@ -156,15 +174,15 @@ struct NewOrderView: View {
             filteredByCategory = newOrderViewModel.products
         }
 
-        if newOrderViewModel.searchTerm.isEmpty {
-            return filteredByCategory
-        } else {
+        // Filter by search term if available
+        if !newOrderViewModel.searchTerm.isEmpty {
             return filteredByCategory.filter { $0.name.lowercased().contains(newOrderViewModel.searchTerm.lowercased()) }
         }
+
+        return filteredByCategory
     }
 }
 
 #Preview {
     NewOrderView()
 }
-

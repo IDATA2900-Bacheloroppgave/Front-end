@@ -126,7 +126,7 @@ struct FilterOrderSheetView: View {
                             }
                             .padding(.horizontal, 20)
                             .padding(.vertical, 10)
-                            .background(.lightgray)
+                            .background(.red)
                             .cornerRadius(10)
                         }
                         
@@ -143,7 +143,7 @@ struct FilterOrderSheetView: View {
                             }
                             .padding(.horizontal, 20)
                             .padding(.vertical, 10)
-                            .background(.accent)
+                            .background(.solwrYellow)
                             .cornerRadius(10)
                         }
                         

@@ -7,7 +7,9 @@
 
 import Foundation
 
-
+/**
+ A struct representing an Order
+ */
 class Order: Identifiable, Codable {
     var orderId: Int
     var orderDate: String
@@ -33,12 +35,17 @@ class Order: Identifiable, Codable {
         self.quantities = quantities
     }
     
+    /**
+     Sets the current location of the order
+     */
     func setCurrentLocation(location: String){
         self.currentLocation = location
     }
 }
 
-
+/**
+ A struct representing Quantity
+ */
 struct Quantity: Identifiable, Codable {
     var id: Int { product.productId }
     var productQuantity: Int

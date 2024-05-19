@@ -29,19 +29,19 @@ struct PastOrderCardView: View {
                 Spacer()
                 Text(String("Products: \(order.quantities.count)"))
                     .font(.footnote)
-                    .foregroundStyle(Color(.greyText))
+                    .foregroundStyle(Color(.solwrGreyText))
                 
             }
             .padding(EdgeInsets(top: 5, leading: 2, bottom: 5, trailing: 0))
             
             ProgressView(value: order.progressInPercent/100)
-                .tint(.greenProgressbar)
+                .tint(.solwrGreen)
                 .scaleEffect(x: 1, y: 2.5)
             
             HStack{
                 VStack (alignment: .leading){
                     Text("Status: \(order.orderStatus.prefix(1).uppercased() + order.orderStatus.dropFirst().lowercased())")
-                        .foregroundStyle(Color(.greyText))
+                        .foregroundStyle(Color(.solwrGreyText))
                         .font(.footnote)
                 }
                 Spacer()

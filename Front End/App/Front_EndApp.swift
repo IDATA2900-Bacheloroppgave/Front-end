@@ -14,7 +14,7 @@ struct Front_EndApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(authViewModel) //Sets the enviromentobject to be the viewModel
+                .environment(authViewModel) 
         }
     }
 }

@@ -22,16 +22,16 @@ struct ProductInfoCard: View {
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
                 VStack(alignment: .leading, spacing: 2){
                     Text(product.name)
-                        .foregroundStyle(.bluePicker)
+                        .foregroundStyle(.solwrBlue)
                         .fontWeight(.medium)
                     Text(product.supplier)
                         .font(.system(size: 14))
                     VStack(alignment: .leading){
                         Text("Batch: \(String(product.batch))")
-                            .foregroundStyle(.greyText)
+                            .foregroundStyle(.solwrGreyText)
                             .font(.system(size: 12))
                         Text("Best before: \(product.bestBeforeDate)")
-                            .foregroundStyle(.greyText)
+                            .foregroundStyle(.solwrGreyText)
                             .font(.system(size: 12))
                     }
                 }
@@ -43,7 +43,7 @@ struct ProductInfoCard: View {
                 .font(.system(size: 14))
                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                 .frame(maxWidth: 100, maxHeight: .infinity, alignment: .center)
-                .background(.accent .opacity(0.4))
+                .background(.solwrYellow .opacity(0.4))
         }
         .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
         .background(Color.white)
@@ -55,11 +55,11 @@ struct ProductInfoCard: View {
     
     
     func setColor() -> Color {
-        var color = Color.dryGoods
+        var color = Color.solwrYellow
         if self.product.productType == "REFRIGERATED_GOODS" {
-            color = Color.iconVeggie
+            color = Color.solwrGreen
         } else if self.product.productType == "FROZEN_GOODS" {
-            color = Color.freezedGoods
+            color = Color.solwrLightBlue
         }
         return color
     }

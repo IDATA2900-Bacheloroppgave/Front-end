@@ -4,6 +4,10 @@
 //
 //  Created by Siri Sandnes on 17/05/2024.
 //
+
+/**
+ Enum represetning permission
+ */
 enum Permission: String{
     case idle = "Not Determined"
     case approved = "Access Granted"

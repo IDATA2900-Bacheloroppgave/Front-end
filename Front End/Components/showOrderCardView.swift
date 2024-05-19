@@ -37,16 +37,16 @@ struct ShowOrderCardView: View {
                             .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
                         VStack(alignment: .leading, spacing: 2) {
                             Text(product.name)
-                                .foregroundStyle(.bluePicker)
+                                .foregroundStyle(.solwrBlue)
                                 .fontWeight(.medium)
                             Text(product.supplier)
                                 .font(.system(size: 14))
                             VStack(alignment: .leading) {
                                 Text("Batch: \(String(product.batch))")
-                                    .foregroundStyle(.greyText)
+                                    .foregroundStyle(.solwrGreyText)
                                     .font(.system(size: 12))
                                 Text("Best before: \(product.bestBeforeDate)")
-                                    .foregroundStyle(.greyText)
+                                    .foregroundStyle(.solwrGreyText)
                                     .font(.system(size: 12))
                             }
                         }
@@ -58,7 +58,7 @@ struct ShowOrderCardView: View {
             Spacer()
             VStack {
                 Text("\(amountBinding.wrappedValue) D-Pk") 
-                    .foregroundStyle(.bluePicker)
+                    .foregroundStyle(.solwrBlue)
                 Stepper("", value: amountBinding, in: 0...availableQuantity)
                     .labelsHidden()
                     .opacity(1.0)

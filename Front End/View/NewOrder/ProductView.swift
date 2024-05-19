@@ -20,7 +20,7 @@ struct ProductView: View {
                         .font(.system(size: 20))
                         .frame(maxWidth: .infinity)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-                        .background(.accent)
+                        .background(.solwrYellow)
                 }
                 VStack{
                     ScrollView{
@@ -102,7 +102,7 @@ struct TextInfoField: View {
             
             Text("\(text)")
                 .font(.system(size: 16))
-                .foregroundStyle(.darkgrey)
+                .foregroundStyle(.solwrDarkGrey)
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
         }
     }

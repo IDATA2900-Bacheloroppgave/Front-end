@@ -28,7 +28,7 @@ struct LandingPageView: View {
                             .font(.system(size: 22))
                             .frame(maxWidth: .infinity) 
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-                            .background(.accent)
+                            .background(.solwrYellow)
                     }
                     
                     if isLoading {
@@ -36,7 +36,7 @@ struct LandingPageView: View {
                                    
                                    ProgressView()
                                        .scaleEffect(1.5)
-                                       .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
+                                       .progressViewStyle(CircularProgressViewStyle(tint: .solwrBlue))
                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                                    
                                    Spacer()
@@ -57,7 +57,7 @@ struct LandingPageView: View {
                             }
                             .padding(.horizontal, 20)
                             .padding(.vertical, 15)
-                            .background(.accent)
+                            .background(.solwrYellow)
                             .cornerRadius(10)
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)
@@ -118,7 +118,7 @@ struct LandingPageView: View {
                             }
                             .padding(.horizontal, 20)
                             .padding(.vertical, 15)
-                            .background(.accent)
+                            .background(.solwrYellow)
                             .cornerRadius(10)
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)

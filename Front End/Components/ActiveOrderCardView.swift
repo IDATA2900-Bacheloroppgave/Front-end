@@ -21,7 +21,7 @@ struct ActiveOrderCardView: View {
                     .scaledToFit()
                     .frame(width: 30, height: 30)
                   
-                    .foregroundColor( .darkgrey)
+                    .foregroundColor( .solwrDarkGrey)
                 
                 Text("#\(order.orderId)")
                     .fontWeight(.medium)
@@ -31,7 +31,7 @@ struct ActiveOrderCardView: View {
                 
                 Text(String("Products: \(order.quantities.count)"))
                     .font(.footnote)
-                    .foregroundColor(Color(.greyText))
+                    .foregroundColor(Color(.solwrGreyText))
                 
             }.padding(EdgeInsets(top: 5, leading: 2, bottom: 5, trailing: 0))
             
@@ -43,10 +43,10 @@ struct ActiveOrderCardView: View {
                 VStack (alignment: .leading){
                     Text("Status: \(order.orderStatus.prefix(1).uppercased() + order.orderStatus.dropFirst().lowercased())")
 
-                        .foregroundStyle(Color(.greyText))
+                        .foregroundStyle(Color(.solwrGreyText))
                         .font(.footnote)
                     Text("Requested delivery: \(order.wishedDeliveryDate)")
-                        .foregroundStyle(Color(.bluepicker1))
+                        .foregroundStyle(Color(.solwrBlue))
                         .font(.footnote)
                 }
                 Spacer()

@@ -32,7 +32,7 @@ struct OrderHistoryView: View {
                             .font(.system(size: 22))
                             .frame(maxWidth: .infinity)
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-                            .background(.accent)
+                            .background(.solwrYellow)
                     }
                     
                     HStack {
@@ -58,7 +58,7 @@ struct OrderHistoryView: View {
                     if isLoading {
                         ProgressView()
                             .scaleEffect(1.5)
-                            .progressViewStyle(CircularProgressViewStyle(tint: .bluePicker))
+                            .progressViewStyle(CircularProgressViewStyle(tint: .solwrBlue))
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     } else {
                         ScrollView{

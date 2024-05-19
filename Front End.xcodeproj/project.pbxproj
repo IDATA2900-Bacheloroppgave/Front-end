@@ -31,9 +31,6 @@
 		ECEBD0642BC88497007F9D8A /* Front_EndApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */; };
 		ECEBD0682BC88499007F9D8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD0672BC88499007F9D8A /* Assets.xcassets */; };
 		ECEBD06B2BC88499007F9D8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */; };
-		ECEBD0752BC88499007F9D8A /* Front_EndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0742BC88499007F9D8A /* Front_EndTests.swift */; };
-		ECEBD07F2BC88499007F9D8A /* Front_EndUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD07E2BC88499007F9D8A /* Front_EndUITests.swift */; };
-		ECEBD0812BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD0802BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift */; };
 		ECEBD1452BC8CC89007F9D8A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1442BC8CC89007F9D8A /* InputView.swift */; };
 		ECEBD14B2BC93076007F9D8A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD14A2BC93076007F9D8A /* User.swift */; };
 		ECEBD14F2BC93AD7007F9D8A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD14E2BC93AD7007F9D8A /* AuthViewModel.swift */; };
@@ -97,10 +94,7 @@
 		ECEBD0672BC88499007F9D8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECEBD0702BC88499007F9D8A /* Front EndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Front EndTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECEBD0742BC88499007F9D8A /* Front_EndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndTests.swift; sourceTree = "<group>"; };
 		ECEBD07A2BC88499007F9D8A /* Front EndUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Front EndUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECEBD07E2BC88499007F9D8A /* Front_EndUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndUITests.swift; sourceTree = "<group>"; };
-		ECEBD0802BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Front_EndUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		ECEBD1442BC8CC89007F9D8A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		ECEBD14A2BC93076007F9D8A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ECEBD14E2BC93AD7007F9D8A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -168,8 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				ECEBD0622BC88497007F9D8A /* Front End */,
-				ECEBD0732BC88499007F9D8A /* Front EndTests */,
-				ECEBD07D2BC88499007F9D8A /* Front EndUITests */,
 				ECEBD0612BC88497007F9D8A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -206,23 +198,6 @@
 				ECEBD06A2BC88499007F9D8A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		ECEBD0732BC88499007F9D8A /* Front EndTests */ = {
-			isa = PBXGroup;
-			children = (
-				ECEBD0742BC88499007F9D8A /* Front_EndTests.swift */,
-			);
-			path = "Front EndTests";
-			sourceTree = "<group>";
-		};
-		ECEBD07D2BC88499007F9D8A /* Front EndUITests */ = {
-			isa = PBXGroup;
-			children = (
-				ECEBD07E2BC88499007F9D8A /* Front_EndUITests.swift */,
-				ECEBD0802BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift */,
-			);
-			path = "Front EndUITests";
 			sourceTree = "<group>";
 		};
 		ECEBD13F2BC8BF87007F9D8A /* Model */ = {
@@ -544,7 +519,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECEBD0752BC88499007F9D8A /* Front_EndTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,8 +526,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECEBD0812BC88499007F9D8A /* Front_EndUITestsLaunchTests.swift in Sources */,
-				ECEBD07F2BC88499007F9D8A /* Front_EndUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,6 +676,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Front-End-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = TraceGo;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Use camera to scan barcode";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -736,6 +709,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Front-End-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = TraceGo;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Use camera to scan barcode";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

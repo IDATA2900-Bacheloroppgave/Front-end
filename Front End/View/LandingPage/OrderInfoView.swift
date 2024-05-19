@@ -23,7 +23,7 @@ struct OrderInfoView: View {
                             .font(.system(size: 20))
                             .frame(maxWidth: .infinity) 
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-                            .background(.accent)
+                            .background(.solwrYellow)
                     }
                     VStack {
                         DeliveryCardView(

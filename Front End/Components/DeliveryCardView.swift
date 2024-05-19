@@ -22,16 +22,16 @@ struct DeliveryCardView: View {
                 VStack(alignment: .leading) {
                     Text(mainTitle)
                         .font(.headline)
-                        .foregroundStyle(Color(.bluepicker1))
+                        .foregroundStyle(Color(.solwrBlue))
                     Text(orderNumber)
-                        .foregroundStyle(Color(.greyText))
+                        .foregroundStyle(Color(.solwrGreyText))
                         .font(.system(size: 14))
                         
                 }
                 Spacer()
                 Text(supplierName)
                     .font(.subheadline)
-                    .foregroundStyle(Color(.greyText))
+                    .foregroundStyle(Color(.solwrGreyText))
             }
             .padding()
             
@@ -48,14 +48,14 @@ struct DeliveryCardView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 14, height: 14)
-                        .foregroundColor(.bluePicker)
+                        .foregroundColor(.solwrBlue)
                     Text(currentLocation).font(.system(size: 14))
                 }
                 
                 VStack {
                     Text(arrivalTime)
                         .font(.system(size: 14))
-                        .foregroundColor(.bluePicker)
+                        .foregroundColor(.solwrBlue)
                         
                 }
             }
