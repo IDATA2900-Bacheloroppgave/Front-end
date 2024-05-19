@@ -25,6 +25,7 @@ struct ProductInfoCard: View {
                         .foregroundStyle(.solwrBlue)
                         .fontWeight(.medium)
                     Text(product.supplier)
+                        .foregroundStyle(.solwrMainTitle)
                         .font(.system(size: 14))
                     VStack(alignment: .leading){
                         Text("Batch: \(String(product.batch))")
@@ -43,7 +44,7 @@ struct ProductInfoCard: View {
                 .font(.system(size: 14))
                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                 .frame(maxWidth: 100, maxHeight: .infinity, alignment: .center)
-                .background(.solwrYellow .opacity(0.4))
+                .background(.solwrLightDarkYellow)
         }
         .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
         .background(.solwrCardBackground)

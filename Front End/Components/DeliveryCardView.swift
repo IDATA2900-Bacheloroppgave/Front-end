@@ -36,7 +36,7 @@ struct DeliveryCardView: View {
             .padding()
             
             ProgressView(value: progressValue)
-                .tint(.yellow)
+                .tint(.solwrYellow)
                 .frame(width: 340)
                 .padding(.vertical, 4)
                 .scaleEffect(x: 1, y: 2.5)

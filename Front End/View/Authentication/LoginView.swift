@@ -75,9 +75,9 @@ struct LogInView: View {
                     }label: {
                         HStack (spacing: 3) {
                             Text("Don't have an account?")
-                                .foregroundColor(Color.black)
+                                .foregroundColor(.solwrMainTitle)
                             Text("Sign up")
-                                .foregroundColor(Color.blue)
+                                .foregroundColor(.solwrYellowBlueBtn)
                         }
                         .padding(.bottom, 20)
                     }

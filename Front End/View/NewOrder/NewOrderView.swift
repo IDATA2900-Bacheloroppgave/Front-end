@@ -55,7 +55,7 @@ struct NewOrderView: View {
                                     }
                                     .padding(.horizontal, 5)
                                     .padding(.vertical, 5)
-                                    .background(Color.yellow)
+                                    .background(.solwrYellow)
                                     .cornerRadius(5)
                                 }
                                 .frame(minWidth: 0)

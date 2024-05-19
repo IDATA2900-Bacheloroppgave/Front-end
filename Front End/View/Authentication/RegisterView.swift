@@ -113,9 +113,9 @@ struct RegisterView: View {
                     } label: {
                         HStack(spacing: 3) {
                             Text("Already have an account?")
-                                .foregroundColor(Color.black)
+                                .foregroundColor(.solwrMainTitle)
                             Text("Sign in")
-                                .foregroundColor(Color.blue)
+                                .foregroundColor(.solwrYellowBlueBtn)
                         }
                         .padding(.bottom, 20)
                     }

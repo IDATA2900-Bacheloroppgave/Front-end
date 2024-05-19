@@ -40,6 +40,7 @@ struct ShowOrderCardView: View {
                                 .foregroundStyle(.solwrBlue)
                                 .fontWeight(.medium)
                             Text(product.supplier)
+                                .foregroundStyle(.solwrMainTitle)
                                 .font(.system(size: 14))
                             VStack(alignment: .leading) {
                                 Text("Batch: \(String(product.batch))")

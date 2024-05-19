@@ -23,7 +23,7 @@ struct FilterOrderSheetView: View {
                             .font(.system(size: 20))
                         Text("Filter")
                             .font(.system(size: 20))
-                            .foregroundColor(.black)
+                            .foregroundColor(.solwrMainTitle)
                     }
                     
                     Button {
@@ -121,12 +121,12 @@ struct FilterOrderSheetView: View {
                             HStack {
                                 Text("Remove filters")
                                     .font(.system(size: 16, weight: .medium))
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(.solwrMainTitle)
                                     .frame(maxWidth: .infinity)
                             }
                             .padding(.horizontal, 20)
                             .padding(.vertical, 10)
-                            .background(.red)
+                            .background(Color(.iphonegrey))
                             .cornerRadius(10)
                         }
                         
@@ -160,7 +160,7 @@ struct FilterOrderSheetView: View {
                 Spacer()
             }
             .padding(.vertical)
-            .background(Color.white)
+          
             .cornerRadius(10)
         }
 }

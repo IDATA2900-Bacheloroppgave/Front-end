@@ -36,7 +36,7 @@ struct ActiveOrderCardView: View {
             }.padding(EdgeInsets(top: 5, leading: 2, bottom: 5, trailing: 0))
             
             ProgressView(value: order.progressInPercent/100)
-                .tint(.yellow)
+                .tint(.solwrYellow)
                 .scaleEffect(x: 1, y: 2.5)
             
             HStack{
