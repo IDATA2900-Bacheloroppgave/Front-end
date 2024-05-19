@@ -12,11 +12,12 @@ struct ProductView: View {
     
     var body: some View {
         ZStack {
-            Color(red: 0.96, green: 0.96, blue: 0.96)
+            Color(.solwrBackground)
                 .edgesIgnoringSafeArea(.all)
             VStack{
                 VStack {
                     Text("Product info")
+                        .foregroundStyle(.solwrMainTitle)
                         .font(.system(size: 20))
                         .frame(maxWidth: .infinity)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
@@ -74,7 +75,7 @@ struct ProductView: View {
                         }
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                        .background(Color.white)
+                        .background(.solwrCardBackground)
                         .cornerRadius(5)
                         .padding(.horizontal)
                         .shadow(radius: 1)

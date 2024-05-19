@@ -15,11 +15,12 @@ struct OrderInfoView: View {
     var body: some View {
         NavigationStack{
             ZStack {
-                Color(red: 0.96, green: 0.96, blue: 0.96)
+                Color(.solwrBackground)
                     .edgesIgnoringSafeArea(.all)
                 VStack{
                     VStack {
                         Text("Order #\(order.orderId)")
+                            .foregroundStyle(.solwrMainTitle)
                             .font(.system(size: 20))
                             .frame(maxWidth: .infinity) 
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))

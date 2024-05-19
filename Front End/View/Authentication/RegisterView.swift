@@ -33,11 +33,12 @@ struct RegisterView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(red: 1.00, green: 0.83, blue: 0.00).ignoresSafeArea()
+                Color(.solwrLoginBackground).ignoresSafeArea()
                 VStack() {
                     Spacer()
                     Spacer()
                     Text("TraceGo").fontWeight(.bold).font(.system(size: 45))
+                        .foregroundStyle(.solwrMainTitle)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
                     
                     LazyVStack(spacing: 20) {
@@ -75,7 +76,7 @@ struct RegisterView: View {
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .textInputAutocapitalization(.never)
-                        .listRowBackground(Color(red: 1.00, green: 0.83, blue: 0.00))
+                        .listRowBackground(Color(.solwrLoginBackground))
                         .listRowSeparator(.hidden)
                         .accentColor(.black)
                         
@@ -101,7 +102,7 @@ struct RegisterView: View {
                         
                     }
                     
-                    .background(Color(red: 1.00, green: 0.83, blue: 0.00))
+                    .background(Color(.solwrLoginBackground))
                     .scrollContentBackground(.hidden)
                     .scrollDisabled(true)
                     

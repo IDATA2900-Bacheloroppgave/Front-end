@@ -23,11 +23,12 @@ struct ConfirmOrderView: View {
     var body: some View {
         NavigationStack{
             ZStack {
-                Color(red: 0.96, green: 0.96, blue: 0.96)
+                Color(.solwrBackground)
                     .edgesIgnoringSafeArea(.all)
                 VStack{
                     VStack {
                         Text("Order Summary")
+                            .foregroundStyle(.solwrMainTitle)
                             .font(.system(size: 20))
                             .frame(maxWidth: .infinity)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
@@ -67,7 +68,7 @@ struct ConfirmOrderView: View {
                                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                                 .padding(.horizontal)
                             } .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-                                .background(Color.white)
+                                .background(.solwrCardBackground)
                                 .cornerRadius(5)
                                 .shadow(radius: 1)
                                 .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))

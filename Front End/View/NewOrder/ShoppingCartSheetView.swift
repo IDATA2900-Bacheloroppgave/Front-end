@@ -26,7 +26,7 @@ struct ShoppingCartSheetView: View {
                         .font(.system(size: 20))
                     Text("New order")
                         .font(.system(size: 20))
-                        .foregroundColor(.black)
+                        .foregroundColor(.solwrMainTitle)
                 }
                 
                 Button {
@@ -34,7 +34,7 @@ struct ShoppingCartSheetView: View {
                 } label: {
                     Image(systemName: "xmark")
                         .font(.title3)
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.solwrMainTitle)
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .foregroundColor(.black).font(.system(size: 20))

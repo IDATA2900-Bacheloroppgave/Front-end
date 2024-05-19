@@ -24,13 +24,15 @@ struct NewOrderView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.white.edgesIgnoringSafeArea(.all)
+                Color(.solwrBackgroundColorWhite)
+                    .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
                     Text("New Order")
+                        .foregroundStyle(.solwrMainTitle)
                         .font(.system(size: 22))
                         .frame(maxWidth: .infinity)
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-                        .background(Color.solwrYellow)
+                        .background(.solwrMainTitleBackground)
 
                     VStack {
                         VStack {

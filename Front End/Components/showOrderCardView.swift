@@ -68,7 +68,7 @@ struct ShowOrderCardView: View {
             .padding(.horizontal)
         }
         .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-        .background(Color.white)
+        .background(.solwrCardBackground)
         .cornerRadius(5)
         .shadow(radius: 1)
         .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))

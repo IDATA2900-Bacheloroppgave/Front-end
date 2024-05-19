@@ -16,11 +16,12 @@ struct ResetPasswordView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(red: 1.00, green: 0.83, blue: 0.00).ignoresSafeArea()
+                Color(.solwrMainTitleBackground).ignoresSafeArea()
                 VStack {
                     Spacer()
                     VStack(spacing: 40) {
                         Text("TraceGo")
+                            .foregroundStyle(.solwrMainTitle)
                             .fontWeight(.bold)
                             .font(.system(size: 45))
 

@@ -10,22 +10,23 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var authViewModel : AuthViewModel
     @Environment(\.dismiss) var dismiss
-    @State private var selectedStore = "Rema Averøy" 
+    @State private var selectedStore = "Rema Averøy"
     let stores = ["Rema Averøy", "Rema Ålesund", "Kiwi Ålesund"]
     
     var body: some View {
         NavigationStack {
             ZStack{
-                Color(red: 0.96, green: 0.96, blue: 0.96)
+                Color(.solwrBackground)
                     .edgesIgnoringSafeArea(.all)
                 VStack (alignment: .leading, spacing: 15){
                     
-                        Text("Settings")
-                            .font(.system(size: 22))
-                            .frame(maxWidth: .infinity)
-                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-                            .background(.solwrYellow)
-                       
+                    Text("Settings")
+                        .foregroundStyle(.solwrMainTitle)
+                        .font(.system(size: 22))
+                        .frame(maxWidth: .infinity)
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
+                        .background(.solwrYellow)
+                    
                     VStack {
                         NavigationLink{
                             EditProfileView()
@@ -64,22 +65,22 @@ struct SettingsView: View {
                         NavigationLink{
                             ChangePasswordView()
                         }label: {
-                        HStack{
-                            VStack {
-                                
-                                Text("Change password")
-                                    .font(.subheadline)
-                                    .fontWeight(.semibold)
-                                    .tint(.black)
-                                
+                            HStack{
+                                VStack {
+                                    
+                                    Text("Change password")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .tint(.black)
+                                    
+                                }
+                                .padding()
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
                             }
-                            .padding()
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.gray)
+                            
                         }
-                        
-                    }
                         
                         Divider()
                         
@@ -110,42 +111,42 @@ struct SettingsView: View {
                     .background(Color.white)
                     .cornerRadius(5)
                     .shadow(radius: 2)
-                .padding(.horizontal)
+                    .padding(.horizontal)
                     
                     Spacer()
                 }
+                Spacer()
+                
+                Button(action: {
+                    if let email = authViewModel.currentUser?.email, authViewModel.logout(email: email) {
+                                        dismiss()
+                                    }
+                    
+                }) {
+                    HStack {
+                        Text("Log out")
+                            .font(.title2)
+                            
+                        Spacer()
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                            .resizable()
+                            .frame(width: 35, height: 35)
+                        
+                        
+                    }
+                    .foregroundColor(.black)
+                    .padding()
+                    .background(Color.yellow)
+                    .cornerRadius(5)
+                }
+                .padding()
                 
             }
-                    
-                    
-                    
-                    Button(action: {
-                        if let email = authViewModel.currentUser?.email, authViewModel.logout(email: email) {
-                                            dismiss()
-                                        }
-                        
-                    }) {
-                        HStack {
-                            Text("Log out")
-                                .font(.title2)
-                                
-                            Spacer()
-                            Image(systemName: "rectangle.portrait.and.arrow.right")
-                                .resizable()
-                                .frame(width: 35, height: 35)
-                            
-                            
-                        }
-                        .foregroundColor(.black)
-                        .padding()
-                        .background(Color.yellow)
-                        .cornerRadius(5)
-                    }
-                    .padding()
-                }
-            }
+            
         }
-    
+    }
+}
+
 
 
 struct EditProfileView: View {

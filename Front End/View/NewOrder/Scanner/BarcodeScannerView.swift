@@ -127,7 +127,7 @@ struct BarcodeScannerView: View {
                     setUpCamera()
                 }else{
                     cameraPermission = .denied
-                    presentError("Please provide Access to Camera for scanning barcode")
+                    showError("Please provide Access to Camera for scanning barcode")
                 }
             case .denied, .restricted:
                 cameraPermission = .denied
@@ -148,14 +148,14 @@ struct BarcodeScannerView: View {
                 .builtInDualWideCamera,
                 .builtInTrueDepthCamera // For front-facing camera support if needed
             ], mediaType: .video, position: .back).devices.first else {
-                presentError("No suitable camera found.")
+                showError("No suitable camera found.")
                 return
             }
             
             let input = try AVCaptureDeviceInput(device: device)
             
             guard session.canAddInput(input), session.canAddOutput(barcodeOutput) else {
-                presentError("Cannot add input or output to the session.")
+                showError("Cannot add input or output to the session.")
                 return
             }
             
@@ -184,11 +184,11 @@ struct BarcodeScannerView: View {
             }
             
         } catch {
-            presentError(error.localizedDescription)
+            showError(error.localizedDescription)
         }
     }
 
-    func presentError(_ message: String){
+    func showError(_ message: String){
         errorMessage = message
         showError.toggle()
     }

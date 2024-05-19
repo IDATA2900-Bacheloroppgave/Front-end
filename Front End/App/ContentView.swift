@@ -30,15 +30,11 @@ struct ContentView: View {
                             Image(systemName: "doc.plaintext")
                       
                         }
-                    SettingsView()
-                        .tabItem {
-                            Image(systemName: "gearshape.fill")
-                            
-                        }
+                  
                     
                 }.tint(.solwrBlue)
                 .onAppear(){
-                    UITabBar.appearance().backgroundColor = .white
+                    UITabBar.appearance().backgroundColor = .solwrCardBackground
                 }
         
             }else{

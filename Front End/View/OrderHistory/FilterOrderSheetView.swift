@@ -31,7 +31,7 @@ struct FilterOrderSheetView: View {
                     } label: {
                         Image(systemName: "xmark")
                             .font(.title3)
-                            .foregroundStyle(.black)
+                            .foregroundStyle(.solwrMainTitle)
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .foregroundColor(.black).font(.system(size: 20))

@@ -46,7 +46,7 @@ struct ProductInfoCard: View {
                 .background(.solwrYellow .opacity(0.4))
         }
         .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-        .background(Color.white)
+        .background(.solwrCardBackground)
         .cornerRadius(5)
         .shadow(radius: 1)
         .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
@@ -54,15 +54,7 @@ struct ProductInfoCard: View {
     }
     
     
-    func setColor() -> Color {
-        var color = Color.solwrYellow
-        if self.product.productType == "REFRIGERATED_GOODS" {
-            color = Color.solwrGreen
-        } else if self.product.productType == "FROZEN_GOODS" {
-            color = Color.solwrLightBlue
-        }
-        return color
-    }
+  
     
 }
 

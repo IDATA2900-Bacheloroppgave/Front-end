@@ -52,7 +52,7 @@ struct PastOrderCardView: View {
             
         }
         .padding()
-        .background(Color.white)
+        .background(.solwrCardBackground)
         .cornerRadius(5)
         .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))
         .padding(.horizontal)

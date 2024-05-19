@@ -20,15 +20,16 @@ struct LandingPageView: View {
     var body: some View {
         NavigationStack {
             ZStack{
-                Color(red: 0.96, green: 0.96, blue: 0.96)
+                Color(.solwrBackground)
                     .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading, spacing: 20) {
                     VStack {
                         Text("My deliveries")
-                            .font(.system(size: 22))
-                            .frame(maxWidth: .infinity) 
-                            .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-                            .background(.solwrYellow)
+                            .foregroundStyle(.solwrMainTitle)
+                            .font(.system(size: 25))
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 0))
+                            .background(.solwrMainTitleBackground)
                     }
                     
                     if isLoading {
@@ -129,6 +130,15 @@ struct LandingPageView: View {
                 
           
             }
+            .toolbar {
+                           ToolbarItem(placement: .navigationBarTrailing) {
+                               Button(action: {
+                                   
+                               }) {
+                                   Image(systemName: "gearshape.fill")
+                               }
+                           }
+                       }
         }
         .sheet(isPresented: $showBarcode){
          BarcodeScannerView(showBarcode: $showBarcode)
@@ -150,6 +160,7 @@ struct LandingPageView: View {
             
             
         }.tint(.black)
+        
     }
 }
 
@@ -158,8 +169,6 @@ struct LandingPageView: View {
 #Preview {
     LandingPageView()
 }
-
-
 
 
 struct Title: View {

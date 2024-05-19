@@ -23,11 +23,12 @@ struct LogInView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(red: 1.00, green: 0.83, blue: 0.00).ignoresSafeArea()
+                Color(.solwrLoginBackground).ignoresSafeArea()
                 VStack {
                     Spacer()
                     VStack {
                         Text("TraceGo")
+                            .foregroundStyle(.solwrMainTitle)
                             .fontWeight(.bold)
                             .font(.system(size: 45))
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
@@ -62,7 +63,7 @@ struct LogInView: View {
                                     .stroke(Color.black, lineWidth: 1)
                             )
                         }
-                        .background(Color.init(red: 1.00, green: 0.83, blue: 0.00))
+                        .background(Color.init(.solwrLoginBackground))
                         .scrollContentBackground(.hidden)
                         .scrollDisabled(true)
                         

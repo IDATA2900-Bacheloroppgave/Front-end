@@ -36,6 +36,7 @@ struct NewProductCardView: View {
                                 .fontWeight(.medium)
                             Text(product.supplier)
                                 .font(.system(size: 14))
+                                .foregroundStyle(.solwrMainTitle)
                             VStack(alignment: .leading) {
                                 Text("Batch: \(String(product.batch))")
                                     .foregroundStyle(.solwrGreyText)
@@ -63,7 +64,7 @@ struct NewProductCardView: View {
             .padding(.horizontal)
         }
         .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-        .background(Color.white)
+        .background(.solwrCardBackground)
         .cornerRadius(5)
         .shadow(radius: 1)
         .padding(EdgeInsets(top: 3, leading: 0, bottom: 3, trailing: 0))

@@ -24,15 +24,16 @@ struct OrderHistoryView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(red: 0.96, green: 0.96, blue: 0.96)
+                Color(.solwrBackground)
                     .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
                     HStack {
                         Text("Orders")
+                            .foregroundStyle(.solwrMainTitle)
                             .font(.system(size: 22))
                             .frame(maxWidth: .infinity)
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-                            .background(.solwrYellow)
+                            .background(.solwrMainTitleBackground)
                     }
                     
                     HStack {

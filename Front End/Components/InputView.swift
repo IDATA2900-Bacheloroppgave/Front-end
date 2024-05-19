@@ -27,8 +27,9 @@ struct InputView: View {
                         .stroke(borderColor, lineWidth: 2)
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .foregroundStyle(.black)
                 .textInputAutocapitalization(.never)
-                .listRowBackground(Color.init(red: 1.00, green: 0.83, blue: 0.00))
+                .listRowBackground(Color.init(.solwrMainTitleBackground))
                 .listRowSeparator(.hidden)
                 .frame( width: 300, height: 50)
                 
@@ -41,11 +42,11 @@ struct InputView: View {
                         .stroke( borderColor, lineWidth: 2)
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                .foregroundStyle(.black)
                 .textInputAutocapitalization(.never)
-                .listRowBackground(Color.init(red: 1.00, green: 0.83, blue: 0.00))
+                .listRowBackground(Color.init(.solwrMainTitleBackground))
                 .listRowSeparator(.hidden)
                 .frame( width: 300, height: 50)
-                
                 
         }
     }
