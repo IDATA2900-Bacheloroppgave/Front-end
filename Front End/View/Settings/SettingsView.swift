@@ -19,13 +19,16 @@ struct SettingsView: View {
                 Color(.solwrBackground)
                     .edgesIgnoringSafeArea(.all)
                 VStack (alignment: .leading, spacing: 15){
+                    HStack{
+                        Image(systemName: "gearshape.fill")
+                        Text("Settings")
+                            .foregroundStyle(.solwrMainTitle)
+                            .font(.system(size: 22))
+                           
+                    }
+                    .frame(maxWidth: .infinity)
                     
-                    Text("Settings")
-                        .foregroundStyle(.solwrMainTitle)
-                        .font(.system(size: 22))
-                        .frame(maxWidth: .infinity)
-                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 20, trailing: 0))
-                        .background(.solwrYellow)
+                        .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
                     
                     VStack {
                         NavigationLink{
@@ -51,6 +54,7 @@ struct SettingsView: View {
                                         .font(.body)
                                         .foregroundStyle(.gray)
                                         .tint(.gray)
+                                    
                                     
                                 }
                                 Spacer()
@@ -121,25 +125,26 @@ struct SettingsView: View {
                     if let email = authViewModel.currentUser?.email, authViewModel.logout(email: email) {
                                         dismiss()
                                     }
-                    
                 }) {
                     HStack {
                         Text("Log out")
-                            .font(.title2)
-                            
+                            .font(.system(size: 20, weight: .medium))
+                            .foregroundColor(Color.black)
+                        
                         Spacer()
+                        
                         Image(systemName: "rectangle.portrait.and.arrow.right")
-                            .resizable()
-                            .frame(width: 35, height: 35)
-                        
-                        
+                            .foregroundColor(.black)
+                            .font(.system(size: 35))
                     }
-                    .foregroundColor(.black)
-                    .padding()
-                    .background(Color.yellow)
-                    .cornerRadius(5)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 15)
+                    .background(.solwrYellow)
+                    .cornerRadius(10)
                 }
+                .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
+                
                 
             }
             

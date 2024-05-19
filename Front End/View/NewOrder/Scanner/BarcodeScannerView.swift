@@ -21,7 +21,8 @@ struct BarcodeScannerView: View {
     
     @StateObject private var barcodeDelegate = BarcodeScannerDelegate()
     
-    @State private var scannedCode : String = ""
+    @Binding var scannedCode: String?
+    @Binding var gotBarcode: Bool
     var body: some View {
         VStack{
             Button {
@@ -99,8 +100,8 @@ struct BarcodeScannerView: View {
         .onChange(of: barcodeDelegate.scannedCode) { oldValue, newValue in
             if let code = newValue {
                 scannedCode = code
-                session.stopRunning()
                 showBarcode = false
+                session.stopRunning()
             }
         }
 
@@ -195,7 +196,7 @@ struct BarcodeScannerView: View {
 }
 
 #Preview {
-    BarcodeScannerView(showBarcode: .constant(false))
+    BarcodeScannerView(showBarcode: .constant(false), scannedCode: .constant(""), gotBarcode: .constant(false))
 }
 
 

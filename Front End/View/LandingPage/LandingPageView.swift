@@ -14,6 +14,9 @@ struct LandingPageView: View {
     @Environment(\.dismiss) var dismiss
     @State private var isLoading = true
     @State private var showBarcode = false
+    @State private var showSettings = false
+    @State private var scannedCode: String?
+    @State private var gotBarcode : Bool = false
     
     
     
@@ -33,15 +36,15 @@ struct LandingPageView: View {
                     }
                     
                     if isLoading {
-                                   Spacer()
-                                   
-                                   ProgressView()
-                                       .scaleEffect(1.5)
-                                       .progressViewStyle(CircularProgressViewStyle(tint: .solwrBlue))
-                                       .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                                   
-                                   Spacer()
-                                   
+                        Spacer()
+                        
+                        ProgressView()
+                            .scaleEffect(1.5)
+                            .progressViewStyle(CircularProgressViewStyle(tint: .solwrBlue))
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        
+                        Spacer()
+                        
                         Button(action: {
                             showBarcode = true
                         }) {
@@ -63,24 +66,24 @@ struct LandingPageView: View {
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
-                                    
-                               
+                        
+                        
                     }else{
                         ScrollView{
                             Title(title: "Next delivery")
-                            if let nextOrder = ordersViewModel.getActiveOrders(o: ordersViewModel.orders).first {
+                            if let nextOrder = ordersViewModel.getActiveOrders(o: ordersViewModel.orders).last{
                                 NavigationLink{
                                     //HUSK Å HENDRE
                                     //HUSKE Å HENDRE
                                     OrderInfoView(order: nextOrder ) //Midlertidig for å ikke få feilmelding
                                 }label: {
-                                   DeliveryCardView(
-                                    mainTitle: "Order (\(nextOrder.orderDate))", orderNumber: "#\(nextOrder.orderId)",
+                                    DeliveryCardView(
+                                        mainTitle: "Order (\(nextOrder.orderDate))", orderNumber: "#\(nextOrder.orderId)",
                                         progressValue: nextOrder.progressInPercent/100,
                                         currentLocation: "Current location: \(nextOrder.currentLocation ?? "unknown")",
                                         arrivalTime: "Requested delivery: \(nextOrder.wishedDeliveryDate)",
-                                    supplierName: "Products: \(nextOrder.quantities.count)")
-                                   .foregroundColor(.primary)
+                                        supplierName: "Products: \(nextOrder.quantities.count)")
+                                    .foregroundColor(.primary)
                                 }
                             }else{
                                 Text("No next order")
@@ -97,7 +100,7 @@ struct LandingPageView: View {
                                         OrderInfoView(order: order)
                                     }label: {
                                         ActiveOrderCardView(order: order)
-                                        .foregroundColor(.primary)
+                                            .foregroundColor(.primary)
                                     }
                                 }
                             }
@@ -128,21 +131,31 @@ struct LandingPageView: View {
                     }
                 }
                 
-          
+                
             }
             .toolbar {
-                           ToolbarItem(placement: .navigationBarTrailing) {
-                               Button(action: {
-                                   
-                               }) {
-                                   Image(systemName: "gearshape.fill")
-                               }
-                           }
-                       }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showSettings = true
+                    }) {
+                        Image(systemName: "gearshape.fill")
+                    }
+                }
+            }
         }
         .sheet(isPresented: $showBarcode){
-         BarcodeScannerView(showBarcode: $showBarcode)
+            BarcodeScannerView(showBarcode: $showBarcode,scannedCode: $scannedCode, gotBarcode: $gotBarcode)
         }
+        .sheet(isPresented: $showSettings) { // Present the settings view
+                   SettingsView()
+               }
+        .onChange(of: scannedCode) { code, oldCode in
+            let barcode = code
+                   if code != nil {
+                       gotBarcode = true
+                       print("THE BARCODE \(barcode)")
+                   }
+               }
         .onAppear(){
             isLoading = true;
             Task {

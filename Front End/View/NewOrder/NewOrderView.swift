@@ -20,6 +20,8 @@ struct NewOrderView: View {
     @State private var showBarcode = false
     @State private var sheetOffset: CGFloat = 0
     @State private var scannedProduct: Product?
+    @State private var scannedCode: String?
+    @State private var gotBarcode : Bool = false
 
     var body: some View {
         NavigationStack {
@@ -98,7 +100,7 @@ struct NewOrderView: View {
                     }
                 }
                 .sheet(isPresented: $showBarcode) {
-                    BarcodeScannerView(showBarcode: $showBarcode)
+                    BarcodeScannerView(showBarcode: $showBarcode, scannedCode: $scannedCode, gotBarcode: $gotBarcode)
                 }
                 .sheet(isPresented: $showSheet) {
                     VStack {
