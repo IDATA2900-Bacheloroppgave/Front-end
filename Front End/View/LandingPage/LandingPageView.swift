@@ -26,13 +26,13 @@ struct LandingPageView: View {
             ZStack{
                 Color(.solwrBackground)
                     .edgesIgnoringSafeArea(.all)
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading) {
                     VStack {
                         Text("My deliveries")
                             .foregroundStyle(.solwrMainTitle)
                             .font(.system(size: 25))
                             .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(EdgeInsets(top: 0, leading: 15, bottom: 20, trailing: 0))
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                             .background(.solwrMainTitleBackground)
                     }
                     
@@ -65,6 +65,7 @@ struct LandingPageView: View {
                             .background(.solwrYellow)
                             .cornerRadius(10)
                         }
+                        
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
                         
@@ -88,6 +89,7 @@ struct LandingPageView: View {
                                 }
                             }else{
                                 Text("No next order")
+                                    .padding(.top, 20)
                             }
                             
                             
@@ -95,6 +97,7 @@ struct LandingPageView: View {
                             
                             if ordersViewModel.getActiveOrders(o: ordersViewModel.orders).isEmpty{
                                 Text("No orders to show")
+                                    .padding(.top, 20)
                             }else{
                                 ForEach(ordersViewModel.getActiveOrders(o: ordersViewModel.orders), id: \.orderId) { order in
                                     NavigationLink{
@@ -109,6 +112,7 @@ struct LandingPageView: View {
                         }
                         Button(action: {
                             showBarcode = true
+                            
                         }) {
                             HStack {
                                 Text("Scan to order")
@@ -140,11 +144,15 @@ struct LandingPageView: View {
                         showSettings = true
                     }) {
                         Image(systemName: "gearshape.fill")
+                            .foregroundStyle(Color(.solwrMainTitle))
                     }
                 }
             }
+            .navigationDestination(isPresented: $navigateToNewOrder) {
+                            NewOrderView()
+                        }
         }
-        
+      
         .sheet(isPresented: $showBarcode){
             BarcodeScannerView(showBarcode: $showBarcode,scannedCode: $scannedCode, gotBarcode: $gotBarcode)
         }
@@ -152,10 +160,12 @@ struct LandingPageView: View {
                    SettingsView()
                }
         .onChange(of: scannedCode) { code, oldCode in
-            if let barcode = code, !barcode.isEmpty {
+            if let barcode = scannedCode, scannedCode != ""{
+                print("Scanned \(barcode)")
                 gotBarcode = true
                 navigateToNewOrder = true
             }
+            
         }
         .onAppear(){
             isLoading = true;

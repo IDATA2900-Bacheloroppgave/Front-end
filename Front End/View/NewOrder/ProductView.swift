@@ -53,7 +53,7 @@ struct ProductView: View {
                                     TextInfoField(type: "Product type:", text: product.productType)
                                     TextInfoField(type: "Packaging:", text: product.packaging.packageType )
                                     TextInfoField(type: "Quantity:", text: String(product.packaging.quantityPrPackage))
-                                    TextInfoField(type: "Price:", text: String(product.price))
+                                    TextInfoField(type: "Price:", text: "\(product.price) kr")
                                     TextInfoField(type: "Weight:", text: "\(product.packaging.weightInGrams) g")
                                 
                                 })

@@ -3,7 +3,6 @@
 //  Front End
 //
 //  Created by Siri Sandnes on 14/04/2024.
-
 import SwiftUI
 
 struct NewOrderView: View {
@@ -18,10 +17,10 @@ struct NewOrderView: View {
     @State private var placeOrder = false
     @State private var showSheet = false
     @State private var showBarcode = false
-    @State private var sheetOffset: CGFloat = 0
     @State private var scannedProduct: Product?
     @State private var scannedCode: String?
-    @State private var gotBarcode : Bool = false
+    @State private var searchTerm: String = ""
+    @State private var gotBarcode: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -39,14 +38,24 @@ struct NewOrderView: View {
                     VStack {
                         VStack {
                             HStack {
-                                TextField("Search...", text: $newOrderViewModel.searchTerm)
-                                    .padding(.horizontal, 5)
-                                    .padding(.vertical, 7)
-                                    .background(Color.white)
-                                    .cornerRadius(5)
-                                    .shadow(radius: 1)
-                                    .foregroundColor(.black)
-                                    .backgroundStyle(.white)
+                                TextField("Search or scan barcode...", text: Binding(
+                                    get: { searchTerm },
+                                    set: { newValue in
+                                        searchTerm = newValue
+                                        newOrderViewModel.searchTerm = newValue
+                                        if newValue.isEmpty {
+                                            scannedProduct = nil
+                                            scannedCode = nil
+                                        }
+                                    }
+                                ))
+                                .padding(.horizontal, 5)
+                                .padding(.vertical, 7)
+                                .background(Color.white)
+                                .cornerRadius(5)
+                                .shadow(radius: 1)
+                                .foregroundColor(.black)
+                                .backgroundStyle(.white)
                                 Button(action: {
                                     showBarcode = true
                                 }) {
@@ -86,17 +95,20 @@ struct NewOrderView: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                         } else {
                             ScrollView {
-                                if let scannedProduct = scannedProduct {
-                                    // Display only the scanned product if available
-                                    NewProductCardView(product: scannedProduct, itemAvailable: scannedProduct.inventory.availableStock > 0, availableQuantity: scannedProduct.inventory.availableStock, productAmounts: $productAmounts, showsheet: $showSheet)
-                                } else {
-                                    // Otherwise, display the filtered products
-                                    ForEach(filteredProducts, id: \.productId) { product in
-                                        NewProductCardView(product: product, itemAvailable: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts, showsheet: $showSheet)
-                                    }
+                                ForEach(filteredProducts, id: \.productId) { product in
+                                    NewProductCardView(product: product, itemAvailable: product.inventory.availableStock > 0, availableQuantity: product.inventory.availableStock, productAmounts: $productAmounts, showsheet: $showSheet)
                                 }
                             }
                         }
+                    }
+                }
+                .onChange(of: scannedCode) { newCode, oldCode in
+                    if let barcode = newCode, !barcode.isEmpty {
+                        searchTerm = barcode
+                        gotBarcode = true
+                        scannedProduct = newOrderViewModel.products.first(where: { String($0.gtin) == barcode })
+                    } else {
+                        scannedProduct = nil
                     }
                 }
                 .sheet(isPresented: $showBarcode) {
@@ -108,25 +120,6 @@ struct NewOrderView: View {
                             .presentationDetents([.fraction(0.25)])
                             .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.25)))
                             .cornerRadius(20)
-                            .offset(y: max(sheetOffset, 0))
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { value in
-                                        let newOffset = sheetOffset + value.translation.height
-                                        if newOffset > 0 {
-                                            sheetOffset = newOffset
-                                        }
-                                    }
-                                    .onEnded { value in
-                                        if value.translation.height > 100 {
-                                            sheetOffset = UIScreen.main.bounds.height * 0.75
-                                        } else {
-                                            sheetOffset = 0
-                                        }
-                                    }
-                            )
-                            .animation(.easeInOut, value: sheetOffset)
-                            .transition(.move(edge: .bottom))
                     }
                 }
                 .tint(.black)
@@ -154,13 +147,11 @@ struct NewOrderView: View {
                 isLoading = false
             }
         }
-        
-        
     }
 
     var filteredProducts: [Product] {
         // If there's a scanned product, only show that product
-        if let scannedProduct = scannedProduct {
+        if let scannedProduct = scannedProduct, !searchTerm.isEmpty {
             return [scannedProduct]
         }
 

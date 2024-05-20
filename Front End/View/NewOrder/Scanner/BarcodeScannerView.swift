@@ -25,6 +25,8 @@ struct BarcodeScannerView: View {
         VStack {
             Button {
                 showBarcode = false
+                resetScanner()
+                
             } label: {
                 Image(systemName: "xmark")
                     .font(.title)
@@ -93,12 +95,16 @@ struct BarcodeScannerView: View {
             if let code = newValue {
                 scannedCode = code
                 gotBarcode = true
-                session.stopRunning()
                 showBarcode = false
-                print("THE BARCODE \(scannedCode ?? "")")
+                barcodeDelegate.reset()
+            }
+            if(gotBarcode == true){
+                session.stopRunning()
             }
         }
     }
+    
+    
     
     func reactivateCamera() {
         DispatchQueue.global(qos: .background).async {
@@ -128,6 +134,12 @@ struct BarcodeScannerView: View {
             }
         }
     }
+    
+    func resetScanner() {
+         scannedCode = nil
+         gotBarcode = false
+         reactivateCamera()
+     }
     
     func setUpCamera() {
         do {

@@ -42,7 +42,7 @@
 		ECEBD1652BC9DDA4007F9D8A /* ProductsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1642BC9DDA4007F9D8A /* ProductsDataService.swift */; };
 		ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1682BC9EDE0007F9D8A /* Product.swift */; };
 		ECEBD16B2BC9F1FB007F9D8A /* LoginDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16A2BC9F1FB007F9D8A /* LoginDataService.swift */; };
-		ECEBD16D2BCA1377007F9D8A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16C2BCA1377007F9D8A /* ContentView.swift */; };
+		ECEBD16D2BCA1377007F9D8A /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16C2BCA1377007F9D8A /* InputField.swift */; };
 		ECEBD16F2BCC59A3007F9D8A /* NewOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD16E2BCC59A3007F9D8A /* NewOrderView.swift */; };
 		ECEBD1712BCC59D1007F9D8A /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1702BCC59D1007F9D8A /* OrderHistoryView.swift */; };
 		ECEBD1792BCD472E007F9D8A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEBD1782BCD472E007F9D8A /* Store.swift */; };
@@ -107,7 +107,7 @@
 		ECEBD1642BC9DDA4007F9D8A /* ProductsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDataService.swift; sourceTree = "<group>"; };
 		ECEBD1682BC9EDE0007F9D8A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		ECEBD16A2BC9F1FB007F9D8A /* LoginDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataService.swift; sourceTree = "<group>"; };
-		ECEBD16C2BCA1377007F9D8A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ECEBD16C2BCA1377007F9D8A /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		ECEBD16E2BCC59A3007F9D8A /* NewOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrderView.swift; sourceTree = "<group>"; };
 		ECEBD1702BCC59D1007F9D8A /* OrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryView.swift; sourceTree = "<group>"; };
 		ECEBD1782BCD472E007F9D8A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				ECEBD0632BC88497007F9D8A /* Front_EndApp.swift */,
-				ECEBD16C2BCA1377007F9D8A /* ContentView.swift */,
+				ECEBD16C2BCA1377007F9D8A /* InputField.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -472,7 +472,7 @@
 				ECBBF7E92BF7A62300A6AD16 /* BarcodeScannerDelegate.swift in Sources */,
 				EC9659222BD7EFF100DDE431 /* FilterOrderSheetView.swift in Sources */,
 				ECEBD1522BC947EE007F9D8A /* NewOrderViewModel.swift in Sources */,
-				ECEBD16D2BCA1377007F9D8A /* ContentView.swift in Sources */,
+				ECEBD16D2BCA1377007F9D8A /* InputField.swift in Sources */,
 				ECEBD1712BCC59D1007F9D8A /* OrderHistoryView.swift in Sources */,
 				ECEBD1692BC9EDE0007F9D8A /* Product.swift in Sources */,
 				ECEBD14B2BC93076007F9D8A /* User.swift in Sources */,

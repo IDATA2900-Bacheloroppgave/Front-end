@@ -18,6 +18,7 @@ struct InputView: View {
     var borderColor: Color = Color.black
     
     var body: some View {
+    
         if isSecureField{
             SecureField(placeholder, text: $text)
                 .padding()

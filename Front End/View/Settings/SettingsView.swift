@@ -39,7 +39,7 @@ struct SettingsView: View {
                                     .font(.headline)
                                     .foregroundStyle(.white)
                                     .frame(width: 48, height: 48)
-                                    .background(Color(.solwrYellow).opacity(0.5))
+                                    .background(.solwrLightDarkYellow)
                                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                                     .padding(.horizontal)
                                 
@@ -47,7 +47,7 @@ struct SettingsView: View {
                                     Text("Ina Folland")
                                         .font(.headline)
                                         .fontWeight(.semibold)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(.solwrMainTitle)
                                     
                                     
                                     Text("ina@gmail.com")
@@ -75,7 +75,7 @@ struct SettingsView: View {
                                     Text("Change password")
                                         .font(.subheadline)
                                         .fontWeight(.semibold)
-                                        .tint(.black)
+                                        .tint(.solwrMainTitle)
                                     
                                 }
                                 .padding()
@@ -103,7 +103,7 @@ struct SettingsView: View {
                                 }
                                 .pickerStyle(DefaultPickerStyle())
                             }
-                            .tint(.gray)
+                            .tint(.solwrMainTitle)
                             .padding(.top)
                         }
                         
@@ -112,7 +112,7 @@ struct SettingsView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 230)
-                    .background(Color.white)
+                    .background(.solwrCardBackground)
                     .cornerRadius(5)
                     .shadow(radius: 2)
                     .padding(.horizontal)
