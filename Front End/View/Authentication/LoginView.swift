@@ -13,8 +13,8 @@ struct LogInView: View {
     @StateObject var stores = StoresViewModel()
     
     
-    @State private var email = "test@test.no"
-    @State private var password = "test12345"
+    @State private var email = ""
+    @State private var password = ""
     @State private var emailBorderColor = Color.black
     @State private var passwordBorderColor = Color.black
     @State private var userFeedback = ""
