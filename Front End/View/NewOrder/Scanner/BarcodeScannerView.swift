@@ -7,24 +7,22 @@
 import AVFoundation
 import SwiftUI
 
-
 struct BarcodeScannerView: View {
-    
     @State private var session: AVCaptureSession = .init()
-    @State private var cameraPermission : Permission = .idle
+    @State private var cameraPermission: Permission = .idle
     @State private var barcodeOutput: AVCaptureMetadataOutput = .init()
     @State private var errorMessage: String = ""
     @State private var showError: Bool = false
     @Binding var showBarcode: Bool
+    @Binding var scannedCode: String?
+    @Binding var gotBarcode: Bool
     
     @Environment(\.openURL) private var openURL
     
     @StateObject private var barcodeDelegate = BarcodeScannerDelegate()
     
-    @Binding var scannedCode: String?
-    @Binding var gotBarcode: Bool
     var body: some View {
-        VStack{
+        VStack {
             Button {
                 showBarcode = false
             } label: {
@@ -50,17 +48,15 @@ struct BarcodeScannerView: View {
                     CameraView(frameSize: CGSize(width: size.width, height: size.width), session: $session)
                         .scaleEffect(0.97)
                     
-                    ForEach(0...4, id: \.self){ index in
+                    ForEach(0...4, id: \.self) { index in
                         let rotation = Double(index) * 90
                         
                         RoundedRectangle(cornerRadius: 2, style: .circular)
                             .trim(from: 0.61, to: 0.64)
-                            .stroke(Color.solwrYellow, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))  .rotationEffect(.init(degrees: rotation))
-                        
-                        
+                            .stroke(Color.solwrYellow, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
+                            .rotationEffect(.init(degrees: rotation))
                     }
                     .frame(width: size.width, height: size.width)
-                    
                 }
             }
             .aspectRatio(1, contentMode: .fit)
@@ -69,64 +65,59 @@ struct BarcodeScannerView: View {
             Spacer()
             
             Button {
-                if !session.isRunning && cameraPermission == .approved{
+                if !session.isRunning && cameraPermission == .approved {
                     reactivateCamera()
                 }
             } label: {
                 Image(systemName: "qrcode.viewfinder")
                     .font(.title)
                     .foregroundStyle(.solwrGreyText)
-                
-            }.padding(.bottom, 50)
-            
+            }
+            .padding(.bottom, 50)
         }
         .padding(15)
-        .onAppear(
-            perform: {
-                checkCameraPermission()
-            }
-        )
-        .alert(errorMessage, isPresented: $showError){
-            if cameraPermission == .denied{
-                Button("Settings"){
+        .onAppear(perform: {
+            checkCameraPermission()
+        })
+        .alert(errorMessage, isPresented: $showError) {
+            if cameraPermission == .denied {
+                Button("Settings") {
                     let settingsString = UIApplication.openSettingsURLString
-                    if let settingsURL = URL(string: settingsString){
+                    if let settingsURL = URL(string: settingsString) {
                         openURL(settingsURL)
                     }
                 }
-                
             }
-        }        
+        }
         .onChange(of: barcodeDelegate.scannedCode) { oldValue, newValue in
             if let code = newValue {
                 scannedCode = code
-                showBarcode = false
+                gotBarcode = true
                 session.stopRunning()
+                showBarcode = false
+                print("THE BARCODE \(scannedCode ?? "")")
             }
         }
-
-        
     }
     
-    func reactivateCamera(){
-        DispatchQueue.global(qos: .background).async{
+    func reactivateCamera() {
+        DispatchQueue.global(qos: .background).async {
             session.startRunning()
+            barcodeDelegate.reset()
         }
     }
     
-        
-    
-    func checkCameraPermission (){
-        Task{
-            switch AVCaptureDevice.authorizationStatus(for: .video){
+    func checkCameraPermission() {
+        Task {
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized:
                 cameraPermission = .approved
                 setUpCamera()
             case .notDetermined:
-                if await AVCaptureDevice.requestAccess(for: .video){
+                if await AVCaptureDevice.requestAccess(for: .video) {
                     cameraPermission = .approved
                     setUpCamera()
-                }else{
+                } else {
                     cameraPermission = .denied
                     showError("Please provide Access to Camera for scanning barcode")
                 }
@@ -147,7 +138,7 @@ struct BarcodeScannerView: View {
                 .builtInDualCamera,
                 .builtInTripleCamera,
                 .builtInDualWideCamera,
-                .builtInTrueDepthCamera // For front-facing camera support if needed
+                .builtInTrueDepthCamera 
             ], mediaType: .video, position: .back).devices.first else {
                 showError("No suitable camera found.")
                 return
@@ -172,7 +163,7 @@ struct BarcodeScannerView: View {
                 .code39,
                 .code93,
                 .pdf417,
-                .qr, 
+                .qr,
                 .dataMatrix,
                 .aztec
             ]
@@ -183,20 +174,17 @@ struct BarcodeScannerView: View {
             DispatchQueue.global(qos: .background).async {
                 session.startRunning()
             }
-            
         } catch {
             showError(error.localizedDescription)
         }
     }
-
-    func showError(_ message: String){
+    
+    func showError(_ message: String) {
         errorMessage = message
         showError.toggle()
     }
 }
 
 #Preview {
-    BarcodeScannerView(showBarcode: .constant(false), scannedCode: .constant(""), gotBarcode: .constant(false))
+    BarcodeScannerView(showBarcode: .constant(false), scannedCode: .constant(nil), gotBarcode: .constant(false))
 }
-
-

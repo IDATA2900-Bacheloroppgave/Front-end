@@ -17,6 +17,7 @@ struct LandingPageView: View {
     @State private var showSettings = false
     @State private var scannedCode: String?
     @State private var gotBarcode : Bool = false
+    @State private var navigateToNewOrder = false
     
     
     
@@ -143,6 +144,7 @@ struct LandingPageView: View {
                 }
             }
         }
+        
         .sheet(isPresented: $showBarcode){
             BarcodeScannerView(showBarcode: $showBarcode,scannedCode: $scannedCode, gotBarcode: $gotBarcode)
         }
@@ -150,12 +152,11 @@ struct LandingPageView: View {
                    SettingsView()
                }
         .onChange(of: scannedCode) { code, oldCode in
-            let barcode = code
-                   if code != nil {
-                       gotBarcode = true
-                       print("THE BARCODE \(barcode)")
-                   }
-               }
+            if let barcode = code, !barcode.isEmpty {
+                gotBarcode = true
+                navigateToNewOrder = true
+            }
+        }
         .onAppear(){
             isLoading = true;
             Task {
@@ -173,7 +174,7 @@ struct LandingPageView: View {
             
             
         }.tint(.black)
-        
+            
     }
 }
 
